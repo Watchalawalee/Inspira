@@ -35,13 +35,13 @@ export default function Login() {
               />
             </div>  
           </form>
-        <p className="mt-6 text-gray-600 text-left">
+        <p className="mt-6 text-gray-600 text-left text-md">
           New User? <a href="/signup" className="text-blue-500 underline">Signup</a>
         </p>
       </div>
       <button 
         type="submit" 
-        className="mt-4 bg-red-300 text-white px-6 py-2 rounded-full w-60 hover:bg-red-400"
+        className="mt-4 bg-[#FFA3A3] px-6 py-2 rounded-full w-60 text-lg font-semibold hover:bg-red-400"
       >
         Login
       </button>
