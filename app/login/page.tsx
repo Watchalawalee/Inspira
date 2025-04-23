@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import bglogin from '../public/bglogin.svg';
+import Link from 'next/link';
+
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -12,7 +13,6 @@ export default function Login() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Check if username and password are provided
     if (!username || !password) {
       setError('Please enter both username and password.');
       return;
@@ -40,7 +40,8 @@ export default function Login() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 relative">
-      <Image src={bglogin} alt="Background" className="absolute bottom-0 z-0 min-w-screen" />
+<Image
+  src="/bglogin.svg"alt="Background" width={1200} height={800} className="absolute bottom-0 z-0 min-w-screen object-fill" objectFit="cover" objectPosition="bottom"/>
       <h1 className="text-2xl font-semibold mb-4">Login</h1>
       <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-md w-full max-w-md text-center">
         <p className="text-gray-600 mb-6">Welcome back! Please login to your account.</p>
@@ -64,9 +65,10 @@ export default function Login() {
             />
           </div>
           <div className="mt-6 flex justify-between text-gray-600 text-md">
-            <p>
-              New User? <a href="/signup" className="text-blue-500 underline">Signup</a>
-            </p>
+          <p>
+  New User? <Link href="/register" className="text-blue-500 underline">Signup</Link>
+</p>
+
             <p>
               <a href="/forgetpassword" className="text-blue-500 underline">Forget Password</a>
             </p>
@@ -103,5 +105,4 @@ export default function Login() {
     </div>
   );
 }
-
 
