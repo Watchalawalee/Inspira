@@ -1,16 +1,18 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [modalVisible, setModalVisible] = useState(false); // State for modal visibility
+  const [modalVisible, setModalVisible] = useState(false);
+  const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!username || !password) {
@@ -18,20 +20,31 @@ export default function Login() {
       return;
     }
 
-    // Simple validation for incorrect username or password
-    if (username !== 'correctUsername' || password !== 'correctPassword') {
-      setError('Invalid username or password');
-      return;
+    try {
+      const res = await axios.post('http://localhost:5000/auth/login', {
+        username,
+        password,
+      });
+
+      const { token, user } = res.data;
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+
+      setError('');
+      setModalVisible(true);
+
+      setUsername('');
+      setPassword('');
+
+      // 👉 Delay แล้วค่อย redirect ไปหน้า Home
+      setTimeout(() => {
+        setModalVisible(false);
+        router.push('/');
+      }, 1500);
+    } catch (err: any) {
+      const msg = err?.response?.data?.message || 'Login failed.';
+      setError(`❌ ${msg}`);
     }
-
-    setError(''); // Clear the error after successful login attempt
-
-    // Show success modal after login
-    setModalVisible(true);
-    
-    // Optionally clear the form after successful login
-    setUsername('');
-    setPassword('');
   };
 
   const closeModal = () => {
@@ -40,10 +53,15 @@ export default function Login() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 relative">
-<Image
-  src="/bglogin.svg"alt="Background" width={1200} height={800} className="absolute bottom-0 z-0 min-w-screen object-fill" objectFit="cover" objectPosition="bottom"/>
-      <h1 className="text-2xl font-semibold mb-4">Login</h1>
-      <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-md w-full max-w-md text-center">
+      <Image
+        src="/bglogin.svg"
+        alt="Background"
+        width={1440}
+        height={200}
+        className="absolute bottom-0 z-0 min-w-screen object-fill object-bottom"
+      />
+      <h1 className="text-2xl font-semibold mb-4 z-10">Login</h1>
+      <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-md w-full max-w-md text-center z-10">
         <p className="text-gray-600 mb-6">Welcome back! Please login to your account.</p>
         <form onSubmit={handleLogin} className="space-y-4">
           <div className="w-full text-left">
@@ -65,44 +83,39 @@ export default function Login() {
             />
           </div>
           <div className="mt-6 flex justify-between text-gray-600 text-md">
-          <p>
-  New User? <Link href="/register" className="text-blue-500 underline">Signup</Link>
-</p>
-
             <p>
-              <a href="/forgetpassword" className="text-blue-500 underline">Forget Password</a>
+              New User? <Link href="/signup" className="text-blue-500 underline">Signup</Link>
+            </p>
+            <p>
+              <Link href="/forgetpassword" className="text-blue-500 underline">Forget Password</Link>
             </p>
           </div>
           {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+
+          <button
+            type="submit"
+            className="mt-4 bg-[#5372A4] text-white px-6 py-2 rounded-full w-60 hover:bg-blue-700"
+          >
+            Login
+          </button>
         </form>
       </div>
-      <button
-        onClick={handleLogin} // Trigger form submission when clicked
-        className="mt-4 bg-[#5372A4] text-white px-6 py-2 rounded-full w-60 hover:bg-blue-700"
-      >
-        Login
-      </button>
 
-      {/* Success Modal */}
+      {/* ✅ Success Modal 
       {modalVisible && (
-        <div className="modal open">
-          <div className="bg-[#2A2B5A] text-white p-8 rounded-lg text-center w-[480px] xl:w-60">
-            <div className="checkmark-container">
-              <div>
-                <img alt="Check" src="/Check.png"/>
-              </div>
-            </div>
-            <p className="text-bold text-[20px]">Your login is successful!</p>
+        <div className="fixed z-10 bg-black/50 top-0 left-0 w-full h-full flex items-center justify-center">
+          <div className="bg-[#2A2B5A] text-white p-8 rounded-lg text-center w-[320px]">
+            <img alt="Check" src="/Check.png" className="mx-auto mb-4 w-12" />
+            <p className="font-bold text-[20px]">Your login is successful!</p>
             <button
-              className="close-button"
+              className="mt-4 bg-white text-[#2A2B5A] px-4 py-2 rounded"
               onClick={closeModal}
             >
               Close
             </button>
           </div>
         </div>
-      )}
+      )}*/}
     </div>
   );
 }
-
