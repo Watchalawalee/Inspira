@@ -1,22 +1,22 @@
 'use client';
+
 import { useState } from 'react';
 import Image from 'next/image';
-import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+//import axios from 'axios';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [modalVisible, setModalVisible] = useState(false);
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!username || !password) {
-      setError('Please enter both username and password.');
+      setError('⚠️ โปรดกรอกชื่อผู้ใช้และรหัสผ่าน');
       return;
     }
 
@@ -31,24 +31,15 @@ export default function Login() {
       localStorage.setItem('user', JSON.stringify(user));
 
       setError('');
-      setModalVisible(true);
-
       setUsername('');
       setPassword('');
 
-      // 👉 Delay แล้วค่อย redirect ไปหน้า Home
-      setTimeout(() => {
-        setModalVisible(false);
-        router.push('/');
-      }, 1500);
+      // ✅ ไปหน้า /home หลัง Login สำเร็จ
+      router.push('/home');
     } catch (err: any) {
-      const msg = err?.response?.data?.message || 'Login failed.';
+      const msg = err?.response?.data?.message || 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';
       setError(`❌ ${msg}`);
     }
-  };
-
-  const closeModal = () => {
-    setModalVisible(false);
   };
 
   return (
@@ -84,14 +75,18 @@ export default function Login() {
           </div>
           <div className="mt-6 flex justify-between text-gray-600 text-md">
             <p>
-              New User? <Link href="/signup" className="text-blue-500 underline">Signup</Link>
+              New User?{' '}
+              <Link href="/register" className="text-blue-500 underline">
+                Signup
+              </Link>
             </p>
             <p>
-              <Link href="/forgetpassword" className="text-blue-500 underline">Forget Password</Link>
+              <Link href="/forgetpassword" className="text-blue-500 underline">
+                Forget Password
+              </Link>
             </p>
           </div>
           {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-
           <button
             type="submit"
             className="mt-4 bg-[#5372A4] text-white px-6 py-2 rounded-full w-60 hover:bg-blue-700"
@@ -100,22 +95,6 @@ export default function Login() {
           </button>
         </form>
       </div>
-
-      {/* ✅ Success Modal 
-      {modalVisible && (
-        <div className="fixed z-10 bg-black/50 top-0 left-0 w-full h-full flex items-center justify-center">
-          <div className="bg-[#2A2B5A] text-white p-8 rounded-lg text-center w-[320px]">
-            <img alt="Check" src="/Check.png" className="mx-auto mb-4 w-12" />
-            <p className="font-bold text-[20px]">Your login is successful!</p>
-            <button
-              className="mt-4 bg-white text-[#2A2B5A] px-4 py-2 rounded"
-              onClick={closeModal}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}*/}
     </div>
   );
 }

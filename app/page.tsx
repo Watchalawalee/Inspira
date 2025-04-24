@@ -52,35 +52,27 @@ const Page = () => {
         ))}
       </div>
 
-      <div className="content" style={{ position: 'relative', zIndex: 10, height: '100%', backgroundColor: 'rgba(0, 0, 0, 0.3)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center', textAlign: 'center', paddingBottom: '60px', color: 'white' }}>
-        <div>
-          <h1 style={{ fontSize: '36px', fontWeight: 'bold' }}>Inspira</h1>
-          <h2 style={{ fontSize: '22px', fontStyle: 'italic', marginTop: '5px' }}>Discover exhibitions and events happening around you.</h2>
-        </div>
-        <button
-          className="btn enter-btn"
-          style={{ marginTop: '20px', padding: '10px 20px', borderRadius: '25px', border: 'none', cursor: 'pointer', fontWeight: 'bold', margin: '10px', backgroundColor: '#fca5a5', color: 'white' }}
-          onClick={() => router.push('/home')}
-        >
-          CLICK TO ENTER
-        </button>
-        <div>
-          <button
-            className="btn secondary-btn"
-            style={{ padding: '10px 20px', borderRadius: '25px', border: 'none', cursor: 'pointer', fontWeight: 'bold', margin: '10px', backgroundColor: '#cbd5e1', color: '#1e293b' }}
-            onClick={() => router.push('/login')}
-            >
-            LOG IN
-          </button>
-          <button
-            className="btn secondary-btn"
-            style={{ padding: '10px 20px', borderRadius: '25px', border: 'none', cursor: 'pointer', fontWeight: 'bold', margin: '10px', backgroundColor: '#cbd5e1', color: '#1e293b' }}
-            onClick={() => router.push('/register')}
-          >
-            REGISTER
-          </button>
-        </div>
-      </div>
+      <div className="fixed bottom-0 min-w-screen z-10 bg-gradient-to-b  to-[#5372A4] px-5 py-20 flex flex-col items-center">
+      <button className="mt-5 px-6 py-2 rounded-xl drop-shadow-xl font-bold bg-[#FFBAA3] text-white hover:bg-red-300 transition-all"
+      onClick={() => router.push('/home')}>CLICK TO ENTER</button>
+
+  <div className="flex space-x-4 mt-4">
+    <button
+      className="px-6 py-2 rounded-xl drop-shadow-xl text-sm font-bold bg-[#9EBAC8] text-white hover:bg-slate-400 transition-all"
+      onClick={() => router.push('/login')}
+    >
+      LOG IN
+    </button>
+    <button
+      className="px-6 py-2 rounded-xl drop-shadow-xl text-sm font-bold bg-[#9EBAC8] text-white hover:bg-slate-400 transition-all"
+      onClick={() => router.push('/register')}
+    >
+      REGISTER
+    </button>
+  </div>
+</div>
+
+
     </div>
   );
 };

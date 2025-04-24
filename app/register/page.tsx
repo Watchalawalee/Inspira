@@ -211,7 +211,9 @@ export default function Signup() {
             )}
             {step === 2 && (
               <>
-                <label className="block text-sm mb-1">Interests (Max 3)</label>
+                <label className="block text-sm mb-1 text-center">What are you interested in ?</label>
+                <p className="block text-xs mb-1 mt-4 text-center">This will recommend event for you</p>
+                <h className="block text-sm mb-1 text-center text-black">Pick 3 More</h>
                 <div className="flex flex-wrap gap-2">
                   {categories.map((interest) => (
                     <button
