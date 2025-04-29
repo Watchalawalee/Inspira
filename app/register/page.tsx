@@ -1,6 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+
 
 export default function Signup() {
   const [step, setStep] = useState(0);
@@ -15,7 +17,7 @@ export default function Signup() {
     interests: [] as string[],
   });
 
-  const steps = ['User Info', 'Gender & Birthdate', 'Interests'];
+  const steps = ['User Info', 'Gender & Birthdate', 'Interests', 'Register'];
   const [showErrors, setShowErrors] = useState(false);
 
   useEffect(() => {
@@ -235,32 +237,74 @@ export default function Signup() {
                 )}
               </>
             )}
-            {step === 3 && (
-              <>
-                <label className="block text-sm mb-1 text-center">What are you interested in ?</label>
-                <p className="block text-xs mb-1 mt-4 text-center">This will recommend event for you</p>
-                <h className="block text-sm mb-1 text-center text-black">Pick 3 More</h>
-                <div className="flex flex-wrap gap-2">
-                  {categories.map((interest) => (
-                    <button
-                      key={interest}
-                      onClick={() => handleButtonClick(interest)}
-                      type="button"
-                      className={`px-4 py-2 rounded-full border-2 text-sm font-medium transition-colors ${
-                        formData.interests.includes(interest)
-                          ? 'bg-blue-600 text-white border-blue-600'
-                          : 'bg-white text-blue-600 border-blue-600 hover:bg-blue-50'
-                      }`}
-                    >
-                      {interest}
-                    </button>
-                  ))}
-                </div>
-                {showErrors && formData.interests.length === 0 && (
-                  <p className="text-red-500 text-sm mt-1">กรุณาเลือกอย่างน้อย 1 หมวดความสนใจ</p>
-                )}
-              </>
-            )}
+          {step === 3 && (
+          <div className="bg-white rounded-xl shadow-md p-6 max-w-md mx-auto text-center">
+            <h2 className="text-2xl font-semibold text-[#5372A4] mb-2">Register Success!</h2>
+            <p className="text-sm text-gray-700 mt-4 mb-6">
+              Please check your email to verify before logging in.
+            </p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => setStep(4)}
+                className="bg-[#5372A4] text-white px-6 py-2 rounded-full hover:bg-[#415a8a] transition"
+              >
+                Resend Verification
+              </button>
+              <button
+                onClick={() => router.push('/login')}
+                className="bg-[#5372A4] text-white px-6 py-2 rounded-full hover:bg-[#415a8a] transition"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        )}
+        {step === 4 && (
+          <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-200 to-indigo-300">
+            <div className="bg-white p-8 rounded-xl shadow-md text-center max-w-md w-full">
+              <h2 className="text-2xl font-semibold text-[#5372A4] mb-4">Resend Verification</h2>
+              <p className="text-sm text-gray-600 mb-6">Enter your email to receive a new verification link.</p>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5372A4] mb-6"
+              />
+
+              <div className="flex justify-center gap-4">
+                <button
+                  onClick={() => handleResendEmail(email)}
+                  className="bg-[#5372A4] text-white px-6 py-2 rounded-full hover:bg-[#415a8a] transition"
+                >
+                  Resend Verification
+                </button>
+                <button
+                  onClick={handleLogin}
+                  className="bg-[#5372A4] text-white px-6 py-2 rounded-full hover:bg-[#415a8a] transition"
+                >
+                  Login
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        {step === 5 && (
+          <div className="bg-white rounded-xl shadow-md p-6 max-w-md mx-auto text-center">
+            <h2 className="text-2xl font-semibold text-[#5372A4] mb-2">Email verification successful !</h2>
+            <p className="text-sm text-gray-700 mt-4 mb-6">
+            Everything’s ready — time to log in
+            </p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => router.push('/login')}
+                className="bg-[#5372A4] text-white px-6 py-2 rounded-full hover:bg-[#415a8a] transition"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        )}
           </motion.div>
         </AnimatePresence>
 
@@ -286,26 +330,6 @@ export default function Signup() {
             {step === steps.length - 1 ? 'Register' : 'Next'}
           </button>
         </div>
-      {/* 
-        <div className="mt-10 text-left border-t pt-6">
-          <h3 className="text-sm font-semibold mb-2">ยังไม่ได้รับอีเมลยืนยัน?</h3>
-          <form onSubmit={handleResend} className="flex gap-2">
-            <input
-              type="email"
-              value={resendEmail}
-              onChange={(e) => setResendEmail(e.target.value)}
-              placeholder="Your email"
-              className="flex-1 p-2 rounded-md border border-gray-300"
-              required
-            />
-            <button
-              type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-            >
-              ส่งอีกครั้ง
-            </button>
-          </form>
-        </div>*/}
       </div>
     </div>
   );
