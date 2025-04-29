@@ -41,7 +41,19 @@ const InspiraNavbar = () => {
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         {/* Logo Image */}
-        <Box component="img" src="/logo.jpg" alt="Logo" sx={{ height: 40 }} />
+        <Box
+  component="img"
+  src="/logo.svg"
+  alt="Logo"
+  sx={{
+    height: { xs: 24, sm: 32, md: 40 },
+    maxWidth: { xs: 100, sm: 150, md: 200 },
+    width: '100%',
+    filter: 'invert(1)', // ใช้ color จริง ๆ
+    objectFit: 'contain', // ป้องกันไม่ให้รูปเบี้ยว
+  }}
+/>
+
 
         {/* Search Bar */}
         <SearchBox elevation={0}>
