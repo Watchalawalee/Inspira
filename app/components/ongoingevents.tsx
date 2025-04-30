@@ -23,20 +23,23 @@ const ongoingEvents = [
   },
 ];
 
+
+
 const OngoingEvents: React.FC = () => {
   return (
     <section className="px-6 py-8 bg-gradient-to-b from-white to-blue-50">
+      {/* Ongoing Events Section */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl md:text-2xl font-bold">Ongoing Events</h2>
         <a href="#" className="text-blue-500 font-medium hover:underline">View all</a>
       </div>
-      <div className="flex gap-4 overflow-x-auto pb-2">
+      <div className="flex gap-4 overflow-x-auto pb-2 ">
         {ongoingEvents.map(event => (
-          <div key={event.id} className="min-w-[200px] bg-white rounded-2xl shadow-md">
+          <div key={event.id} className="min-w-[200px] bg-white rounded-t-full shadow-md">
             <img
               src={event.imageUrl}
               alt={event.name}
-              className="w-full h-48 object-cover rounded-t-2xl"
+              className="w-full h-48 object-cover rounded-t-full"
             />
             <div className="p-3 text-center">
               <h3 className="text-sm font-semibold truncate">{event.name}</h3>
