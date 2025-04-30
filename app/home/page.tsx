@@ -1,21 +1,21 @@
 'use client';
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import InspiraNavbar from '../components/button'; 
+import BannerSlider from '../components/Bannerslide';
+import OngoingEvents from '../components/ongoingevents';
+import UpcomingEvents from '../components/upcomingevents';
+import AllEvents from '../components/allevents';
 
-const Home = () => {
+const HomePage = () => {
   return (
-    <div>
-      {/* Navbar will always be at the top */}
+    <main>
       <InspiraNavbar />
-
-      {/* Your other page content */}
-      <div style={{ paddingTop: 80 }}> {/* Padding to avoid overlap with fixed navbar */}
-        <h1>Welcome to the Home Page</h1>
-        {/* Add your page content here */}
-      </div>
-    </div>
+      <BannerSlider />
+      <OngoingEvents />
+      <UpcomingEvents />
+      <AllEvents />
+    </main>
   );
 };
 
-export default Home;
+export default HomePage;

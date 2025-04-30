@@ -61,6 +61,11 @@ const InspiraNavbar = () => {
     router.push('/changepassword');
   };
 
+  const handleRefer = () => {
+    handleMenuClose();
+    router.push('/refer'); 
+  };
+
   const handleLoginRedirect = () => {
     router.push('/login');
   };
@@ -119,6 +124,7 @@ const InspiraNavbar = () => {
           }}
         >
           <MenuItem onClick={handleProfile}>ดูข้อมูลของฉัน</MenuItem>
+          <MenuItem onClick={handleRefer}>แนะนำนิทรรศการใหม่</MenuItem>
           <MenuItem onClick={handleChangePassword}>เปลี่ยนรหัสผ่าน</MenuItem>
           <MenuItem onClick={handleLogout}>ออกจากระบบ</MenuItem>
         </Menu>
