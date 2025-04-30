@@ -47,8 +47,9 @@ const InspiraNavbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('authToken');
     handleMenuClose();
-    router.push('/login');
+    router.push('/'); // กลับไปหน้าแรกหลังออกจากระบบ
   };
+  
 
   const handleProfile = () => {
     handleMenuClose();
