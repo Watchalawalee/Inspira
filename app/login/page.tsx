@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-//import axios from 'axios';
+import axios from 'axios';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -22,8 +22,8 @@ export default function Login() {
 
     try {
       const res = await axios.post('http://localhost:5000/auth/login', {
-        username,
-        password,
+        username: username.trim(),
+        password: password.trim(),
       });
 
       const { token, user } = res.data;
@@ -56,7 +56,7 @@ export default function Login() {
         <p className="text-gray-600 mb-6">Welcome back! Please login to your account.</p>
         <form onSubmit={handleLogin} className="space-y-4">
           <div className="w-full text-left">
-            <label className="block text-md mb-2">User Name</label>
+            <label className="block text-md mb-2">User Name or Email</label>
             <input
               type="text"
               value={username}
