@@ -25,3 +25,35 @@ h1 {
 p {
   color: #8a8888;
 }
+
+@layer utilities {
+  @keyframes scroll-x {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .carousel {
+    animation: scroll-x 30s linear infinite;
+  }
+
+  .paused {
+    animation-play-state: paused !important;
+  }
+
+  .carousel-item {
+    min-width: 180px;
+  }
+
+  .client-image {
+    width: 180px;
+    height: 120px;
+  }
+
+  .carousel-container::-webkit-scrollbar {
+    display: none;
+  }
+}

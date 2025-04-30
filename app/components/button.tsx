@@ -1,14 +1,16 @@
-"use client";
+'use client';
 
 import * as React from 'react';
-import { AppBar, Box, Toolbar, IconButton, InputBase, Paper } from '@mui/material';
-import { styled, alpha } from '@mui/material/styles';
+import {
+  AppBar, Box, Toolbar, IconButton, InputBase, Paper, Menu, MenuItem,
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useRouter } from 'next/navigation'; // สำหรับ App Router
+import { useRouter } from 'next/navigation';
 
-const SearchBox = styled(Paper)(({ theme }) => ({
+const SearchBox = styled(Paper)(() => ({
   display: 'flex',
   alignItems: 'center',
   borderRadius: 30,
@@ -24,9 +26,43 @@ const StyledInput = styled(InputBase)(({ theme }) => ({
   color: '#555',
 }));
 
-
 const InspiraNavbar = () => {
   const router = useRouter();
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+  React.useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    handleMenuClose();
+    router.push('/login');
+  };
+
+  const handleProfile = () => {
+    handleMenuClose();
+    router.push('/profile'); 
+  };
+
+  const handleChangePassword = () => {
+    handleMenuClose();
+    router.push('/changepassword');
+  };
+
+  const handleLoginRedirect = () => {
+    router.push('/login');
+  };
 
   return (
     <AppBar
@@ -40,20 +76,19 @@ const InspiraNavbar = () => {
       }}
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        {/* Logo Image */}
+        {/* Logo */}
         <Box
-  component="img"
-  src="/logo.svg"
-  alt="Logo"
-  sx={{
-    height: { xs: 24, sm: 32, md: 40 },
-    maxWidth: { xs: 100, sm: 150, md: 200 },
-    width: '100%',
-    filter: 'invert(1)', // ใช้ color จริง ๆ
-    objectFit: 'contain', // ป้องกันไม่ให้รูปเบี้ยว
-  }}
-/>
-
+          component="img"
+          src="/logo.svg"
+          alt="Logo"
+          sx={{
+            height: { xs: 24, sm: 32, md: 40 },
+            maxWidth: { xs: 100, sm: 150, md: 200 },
+            width: '100%',
+            filter: 'invert(1)',
+            objectFit: 'contain',
+          }}
+        />
 
         {/* Search Bar */}
         <SearchBox elevation={0}>
@@ -61,17 +96,31 @@ const InspiraNavbar = () => {
           <SearchIcon sx={{ color: '#000' }} />
         </SearchBox>
 
-        {/* Right Icons */}
+        {/* Icons */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <HomeIcon
-            sx={{ color: '#ffffff', fontSize: 32 }}
+            sx={{ color: '#ffffff', fontSize: 32, cursor: 'pointer' }}
             onClick={() => router.push('/')}
           />
-          <AccountCircleIcon
-            sx={{ color: '#ffffff', fontSize: 32 }}
-            onClick={() => router.push('/profile')}
-          />
+          <IconButton onClick={isLoggedIn ? handleMenuOpen : handleLoginRedirect}>
+            <AccountCircleIcon sx={{ color: '#ffffff', fontSize: 32 }} />
+          </IconButton>
         </Box>
+
+        {/* Dropdown Menu */}
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleMenuClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+        >
+          <MenuItem onClick={handleProfile}>ดูข้อมูลของฉัน</MenuItem>
+          <MenuItem onClick={handleChangePassword}>เปลี่ยนรหัสผ่าน</MenuItem>
+          <MenuItem onClick={handleLogout}>ออกจากระบบ</MenuItem>
+        </Menu>
       </Toolbar>
     </AppBar>
   );

@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import InspiraNavbar from '../components/button'; // Navbar ที่คุณใช้
 
 const AccountPage: React.FC = () => {
   const router = useRouter();
@@ -21,48 +22,27 @@ const AccountPage: React.FC = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen px-6 py-8">
-      {/* ปุ่มด้านขวา */}
-      <div className="flex justify-end gap-3 mb-4">
-        <a
-          href="/change-password"
-          className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 text-sm"
-        >
-          เปลี่ยนรหัสผ่าน
-        </a>
-        <button
-          onClick={() => {
-            localStorage.removeItem("authToken");
-            router.push("/login");
-          }}
-          className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 text-sm"
-        >
-          ออกจากระบบ
-        </button>
-      </div>
-
-      <a href="/" className="inline-block mb-6 text-blue-600 hover:underline text-sm">
-        &larr; กลับหน้า Home
-      </a>
+      {/* Navbar */}
+      <InspiraNavbar />
 
       <div className="max-w-6xl mx-auto py-10 px-6">
         <h1 className="text-3xl font-bold mb-6 text-blue-800">MY FAVORITE EXHIBITIONS</h1>
 
-        {/* Carousel */}
-        <div className="flex space-x-4 overflow-x-auto pb-4">
-          {[...Array(6)].map((_, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-48 h-72 rounded-xl overflow-hidden shadow-md"
-            >
-              <Image
-                src={`/images/fav-${index + 1}.jpg`}
-                alt={`Favorite ${index + 1}`}
-                width={192}
-                height={288}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
+        {/* Manual Carousel (scrollable list) */}
+        <div className="carousel-container px-10 logo-dark overflow-x-auto">
+          <ul className="carousel-items flex gap-6">
+            {[...Array(6)].map((_, index) => (
+              <li className="carousel-item" key={index}>
+                <div className="client-image">
+                  <img
+                    src={`/images/fav-${index + 1}.jpg`}
+                    alt={`Favorite ${index + 1}`}
+                    className="logo-dark w-full h-full object-cover"
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Reviews */}
@@ -76,6 +56,23 @@ const AccountPage: React.FC = () => {
           <p className="mt-2 text-sm">Review ⭐⭐⭐⭐⭐ (5/5)</p>
         </div>
       </div>
+
+      <style jsx>{`
+        .carousel-container {
+          overflow-x: auto;
+          scroll-behavior: smooth;
+        }
+
+        .carousel-item {
+          min-width: 180px;
+        }
+
+        .client-image {
+          width: 180px;
+          height: 120px;
+          object-fit: cover;
+        }
+      `}</style>
     </div>
   );
 };
