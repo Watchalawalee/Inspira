@@ -2,6 +2,10 @@
 
 import React from 'react';
 
+interface OngoingEventsProps {
+  onViewAll: () => void;
+}
+
 const ongoingEvents = [
   {
     id: 1,
@@ -23,27 +27,36 @@ const ongoingEvents = [
   },
 ];
 
-
-
-const OngoingEvents: React.FC = () => {
+const OngoingEvents: React.FC<OngoingEventsProps> = ({ onViewAll }) => {
   return (
-    <section className="px-6 py-8 bg-gradient-to-b from-white to-blue-50">
+    <section className="px-6 py-8 bg-white">
       {/* Ongoing Events Section */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl md:text-2xl font-bold">Ongoing Events</h2>
-        <a href="#" className="text-blue-500 font-medium hover:underline">View all</a>
+        <button
+          onClick={onViewAll}
+          className="text-blue-500 font-medium hover:underline"
+        >
+          View all
+        </button>
       </div>
-      <div className="flex gap-4 overflow-x-auto pb-2 ">
+
+      <div className="flex gap-4 overflow-x-auto pb-2">
         {ongoingEvents.map(event => (
-          <div key={event.id} className="min-w-[200px] bg-white rounded-t-full shadow-md">
-            <img
-              src={event.imageUrl}
-              alt={event.name}
-              className="w-full h-48 object-cover rounded-t-full"
-            />
-            <div className="p-3 text-center">
-              <h3 className="text-sm font-semibold truncate">{event.name}</h3>
-              <p className="text-xs text-gray-500">{event.location}</p>
+          <div key={event.id} className="min-w-[200px]">
+            {/* รูปภาพ */}
+            <div className="bg-white rounded-t-full shadow-xl">
+              <img
+                src={event.imageUrl}
+                alt={event.name}
+                className="w-full h-48 object-cover rounded-t-full"
+              />
+            </div>
+
+            {/* ข้อความ */}
+            <div className="p-3 mt-2 text-center bg-[#5372A4] rounded-xl shadow-xl text-white">
+              <h3 className="text-sm font-semibold truncate text-white">{event.name}</h3>
+              <p className="text-xs text-white">{event.location}</p>
             </div>
           </div>
         ))}
