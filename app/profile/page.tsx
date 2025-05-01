@@ -2,10 +2,12 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import InspiraNavbar from '../components/button'; // Navbar ที่คุณใช้
+import InspiraNavbar from '../components/button';
+import ReviewTicket from "../components/reviewtickets";
+import Image from 'next/image';
 
-const AccountPage: React.FC = () => {
+
+const ProfilePage: React.FC = () => {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -21,14 +23,23 @@ const AccountPage: React.FC = () => {
   if (!isAuthenticated) return null;
 
   return (
-    <div className="bg-gray-100 min-h-screen px-6 py-8">
+ 
+    <div className="flex flex-col items-center justify-center min-h-screen p-6 relative">
+      <Image
+        src="/bglogin.svg"
+        alt="Background"
+        width={1440}
+        height={200}
+        className="absolute bottom-0 z-0 min-w-screen object-fill object-bottom"
+      />  
+    <div className="bg-white min-h-screen px-6 py-8">
       {/* Navbar */}
       <InspiraNavbar />
 
-      <div className="max-w-6xl mx-auto py-10 px-6">
+      <div className="max-w-6xl mx-auto py-10 px-6 ">
         <h1 className="text-3xl font-bold mb-6 text-blue-800">MY FAVORITE EXHIBITIONS</h1>
 
-        {/* Manual Carousel (scrollable list) */}
+        {/* Manual Carousel */}
         <div className="carousel-container px-10 logo-dark overflow-x-auto">
           <ul className="carousel-items flex gap-6">
             {[...Array(6)].map((_, index) => (
@@ -47,14 +58,14 @@ const AccountPage: React.FC = () => {
 
         {/* Reviews */}
         <h1 className="text-2xl font-bold my-6">MY REVIEW</h1>
-        <div className="bg-white shadow-md rounded-xl p-6">
-          <h2 className="font-bold text-lg mb-2">พาใจกลับบ้าน HOMECOMING</h2>
-          <p className="text-sm text-gray-700">📍 Location: MMAD at MunMun Srinakarin, 2nd fl.</p>
-          <p className="text-sm text-gray-700">
-            📅 Date & Time: 13 Jul 2024 11:00 - 13 Jul 2024 20:00
-          </p>
-          <p className="mt-2 text-sm">Review ⭐⭐⭐⭐⭐ (5/5)</p>
-        </div>
+
+        <ReviewTicket
+          imageUrl="/images/homecoming-poster.png"
+          title="พาใจกลับบ้าน HOMECOMING"
+          location="MMAD at MunMun Srinakarin, 2nd fl."
+          datetime="12 Jul 2024 11:00 - 12 Jul 2024 20:00"
+          rating="5/5"
+        />
       </div>
 
       <style jsx>{`
@@ -62,11 +73,9 @@ const AccountPage: React.FC = () => {
           overflow-x: auto;
           scroll-behavior: smooth;
         }
-
         .carousel-item {
           min-width: 180px;
         }
-
         .client-image {
           width: 180px;
           height: 120px;
@@ -74,7 +83,8 @@ const AccountPage: React.FC = () => {
         }
       `}</style>
     </div>
+    </div>
   );
 };
 
-export default AccountPage;
+export default ProfilePage;
