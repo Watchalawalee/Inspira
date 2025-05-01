@@ -1,0 +1,4 @@
+_id,username,password,email,gender,birthdate,interests[0],interests[1],interests[2],created_at,updated_at,isEmailVerified,verifyToken,verifyTokenExpire,__v,role
+67f39dba448e8e41e23f30aa,sucha,$2b$10$poJDFfsuHRrbnF5fuPmc3.bjWcayM7THq9CffZthy.oG//36l18w.,suchawadee979@gmail.com,female,2025-04-07T00:00:00.000Z,Art & Design,Beauty & Fashion,Concert,2025-04-07T09:41:14.932Z,2025-04-07T09:41:14.932Z,true,,,0,
+67fd30247d1817af1f1b938d,inspira_admin,$2b$10$Q38argUeUEoPetIXijKSv.h8wpecMvpApfs2Awv2026UUv0Bmm1Gy,inspira.project2025@gmail.com,female,2025-04-14T00:00:00.000Z,Art & Design,Beauty & Fashion,Book,2025-04-14T15:56:20.263Z,2025-04-14T15:56:20.263Z,true,,,0,admin
+6811e838c267ed74e1eabea0,mintmint,$2b$10$mv0u1Dxopd5CW2rfbMT1FuaEGwdk7ub1Q9yVNo1lyLPfsbMAjwPnK,suchawadee.imsap@gmail.com,female,2025-04-29T00:00:00.000Z,Art & Design,Beauty & Fashion,Concert,2025-04-30T09:07:04.150Z,2025-04-30T09:07:04.150Z,true,,,0,user
