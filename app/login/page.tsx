@@ -1,14 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
+import Image from 'next/image';
+import { Eye, EyeOff } from 'lucide-react'; // 👁️ ไอคอนตา
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
 
@@ -33,8 +35,6 @@ export default function Login() {
       setError('');
       setUsername('');
       setPassword('');
-
-      // ✅ ไปหน้า /home หลัง Login สำเร็จ
       router.push('/home');
     } catch (err: any) {
       const msg = err?.response?.data?.message || 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';
@@ -43,7 +43,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-6 relative">
+    <div className="flex flex-col items-center justify-center min-h-screen px-6 relative bg-gray-50">
       <Image
         src="/bglogin.svg"
         alt="Background"
@@ -51,45 +51,56 @@ export default function Login() {
         height={200}
         className="absolute bottom-0 z-0 min-w-screen object-fill object-bottom"
       />
-      <h1 className="text-2xl font-semibold mb-4 z-10">Login</h1>
-      <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-md w-full max-w-md text-center z-10">
-        <p className="text-gray-600 mb-6">Welcome back! Please login to your account.</p>
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div className="w-full text-left">
-            <label className="block text-md mb-2">User Name or Email</label>
+      <h1 className="text-3xl font-bold mb-6 z-10 text-[#2D3E50]">Login</h1>
+      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md text-center z-10">
+        <p className="text-gray-600 mb-6 text-base">Welcome back! Please login to your account.</p>
+        <form onSubmit={handleLogin} className="space-y-5">
+          <div className="text-left">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Username or Email</label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full p-3 bg-gray-200 text-gray-800 rounded-md border-none"
+              className="w-full p-3 rounded-lg bg-gray-100 text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white"
             />
           </div>
-          <div className="w-full text-left mt-4">
-            <label className="block text-md mb-2">Password</label>
+
+          <div className="text-left relative">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
             <input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 bg-gray-200 text-gray-800 rounded-md border-none"
+              className="w-full p-3 pr-10 rounded-lg bg-gray-100 text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white"
             />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute top-[38px] right-3 text-gray-500 hover:text-gray-800"
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
           </div>
-          <div className="mt-6 flex justify-between text-gray-600 text-md">
+
+          <div className="flex justify-between text-sm text-gray-600">
             <p>
               New User?{' '}
-              <Link href="/register" className="text-blue-500 underline">
+              <Link href="/register" className="text-blue-500 hover:underline">
                 Signup
               </Link>
             </p>
             <p>
-              <Link href="/forgetpassword" className="text-blue-500 underline">
-                Forget Password
+              <Link href="/forgetpassword" className="text-blue-500 hover:underline">
+                Forgot Password?
               </Link>
             </p>
           </div>
-          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+
+          {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+
           <button
             type="submit"
-            className="mt-4 bg-[#5372A4] text-white px-6 py-2 rounded-full w-60 hover:bg-blue-700"
+            className="w-full mt-2 bg-[#5372A4] hover:bg-[#3d5987] text-white py-2 rounded-full text-base font-semibold transition-colors"
           >
             Login
           </button>
