@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import OngoingEvents from './ongoingevents';
-import OngoingEventsSkeleton from './OngoingEventsSkeleton';
+import OngoingEventsSkeleton from './ongoingEventsSkeleton';
 
 interface Event {
   id: number;
@@ -11,14 +11,19 @@ interface Event {
   location: string;
 }
 
-const OngoingEventsContainer: React.FC = () => {
+interface OngoingEventsProps {
+  onViewAll: () => void;
+  events: Event[];
+}
+
+const OngoingEventsContainer: React.FC<{ onViewAll: () => void }> = ({ onViewAll }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch('/api/ongoing-events'); //เอา
+        const res = await fetch('/api/ongoing-events');
         const data = await res.json();
         setEvents(data);
       } catch (error) {
@@ -31,14 +36,10 @@ const OngoingEventsContainer: React.FC = () => {
     fetchEvents();
   }, []);
 
-  const handleViewAll = () => {
-    console.log('View All clicked');
-  };
-
   return loading ? (
     <OngoingEventsSkeleton />
   ) : (
-    <OngoingEvents onViewAll={handleViewAll} events={events} />
+    <OngoingEvents onViewAll={onViewAll} events={events} />
   );
 };
 

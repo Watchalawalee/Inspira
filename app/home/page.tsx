@@ -3,8 +3,8 @@
 import React, { useState, useRef } from 'react';
 import InspiraNavbar from '../components/button';
 import BannerSlider from '../components/Bannerslide';
-import OngoingEventsContainer from '../components/OngoingEventsContainer.tsx';
-import UpcomingEvents from '../components/upcomingevents';
+import OngoingEventsContainer from '../components/ongoingEventsContainer.tsx';
+import UpcomingEventsContainer from '../components/upcomingEventsContainer.tsx';
 import AllEvents from '../components/allevents';
 
 const HomePage = () => {
@@ -20,11 +20,9 @@ const HomePage = () => {
     <main>
       <InspiraNavbar />
       <BannerSlider />
-      <OngoingEventsContainer onViewAll={() => handleViewAll('Ongoing')} />
-      <UpcomingEvents onViewAll={() => handleViewAll('Upcoming')} />
-      <div ref={allEventsRef}>
-        <AllEvents selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-      </div>
+      <OngoingEventsContainer onViewAll={() => handleViewAll('Ongoing')} /> 
+      <UpcomingEventsContainer onViewAll={() => handleViewAll('Upcoming')} /> 
+      <AllEvents ref={allEventsRef} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
     </main>
   );
 };

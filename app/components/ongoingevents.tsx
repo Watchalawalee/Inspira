@@ -47,5 +47,4 @@ const OngoingEvents: React.FC<OngoingEventsProps> = ({ onViewAll, events }) => {
     </section>
   );
 };
-
 export default OngoingEvents;

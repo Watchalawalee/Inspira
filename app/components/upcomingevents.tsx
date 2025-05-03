@@ -2,37 +2,27 @@
 
 import React, { useState } from 'react';
 
+interface Event {
+  id: number;
+  imageUrl: string;
+  name: string;
+  location: string;
+}
+
 interface UpcomingEventsProps {
+  events: Event[];
   onViewAll: () => void;
 }
 
-const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ onViewAll }) => {
+const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events, onViewAll }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const upcomingEvents = [
-    {
-      id: 1,
-      imageUrl: '/mock/recommendation-1.jpg',
-      name: 'Modern Art Journey',
-      location: 'Museum of Contemporary Art',
-    },
-    {
-      id: 2,
-      imageUrl: '/mock/recommendation-2.jpg',
-      name: 'Natural Wonders',
-      location: 'Nature Gallery',
-    },
-    // Add more events if needed
-  ];
-
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % upcomingEvents.length);
+    setCurrentIndex((prev) => (prev + 1) % events.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + upcomingEvents.length) % upcomingEvents.length
-    );
+    setCurrentIndex((prev) => (prev - 1 + events.length) % events.length);
   };
 
   return (
@@ -46,12 +36,13 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ onViewAll }) => {
           View all
         </a>
       </div>
+
       <div className="relative overflow-hidden rounded-xl shadow-md">
         <div
           className="w-full h-64 flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {upcomingEvents.map((event) => (
+          {events.map((event) => (
             <div key={event.id} className="min-w-full">
               <img
                 src={event.imageUrl}
@@ -79,7 +70,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ onViewAll }) => {
 
       {/* Dots */}
       <div className="flex justify-center gap-2 mt-4">
-        {upcomingEvents.map((_, index) => (
+        {events.map((_, index) => (
           <span
             key={index}
             className={`w-3 h-3 rounded-full ${index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'}`}
