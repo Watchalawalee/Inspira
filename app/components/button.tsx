@@ -30,6 +30,7 @@ const InspiraNavbar = () => {
   const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   React.useEffect(() => {
     const token = localStorage.getItem('authToken');
@@ -47,13 +48,12 @@ const InspiraNavbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('authToken');
     handleMenuClose();
-    router.push('/'); // กลับไปหน้าแรกหลังออกจากระบบ
+    router.push('/');
   };
-  
 
   const handleProfile = () => {
     handleMenuClose();
-    router.push('/profile'); 
+    router.push('/profile');
   };
 
   const handleChangePassword = () => {
@@ -63,11 +63,17 @@ const InspiraNavbar = () => {
 
   const handleRefer = () => {
     handleMenuClose();
-    router.push('/refer'); 
+    router.push('/refer');
   };
 
   const handleLoginRedirect = () => {
     router.push('/login');
+  };
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
   };
 
   return (
@@ -98,8 +104,17 @@ const InspiraNavbar = () => {
 
         {/* Search Bar */}
         <SearchBox elevation={0}>
-          <StyledInput placeholder="Find your Exhibition" />
-          <SearchIcon sx={{ color: '#000' }} />
+          <StyledInput
+            placeholder="Find your Exhibition"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') handleSearch();
+            }}
+          />
+          <IconButton onClick={handleSearch}>
+            <SearchIcon sx={{ color: '#000' }} />
+          </IconButton>
         </SearchBox>
 
         {/* Icons */}
