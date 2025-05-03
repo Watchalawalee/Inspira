@@ -1,0 +1,4 @@
+RUNNING SCRIPT: Wed Apr 30 14:30:01 UTC 2025
+Running run_all_upcoming.py
+Running merge.py
+Running upload_to_mongo.py

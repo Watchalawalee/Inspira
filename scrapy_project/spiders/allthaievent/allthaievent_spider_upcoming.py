@@ -14,7 +14,7 @@ class AllThaiEventSpider(scrapy.Spider):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.past_event_count = 0  # ✅ ตัวแปรนับจำนวน past event
+        self.no_data_months = 0  # ✅ ตัวแปรนับจำนวน past event
 
     def parse(self, response):
         """ ดึงลิงก์อีเว้นท์จากหน้ารวม แล้วไปเก็บข้อมูลแต่ละอีเว้นท์ """
@@ -29,23 +29,31 @@ class AllThaiEventSpider(scrapy.Spider):
                 self.log(f"🔄 กำลังดึงข้อมูลจาก: {title}")
                 yield response.follow(full_link, self.parse_event, meta={"title": title.strip()})
 
-        if event_count == 0:
-            self.log(f"🛑 ไม่พบอีเว้นท์ในลิงก์: {response.url} — หยุดทำงาน")
-            return
+        # ✅ ดึงจำนวนเดือนที่ไม่เจอข้อมูลจาก meta
+        no_data_months = response.meta.get("no_data_months", 0)
 
-        # ✅ แยกปีและเดือนจาก URL เช่น: 2025-03-01
+        if event_count == 0:
+            self.no_data_months += 1
+            self.log(f"🛑 ไม่พบอีเว้นท์ในลิงก์: {response.url} — ข้ามเดือนนี้ (เดือนที่ไม่มีข้อมูล: {self.no_data_months})")
+
+            if self.no_data_months >= 6:
+                self.log("🚫 ไม่พบข้อมูลติดต่อกันครบ 6 เดือน — หยุดทำงาน")
+                return
+        else:
+            self.no_data_months = 0  # รีเซ็ตถ้ามีข้อมูล
+
+
+        # ✅ เดินหน้าไปยังเดือนถัดไป
         current_date_str = response.url.rstrip("/").split("/")[-1]  # 2025-03-01
         year, month, day = current_date_str.split("-")
         year = int(year)
         month = int(month)
 
-        # ✅ เพิ่มเดือน
         month += 1
         if month > 12:
             month = 1
             year += 1
 
-        # ✅ สร้าง URL ใหม่โดยเปลี่ยนเฉพาะเลขเดือน
         next_month_str = f"{year}-{month:02d}-01"
         next_url = f"https://www.allthaievent.com/monthlyevents/{next_month_str}/"
 

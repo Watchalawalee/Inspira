@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# รัน 10 โมงทุกวัน
+0 3 * * * /usr/local/bin/python3 /app/backend/update_status_daily.py >> /app/logs/status.log 2>&1

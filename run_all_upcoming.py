@@ -1,6 +1,7 @@
 import os
 import subprocess
 import glob
+import sys
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SPIDERS_DIR = os.path.join(BASE_DIR, 'scrapy_project', 'spiders')
@@ -24,7 +25,7 @@ def run_spiders(suffix='_upcoming.py'):
             if file.endswith(suffix):
                 spider_name = file.replace('.py', '')
                 print(f'🕷️ Running spider: {spider_name}')
-                subprocess.run(['python', '-m', 'scrapy', 'crawl', spider_name])
+                subprocess.run([sys.executable, '-m', 'scrapy', 'crawl', spider_name], cwd=os.getcwd())
 
 if __name__ == '__main__':
     clear_old_data()

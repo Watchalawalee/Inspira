@@ -1,0 +1,3 @@
+# ละเว้นทั้ง full และ upcoming
+scrapy_project/spiders/*/raw_data/
+scrapy_project/spiders/*/raw_data/*
