@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const categories = [
   'Art & Design', 'Beauty & Fashion', 'Home & Furniture', 'Business',
@@ -90,7 +90,7 @@ export default function AllEventsSection({ selectedTab, setSelectedTab }: AllEve
   };
 
   return (
-    <div className="px-4 py-6 max-w-6xl mx-auto">
+    <div className="scroll-grid px-4 py-4 max-w-7xl mx-auto">
       <h2 className="text-2xl font-bold mb-4 text-white">All Events</h2>
 
       {/* Tabs */}
@@ -114,12 +114,12 @@ export default function AllEventsSection({ selectedTab, setSelectedTab }: AllEve
       <div className="flex flex-wrap gap-4 mb-6">
         {categories.map((cat) => (
           <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat === selectedCategory ? null : cat)}
-            className={`w-1/2 lg:w-1/5 px-5 py-3 rounded-full drop-shadow-lg text-sm ${cat === selectedCategory ? 'bg-[#5372A4] text-white' : 'bg-slate-400 text-white'}`}
-          >
-            {cat}
-          </button>
+          key={cat}
+          onClick={() => setSelectedCategory(cat === selectedCategory ? null : cat)}
+          className={`w-auto sm:w-1/4 lg:w-1/5 px-4 py-2 rounded-full text-sm ${cat === selectedCategory ? 'bg-[#5372A4] text-white' : 'bg-slate-400 text-white'}`}
+        >
+          {cat}
+        </button>
         ))}
       </div>
 
@@ -130,25 +130,28 @@ export default function AllEventsSection({ selectedTab, setSelectedTab }: AllEve
         <p className="text-center text-white">No exhibitions found</p>
       ) : (
         <>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {events.map((event) => (
-              <div key={event._id} className="bg-white rounded-xl overflow-hidden shadow">
-                <a href={`/exhibition.html?id=${event._id}`}>
-                  <img
-                    src={event.cover_picture}
-                    alt={event.title}
-                    className="w-full h-40 object-cover rounded-t-xl"
-                  />
-                  <div className="bg-[#5372A4] text-center p-3 flex flex-col justify-center text-white">
-                    <h3 className="text-sm font-semibold truncate" style={{ color: 'white' }}>
-                      {event.title}
-                    </h3>
-                    <p className="text-xs" style={{ color: 'white' }}>
-                      {event.location}
-                    </p>
-                  </div>
-                </a>
-              </div>
+              <a
+                href={`/exhibition.html?id=${event._id}`}
+                key={event._id}
+                className="min-w-[250px] bg-white rounded-xl overflow-hidden shadow"
+                style={{ textDecoration: 'none' }}
+              >
+                <img
+                  src={event.cover_picture}
+                  alt={event.title}
+                  className="w-full h-48 object-cover rounded-t-xl"
+                />
+                <div className="bg-[#5372A4] text-center p-3 flex flex-col justify-center text-white">
+                  <h3 className="text-sm font-semibold truncate" style={{ color: 'white' }}>
+                    {event.title}
+                  </h3>
+                  <p className="text-xs" style={{ color: 'white' }}>
+                    {event.location || '-'}
+                  </p>
+                </div>
+              </a>
             ))}
           </div>
 
