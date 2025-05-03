@@ -54,7 +54,7 @@ const BannerSlider: React.FC = () => {
   <button className="bg-[#FFBAA3] text-white px-6 py-3 rounded-full shadow hover:bg-red-300 transition mt-4 w-full sm:w-auto">
     Find your inspiration !
   </button>
-  <p className="text-center mt-6 text-[#ffff] max-w-md px-4 sm:px-0">
+  <p className="text-center mt-6 max-w-md px-4 sm:px-0" style={{ color: 'white', zIndex: 10, position: 'relative' }}>
     "Your gateway to discovering exhibitions and activities that inspire and elevate your experience. Find, plan, and explore with us!"
   </p>
 </div>
