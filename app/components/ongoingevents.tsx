@@ -3,48 +3,46 @@
 import React from 'react';
 
 interface Event {
-  id: number;
-  imageUrl: string;
-  name: string;
+  _id: string;
+  title: string;
   location: string;
+  cover_picture: string;
 }
 
 interface OngoingEventsProps {
-  onViewAll: () => void;
   events: Event[];
 }
 
-const OngoingEvents: React.FC<OngoingEventsProps> = ({ onViewAll, events }) => {
-  return (
-    <section className="px-6 py-8 bg-white font-sans">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl md:text-2xl font-bold">Ongoing Events</h2>
-        <button
-          onClick={onViewAll}
-          className="text-blue-500 font-medium hover:underline"
-        >
-          View all
-        </button>
-      </div>
+const OngoingEvents: React.FC<OngoingEventsProps> = ({ events }) => {
+  if (!events || events.length === 0) {
+    return <p className="text-center text-gray-400">No ongoing exhibitions found</p>;
+  }
 
-      <div className="flex gap-4 overflow-x-auto pb-2">
-        {events.map((event) => (
-          <div key={event.id} className="min-w-[200px]">
-            <div className="bg-white rounded-t-full shadow-xl">
-              <img
-                src={event.imageUrl}
-                alt={event.name}
-                className="w-full h-48 object-cover rounded-t-full"
-              />
-            </div>
-            <div className="p-3 mt-2 text-center bg-[#5372A4] rounded-xl shadow-xl text-white">
-              <h3 className="text-sm font-semibold truncate">{event.name}</h3>
-              <p className="text-xs">{event.location}</p>
-            </div>
+  return (
+    <div className="scroll-grid px-4">
+      {events.map((event) => (
+        <a
+          key={event._id}
+          href={`/exhibition.html?id=${event._id}`}
+          className="min-w-[200px] bg-white rounded-xl overflow-hidden shadow"
+        >
+          <img
+            src={event.cover_picture}
+            alt={event.title}
+            className="w-full h-40 object-cover rounded-t-xl"
+          />
+          <div className="bg-[#5372A4] text-center p-3 flex flex-col justify-center text-white">
+            <h3 className="text-sm font-semibold truncate" style={{ color: 'white' }}>
+              {event.title}
+            </h3>
+            <p className="text-xs" style={{ color: 'white' }}>
+              {event.location || '-'}
+            </p>
           </div>
-        ))}
-      </div>
-    </section>
+        </a>
+      ))}
+    </div>
   );
 };
+
 export default OngoingEvents;

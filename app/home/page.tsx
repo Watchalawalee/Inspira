@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import InspiraNavbar from '../components/button';
 import BannerSlider from '../components/Bannerslide';
 import OngoingEventsContainer from '../components/ongoingEventsContainer.tsx';
-import UpcomingEventsContainer from '../components/upcomingEventsContainer.tsx';
+import UpcomingEventsContainer from '../components/UpcomingEventsContainer';
 import AllEvents from '../components/allevents';
 
 const HomePage = () => {
