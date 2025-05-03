@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import OngoingEvents from './OngoingEvents';
+import OngoingEvents from './ongoingevents';
 import OngoingEventsSkeleton from './OngoingEventsSkeleton';
 
 interface Event {
@@ -18,7 +18,7 @@ const OngoingEventsContainer: React.FC = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch('/api/ongoing-events'); //เอาAPIมาใส่ตรงนี้
+        const res = await fetch('/api/ongoing-events'); //เอา
         const data = await res.json();
         setEvents(data);
       } catch (error) {
