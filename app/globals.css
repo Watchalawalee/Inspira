@@ -7,6 +7,9 @@
   --color-secondary: #FFA3A3;
   --color-tertiary: #9EBAC8;
   --color-text: #171717; 
+  --font-geist-sans: 'Geist', sans-serif;
+  --font-geist-mono: 'Geist Mono', monospace;
+  --font-playball: 'Playball', cursive;
 }
 
 body {
