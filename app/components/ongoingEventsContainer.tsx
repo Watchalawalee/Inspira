@@ -18,7 +18,11 @@ const isImageLoadable = (url: string): Promise<boolean> => {
   });
 };
 
-const OngoingEvents: React.FC = () => {
+interface OngoingEventsProps {
+  onViewAll?: () => void;
+}
+
+const OngoingEvents: React.FC<OngoingEventsProps> = ({ onViewAll }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -38,7 +42,7 @@ const OngoingEvents: React.FC = () => {
           })
         );
 
-        setEvents(filtered.filter(Boolean) as Event[]);
+        setEvents(filtered.filter(Boolean).slice(0, 5) as Event[]);
       } catch (err) {
         console.error('❌ Failed to fetch ongoing events:', err);
       } finally {
@@ -53,30 +57,49 @@ const OngoingEvents: React.FC = () => {
   if (events.length === 0) return <p className="text-center text-gray-400">No ongoing exhibitions found</p>;
 
   return (
-    <div className="scroll-grid px-4">
-      {events.map((event) => (
-        <a
-          href={`/exhibition.html?id=${event._id}`}
-          key={event._id}
-          className="min-w-[200px] bg-white rounded-xl overflow-hidden shadow"
-          style={{ textDecoration: 'none' }}
-        >
-          <img
-            src={event.cover_picture}
-            alt={event.title}
-            className="w-full h-40 object-cover rounded-t-xl"
-          />
-          <div className="bg-[#5372A4] text-center p-3 flex flex-col justify-center text-white">
-            <h3 className="text-sm font-semibold truncate" style={{ color: 'white' }}>
-              {event.title}
-            </h3>
-            <p className="text-xs" style={{ color: 'white' }}>
-              {event.location || '-'}
-            </p>
-          </div>
-        </a>
-      ))}
-    </div>
+    <section className="px-6 py-8 bg-white">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-xl md:text-2xl font-bold">Ongoing Events</h2>
+        {onViewAll && (
+          <button onClick={onViewAll} className="text-blue-500 font-medium hover:underline">
+            View all
+          </button>
+        )}
+      </div>
+
+      {/* Centered container */}
+      <div className="flex justify-center">
+        <div className="flex gap-4 overflow-x-auto pb-2">
+          {events.map((event) => (
+            <a
+              key={event._id}
+              href={`/exhibition.html?id=${event._id}`}
+              className="min-w-[200px] max-w-[200px] flex-shrink-0"
+            >
+              {/* Image */}
+              <div className="bg-white rounded-t-full overflow-hidden shadow-xl w-[200px] h-[150px] flex items-center justify-center">
+                <img
+                  src={event.cover_picture}
+                  alt={event.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Text box */}
+              <div className="p-3 mt-2 text-center bg-[#5372A4] rounded-xl shadow-xl h-[90px] flex flex-col justify-center">
+                <h3 className="text-sm font-semibold truncate" style={{ color: 'white' }}>
+                  {event.title}
+                </h3>
+                <p className="text-xs" style={{ color: 'white' }}>
+                  {event.location || '-'}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 

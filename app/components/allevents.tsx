@@ -64,7 +64,9 @@ export default function AllEventsSection({ selectedTab, setSelectedTab }: AllEve
 
       const filtered = await Promise.all(
         data.map(async (event: Event) => {
-          const isValid = event.cover_picture?.startsWith('http') && await isImageLoadable(event.cover_picture);
+          const isValid =
+            event.cover_picture?.startsWith('http') &&
+            (await isImageLoadable(event.cover_picture));
           return isValid ? event : null;
         })
       );
@@ -72,7 +74,7 @@ export default function AllEventsSection({ selectedTab, setSelectedTab }: AllEve
       const validEvents = filtered.filter((e): e is Event => e !== null);
 
       if (Array.isArray(validEvents)) {
-        setEvents(prev => reset ? validEvents : [...prev, ...validEvents]);
+        setEvents((prev) => (reset ? validEvents : [...prev, ...validEvents]));
         setPage(pageNum + 1);
         if (validEvents.length < LIMIT) setHasMore(false);
       } else {
@@ -98,7 +100,9 @@ export default function AllEventsSection({ selectedTab, setSelectedTab }: AllEve
         {tabs.map((tab) => (
           <button
             key={tab}
-            className={`px-3 py-1 rounded-full drop-shadow-lg text-sm font-semibold ${activeTab === tab ? 'bg-red-300 text-white' : 'bg-[#FFBAA3] text-white'}`}
+            className={`px-3 py-1 rounded-full drop-shadow-lg text-sm font-semibold ${
+              activeTab === tab ? 'bg-red-300 text-white' : 'bg-[#FFBAA3] text-white'
+            }`}
             onClick={() => {
               setActiveTab(tab);
               setSelectedTab(tab);
@@ -114,12 +118,14 @@ export default function AllEventsSection({ selectedTab, setSelectedTab }: AllEve
       <div className="flex flex-wrap gap-4 mb-6">
         {categories.map((cat) => (
           <button
-          key={cat}
-          onClick={() => setSelectedCategory(cat === selectedCategory ? null : cat)}
-          className={`w-auto sm:w-1/4 lg:w-1/5 px-4 py-2 rounded-full text-sm ${cat === selectedCategory ? 'bg-[#5372A4] text-white' : 'bg-slate-400 text-white'}`}
-        >
-          {cat}
-        </button>
+            key={cat}
+            onClick={() => setSelectedCategory(cat === selectedCategory ? null : cat)}
+            className={`w-auto sm:w-1/4 lg:w-1/5 px-4 py-2 rounded-full text-sm ${
+              cat === selectedCategory ? 'bg-[#5372A4] text-white' : 'bg-slate-400 text-white'
+            }`}
+          >
+            {cat}
+          </button>
         ))}
       </div>
 
@@ -135,19 +141,24 @@ export default function AllEventsSection({ selectedTab, setSelectedTab }: AllEve
               <a
                 href={`/exhibition.html?id=${event._id}`}
                 key={event._id}
-                className="min-w-[250px] bg-white rounded-xl overflow-hidden shadow"
+                className="min-w-[200px] max-w-[200px] flex-shrink-0"
                 style={{ textDecoration: 'none' }}
               >
-                <img
-                  src={event.cover_picture}
-                  alt={event.title}
-                  className="w-full h-48 object-cover rounded-t-xl"
-                />
-                <div className="bg-[#5372A4] text-center p-3 flex flex-col justify-center text-white">
-                  <h3 className="text-sm font-semibold truncate" style={{ color: 'white' }}>
+                {/* Image round-top box */}
+                <div className="bg-white rounded-t-full overflow-hidden shadow-xl w-[200px] h-[150px] flex items-center justify-center">
+                  <img
+                    src={event.cover_picture}
+                    alt={event.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Text box */}
+                <div className="p-3 mt-2 text-center bg-[#5372A4] rounded-xl shadow-xl h-[90px] flex flex-col justify-center">
+                  <h3 className="text-sm font-semibold truncate text-white" style={{ color: 'white' }}>
                     {event.title}
                   </h3>
-                  <p className="text-xs" style={{ color: 'white' }}>
+                  <p className="text-xs text-white" style={{ color: 'white' }}>
                     {event.location || '-'}
                   </p>
                 </div>
