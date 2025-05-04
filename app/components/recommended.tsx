@@ -1,40 +1,62 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const recommendations = [
-    {
-      id: 1,
-      imageUrl: '/mock/recommendation-1.jpg',
-      name: 'Modern Art Journey',
-      location: 'Museum of Contemporary Art',
-    },
-    {
-      id: 2,
-      imageUrl: '/mock/recommendation-2.jpg',
-      name: 'Natur Wonders',
-      location: 'Nature Gallery',
-    },
-  ];
-      {/* Recommendation Section */}
-      <div className="mt-10">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl md:text-2xl font-bold">Recommendations</h2>
-          <a href="#" className="text-blue-500 font-medium hover:underline">View all</a>
-        </div>
-        <div className="flex gap-4 overflow-x-auto pb-2">
-          {recommendations.map(rec => (
-            <div key={rec.id} className="min-w-[200px] bg-white rounded-t-2xl shadow-md">
-              <img
-                src={rec.imageUrl}
-                alt={rec.name}
-                className="w-full h-48 object-cover rounded-t-2xl"
-              />
-              <div className="p-3 text-center">
-                <h3 className="text-sm font-semibold truncate">{rec.name}</h3>
-                <p className="text-xs text-gray-500">{rec.location}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+interface Recommendation {
+  id: number;
+  imageUrl: string;
+  name: string;
+  location: string;
+}
+
+interface Props {
+  isLoggedIn: boolean;
+}
+
+const RecommendationsSection: React.FC<Props> = ({ isLoggedIn }) => {
+  const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      // เรียก API ดึงรายการนิทรรศการที่ผู้ใช้สนใจ
+      const fetchRecommendations = async () => {
+        try {
+          const res = await fetch('/api/user/recommendations');
+          const data = await res.json();
+          setRecommendations(data);
+        } catch (error) {
+          console.error('Failed to fetch recommendations:', error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchRecommendations();
+    }
+  }, [isLoggedIn]);
+
+  if (!isLoggedIn || loading || recommendations.length === 0) return null;
+
+  return (
+    <div className="relative mt-16">
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#e6edf6] to-white z-[-1]" />
+      
+      <div className="relative w-fit mx-auto shadow-xl border-4 border-white rounded-md overflow-hidden">
+        <h2 className="absolute -top-8 left-0 text-white text-4xl italic font-semibold drop-shadow-lg z-10 px-4">
+          Recommended
+        </h2>
+  
+        {recommendations.length > 0 && (
+          <img
+            src={recommendations[0].imageUrl}
+            alt={recommendations[0].name}
+            className="w-[600px] h-auto object-cover"
+          />
+        )}
       </div>
+    </div>
+  );  
+};
+
+export default RecommendationsSection;
