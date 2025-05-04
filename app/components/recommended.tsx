@@ -52,17 +52,18 @@ const RecommendationsSection: React.FC<Props> = ({ isLoggedIn }) => {
   if (!isLoggedIn || loading || recommendations.length === 0) return null;
 
   return (
-    <div className="relative mt-16">
-      {/* พื้นหลัง gradient ด้านหลังกล่อง */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#e6edf6] to-white z-[-1]" />
-  
-      <div className="relative w-fit mx-auto shadow-xl border-4 border-white rounded-md overflow-hidden">
-        {/* ป้าย Recommended ลอยด้านบน */}
-        <h2 className="absolute -top-8 left-0 text-white text-4xl italic font-semibold drop-shadow-lg z-10 px-4">
+    <section className="-mt-20 relative z-20">
+      {/* gradient background */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#e3ebf6] to-white z-[-1]" />
+
+      <div className="relative w-fit mx-auto shadow-xl border-4 border-white rounded-md overflow-hidden mt-12">
+        <h2
+          className="absolute -top-14 -left-6 text-white text-[72px] drop-shadow-lg z-10"
+          style={{ fontFamily: "var(--font-playball)", transform: "rotate(-5deg)" }}
+        >
           Recommended
         </h2>
-  
-        {/* แสดงรูปภาพนิทรรศการ */}
+
         {recommendations.length > 0 && (
           <img
             src={recommendations[0].cover_picture}
@@ -71,7 +72,7 @@ const RecommendationsSection: React.FC<Props> = ({ isLoggedIn }) => {
           />
         )}
       </div>
-    </div>
+    </section>
   );  
 };
 
