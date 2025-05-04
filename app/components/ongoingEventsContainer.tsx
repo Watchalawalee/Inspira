@@ -70,15 +70,15 @@ const OngoingEvents: React.FC<OngoingEventsProps> = ({ onViewAll }) => {
 
       {/* Centered container */}
       <div className="flex justify-center">
-        <div className="flex gap-4 overflow-x-auto pb-2">
+        <div className="flex justify-between gap-4 w-full max-w-screen-xl mx-auto">
           {events.map((event) => (
             <a
               key={event._id}
               href={`/exhibition.html?id=${event._id}`}
-              className="min-w-[200px] max-w-[200px] flex-shrink-0"
+              className="w-[18%] flex-shrink-0"  // 100 / 5 - ช่องว่าง
             >
               {/* Image */}
-              <div className="bg-white rounded-t-full overflow-hidden shadow-xl w-[200px] h-[150px] flex items-center justify-center">
+              <div className="bg-white rounded-t-full overflow-hidden shadow-xl w-full h-[250px] flex items-center justify-center">
                 <img
                   src={event.cover_picture}
                   alt={event.title}
@@ -87,18 +87,19 @@ const OngoingEvents: React.FC<OngoingEventsProps> = ({ onViewAll }) => {
               </div>
 
               {/* Text box */}
-              <div className="p-3 mt-2 text-center bg-[#5372A4] rounded-xl shadow-xl h-[90px] flex flex-col justify-center">
-                <h3 className="text-sm font-semibold truncate" style={{ color: 'white' }}>
-                  {event.title}
-                </h3>
-                <p className="text-xs" style={{ color: 'white' }}>
-                  {event.location || '-'}
-                </p>
+              <div className="p-3 mt-2 text-center bg-[#5372A4] rounded-xl shadow-xl h-[100px] flex flex-col justify-center">
+              <h3 className="text-sm font-semibold !text-white">
+                {event.title}
+              </h3>
+              <p className="text-xs !text-white">
+                {event.location || '-'}
+              </p>
               </div>
             </a>
           ))}
         </div>
       </div>
+
     </section>
   );
 };

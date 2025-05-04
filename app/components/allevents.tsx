@@ -143,16 +143,16 @@ const AllEventsSection = forwardRef<HTMLDivElement, AllEventsProps>(function All
         <p className="text-center text-white">No exhibitions found</p>
       ) : (
         <>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {events.map((event) => (
               <a
                 href={`/exhibition.html?id=${event._id}`}
                 key={event._id}
-                className="min-w-[200px] max-w-[200px] flex-shrink-0"
+                className="flex flex-col"
                 style={{ textDecoration: 'none' }}
               >
                 {/* Image box */}
-                <div className="bg-white rounded-t-full overflow-hidden shadow-xl w-[200px] h-[150px] flex items-center justify-center">
+                <div className="bg-white rounded-t-full overflow-hidden shadow-xl w-full h-[250px] flex items-center justify-center">
                   <img
                     src={event.cover_picture}
                     alt={event.title}
@@ -161,9 +161,9 @@ const AllEventsSection = forwardRef<HTMLDivElement, AllEventsProps>(function All
                 </div>
 
                 {/* Text box */}
-                <div className="p-3 mt-2 text-center bg-[#5372A4] rounded-xl shadow-xl h-[90px] flex flex-col justify-center">
-                  <h3 className="text-sm font-semibold truncate text-white">{event.title}</h3>
-                  <p className="text-xs text-white">{event.location || '-'}</p>
+                <div className="p-3 mt-2 text-center bg-[#5372A4] rounded-xl shadow-xl h-[100px] flex flex-col justify-center">
+                  <h3 className="text-sm font-semibold !text-white">{event.title}</h3>
+                  <p className="text-xs !text-white">{event.location || '-'}</p>
                 </div>
               </a>
             ))}

@@ -78,7 +78,7 @@ const UpcomingEventsContainer: React.FC<UpcomingEventsProps> = ({ onViewAll }) =
 
       <div className="relative overflow-hidden rounded-xl shadow-md">
         <div
-          className="w-full h-64 flex transition-transform duration-500 ease-in-out"
+          className="w-full h-120 flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {events.map((event) => (
@@ -86,7 +86,7 @@ const UpcomingEventsContainer: React.FC<UpcomingEventsProps> = ({ onViewAll }) =
               <img
                 src={event.cover_picture}
                 alt={event.title}
-                className="w-full h-64 object-cover"
+                className="w-full h-120 object-cover"
               />
               <div className="absolute bottom-0 w-full bg-[#5372A4] bg-opacity-80 text-center p-3">
                 <h3 className="text-sm font-semibold truncate text-white" style={{ color: 'white' }}>
