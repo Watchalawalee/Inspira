@@ -16,8 +16,16 @@ const HomePage = () => {
   useEffect(() => {
     // ตรวจสอบสถานะการล็อกอิน เช่นจาก cookie / session / token
     const checkLogin = async () => {
+      const token = localStorage.getItem('token');
+      console.log("📦 token:", token);
+
+      if (!token) return;
       try {
-        const res = await fetch('/api/auth/session');
+        const res = await fetch('http://localhost:5000/auth/session', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
         const data = await res.json();
         setIsLoggedIn(data?.isLoggedIn);
       } catch (error) {
