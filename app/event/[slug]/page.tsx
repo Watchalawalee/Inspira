@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import ReviewSection from './components/reviewsection';
+import ReviewSection from '@/app/components/reviewsection';
 import Link from 'next/link';
 
 export default function EventDetailPage() {
@@ -15,7 +15,7 @@ export default function EventDetailPage() {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await fetch(`/api/events/${slug}`);
+        const res = await fetch(`http://localhost:5000/exhibitions/${slug}`);
         if (!res.ok) throw new Error("ไม่สามารถดึงข้อมูลนิทรรศการได้");
         const data = await res.json();
         setEvent(data);
@@ -57,21 +57,29 @@ export default function EventDetailPage() {
 
       {/* Poster & Title */}
       <div className="mb-6 text-center">
-        {event.image && (
-          <img src={event.image} alt={event.title} className="mx-auto mb-4 rounded shadow" />
+      {event.cover_picture && (
+          <img
+            src={event.cover_picture.startsWith('http') ? event.cover_picture : `http://localhost:5000${event.cover_picture}`}
+            alt={event.title}
+            className="mx-auto mb-4 rounded shadow max-h-[400px] object-contain"
+          />
         )}
+
         <h1 className="text-3xl font-bold text-[#5b78a4] mb-2">{event.title}</h1>
         <div className="text-sm text-gray-600">
           <p>📍 {event.location}</p>
-          <p>🗓 {event.dateStart} - {event.dateEnd}</p>
-          <p>🕒 {event.timeStart} - {event.timeEnd}</p>
+          <p>🗓 {event.start_date} - {event.end_date}</p>
+          <p>🕒 {event.event_slot_time || '-'}</p>
         </div>
       </div>
 
       {/* Description */}
       <div className="mb-8">
         <h2 className="font-semibold text-lg mb-2">รายละเอียด</h2>
-        <p className="text-gray-700 leading-relaxed">{event.description}</p>
+        <div
+          className="text-gray-700 leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: event.description }}
+        />
       </div>
 
       {/* Review Section */}

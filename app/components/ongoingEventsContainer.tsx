@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 interface Event {
   _id: string;
@@ -72,10 +73,10 @@ const OngoingEvents: React.FC<OngoingEventsProps> = ({ onViewAll }) => {
       <div className="flex justify-center">
         <div className="flex justify-between gap-4 w-full max-w-screen-xl mx-auto">
           {events.map((event) => (
-            <a
-              key={event._id}
-              href={`/exhibition.html?id=${event._id}`}
-              className="w-[18%] flex-shrink-0"  // 100 / 5 - ช่องว่าง
+            <Link
+            key={event._id}
+            href={`/event/${event._id}`}
+            className="w-[18%] flex-shrink-0"
             >
               {/* Image */}
               <div className="bg-white rounded-t-full overflow-hidden shadow-xl w-full h-[250px] flex items-center justify-center">
@@ -95,7 +96,7 @@ const OngoingEvents: React.FC<OngoingEventsProps> = ({ onViewAll }) => {
                 {event.location || '-'}
               </p>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
