@@ -9,6 +9,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 const SearchBox = styled(Paper)(() => ({
   display: 'flex',
@@ -33,8 +34,11 @@ const InspiraNavbar = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
 
   React.useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    setIsLoggedIn(!!token);
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      console.log("🔐 Token in storage:", token);
+      setIsLoggedIn(!!token);
+    }
   }, []);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -46,7 +50,7 @@ const InspiraNavbar = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('token');
     handleMenuClose();
     router.push('/');
   };

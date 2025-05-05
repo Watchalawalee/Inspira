@@ -15,9 +15,13 @@ export default function SearchPage() {
   useEffect(() => {
     const fetchResults = async () => {
       if (!query) return;
-      const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
-      const data = await res.json();
-      setResults(data);
+      try {
+        const res = await fetch(`http://localhost:5000/exhibitions/search?q=${encodeURIComponent(query)}`);
+        const data = await res.json();
+        setResults(data);
+      } catch (err) {
+        console.error('❌ Error fetching search results:', err);
+      }
     };
 
     fetchResults();
@@ -25,56 +29,59 @@ export default function SearchPage() {
 
   return (
     <main>
-        <InspiraNavbar />
-        <div className="mt-20 px-8"> 
-            <h1 className="text-2xl font-bold text-[#5b78a4] mb-6">
-            ผลการค้นหา: {query}
-            </h1>
+      <InspiraNavbar />
+      <div className="mt-20 px-8">
+        <h1 className="text-2xl font-bold text-[#5b78a4] mb-6">
+          ผลการค้นหา: {query}
+        </h1>
+        <p className="text-sm text-gray-500 mb-6">
+        พบทั้งหมด {results.length} รายการ
+      </p>
 
-            {/* Mobile View */}
-            <div className="block md:hidden">
-            <Splide
-                options={{
-                perPage: 1,
-                gap: '1rem',
-                pagination: true,
-                }}
-            >
-                {results.map((item, idx) => (
-                <SplideSlide key={idx}>
-                    <Link href={`/event/${item.slug}`}>
-                    <div className="rounded overflow-hidden shadow cursor-pointer">
-                        {item.image && (
-                        <img src={item.image} alt={item.title} className="w-full" />
-                        )}
-                        <div className="p-4">
-                        <h2 className="font-semibold">{item.title}</h2>
-                        <p className="text-sm text-gray-600">{item.content}</p>
-                        </div>
-                    </div>
-                    </Link>
-                </SplideSlide>
-                ))}
-            </Splide>
-            </div>
-
-            {/* Desktop View:*/}
-            <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Mobile View */}
+        <div className="block md:hidden">
+          <Splide
+            options={{
+              perPage: 1,
+              gap: '1rem',
+              pagination: true,
+            }}
+          >
             {results.map((item, idx) => (
-                <Link href={`/event/${item.slug}`} key={idx}>
-                <div className="break-inside-avoid rounded overflow-hidden shadow bg-white cursor-pointer hover:shadow-lg transition">
-                    {item.image && (
-                    <img src={item.image} alt={item.title} className="w-full" />
+              <SplideSlide key={idx}>
+                <Link href={`/exhibition.html?id=${item._id}`}>
+                  <div className="rounded overflow-hidden shadow cursor-pointer">
+                    {item.cover_picture && (
+                      <img src={item.cover_picture.startsWith('http') ? item.cover_picture : `http://localhost:5000${item.cover_picture}`} alt={item.title} className="w-full" />
                     )}
                     <div className="p-4">
-                    <h2 className="font-semibold">{item.title}</h2>
-                    <p className="text-sm text-gray-600">{item.content}</p>
+                      <h2 className="font-semibold">{item.title}</h2>
+                      <p className="text-sm text-gray-600">{item.location || '-'}</p>
                     </div>
-                </div>
+                  </div>
                 </Link>
+              </SplideSlide>
             ))}
-            </div>
+          </Splide>
         </div>
+
+        {/* Desktop View */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4">
+          {results.map((item, idx) => (
+            <Link href={`/exhibition.html?id=${item._id}`} key={idx}>
+              <div className="break-inside-avoid rounded overflow-hidden shadow bg-white cursor-pointer hover:shadow-lg transition">
+                {item.cover_picture && (
+                  <img src={item.cover_picture.startsWith('http') ? item.cover_picture : `http://localhost:5000${item.cover_picture}`} alt={item.title} className="w-full" />
+                )}
+                <div className="p-4">
+                  <h2 className="font-semibold">{item.title}</h2>
+                  <p className="text-sm text-gray-600">{item.location || '-'}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
     </main>
   );
 }
