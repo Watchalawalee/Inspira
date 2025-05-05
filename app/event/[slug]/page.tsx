@@ -88,10 +88,19 @@ export default function EventDetailPage() {
       {/* Review Section */}
       <ReviewSection reviews={event.reviews || []} />
 
-      {/* Write a Review Button */}
-      <div className="mt-4 text-center">
-        <Link href={`/review/${slug}`} className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700">
-          รีวิว
+      {/* Write a Review & How to get there Buttons */}
+      <div className="mt-4 flex justify-center gap-4">
+        <Link
+          href={`/direction/${slug}`}
+          className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg shadow-2xl hover:bg-gray-300"
+        >
+          How to get there?
+        </Link>
+        <Link
+          href={`/review/${slug}`}
+          className="bg-[#5b78a4] text-white py-2 px-6 rounded-lg shadow-2xl hover:bg-blue-700"
+        >
+          Write a Review
         </Link>
       </div>
     </main>
