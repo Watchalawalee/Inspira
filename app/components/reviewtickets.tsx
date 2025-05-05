@@ -41,7 +41,7 @@ const ReviewTicket: React.FC<Props> = ({
       </div>
 
       {/* Content on the right */}
-      <div className="absolute right-6 top-6 w-[55%] flex flex-col justify-between h-[90%] p-4">
+      <div className="absolute right-6 top-6 w-[50%] flex flex-col justify-between h-[90%] p-4">
         <div>
           <h2 className="text-xl font-bold mb-2">{title}</h2>
           <p className="text-sm mb-1">
