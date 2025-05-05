@@ -146,7 +146,7 @@ const AllEventsSection = forwardRef<HTMLDivElement, AllEventsProps>(function All
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {events.map((event) => (
               <a
-                href={`/exhibition.html?id=${event._id}`}
+              href={`/event/${event._id}`}
                 key={event._id}
                 className="flex flex-col"
                 style={{ textDecoration: 'none' }}
