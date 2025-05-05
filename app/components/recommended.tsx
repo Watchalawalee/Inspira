@@ -52,28 +52,33 @@ const RecommendationsSection: React.FC<Props> = ({ isLoggedIn }) => {
   if (!isLoggedIn || loading || recommendations.length === 0) return null;
 
   return (
-    <section className="-mt-20 relative z-20">
-      {/* gradient background */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#e3ebf6] to-white z-[-1]" />
-
-      <div className="relative w-fit mx-auto shadow-xl border-4 border-white rounded-md overflow-hidden mt-12">
+    <section className="relative z-30 -mt-9">
+      <div className="relative w-fit mx-auto">
+        
+        {/* Recommended text */}
         <h2
-          className="absolute -top-14 -left-6 text-white text-[72px] drop-shadow-lg z-10"
+          className="absolute -top-5 -left-8 text-[64px] text-white drop-shadow-xl z-20 !text-white"
           style={{ fontFamily: "var(--font-playball)", transform: "rotate(-5deg)" }}
         >
           Recommended
         </h2>
-
-        {recommendations.length > 0 && (
-          <img
-            src={recommendations[0].cover_picture}
-            alt={recommendations[0].title}
-            className="w-[600px] h-auto object-cover"
-          />
-        )}
+  
+        {/* กล่องรูปภาพ */}
+        <div className="relative z-10 shadow-xl border-4 border-white rounded-md overflow-hidden w-[640px] bg-gradient-to-b from-[#e3ebf6] to-white py-6">
+          {recommendations.length > 0 && (
+            <img
+              src={recommendations[0].cover_picture}
+              alt={recommendations[0].title}
+              className="w-full h-auto object-cover"
+            />
+          )}
+        </div>
+  
       </div>
     </section>
-  );  
+  );
+  
+  
 };
 
 export default RecommendationsSection;
