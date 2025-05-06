@@ -1,49 +1,101 @@
 'use client';
 
-import React from 'react';
-import { notFound } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
 
 type Review = {
+  _id: string;
   rating: number;
   review: string;
-  photoUrl?: string;
+  image_url?: string;
+  user_id: {
+    _id?: string;
+    username?: string;
+  } | string;
 };
 
-type Props = {
-  params: { exhibitionId: string };
-};
+export default function AllReviewsPage() {
+  const { slug } = useParams();
+  const router = useRouter();
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-export default async function AllReviewsPage({ params }: Props) {
-  const { exhibitionId } = params;
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/reviews/${slug}`);
+        if (!res.ok) throw new Error('ไม่พบรีวิว');
+        const data = await res.json();
 
-  // ดึงข้อมูลรีวิวจาก API
-  const res = await fetch(`https://your-api-url.com/reviews/${exhibitionId}`);
-  
-  if (!res.ok) {
-    return notFound(); // ถ้าไม่พบข้อมูลให้แสดงหน้า 404
-  }
+        const token = localStorage.getItem("token");
+        const userId = token ? JSON.parse(atob(token.split('.')[1])).id : null;
 
-  const reviews: Review[] = await res.json();
+        const userReview = data.find(
+          (r: Review) => (typeof r.user_id === 'object' ? r.user_id._id : r.user_id) === userId
+        );
+        const otherReviews = data.filter(
+          (r: Review) => (typeof r.user_id === 'object' ? r.user_id._id : r.user_id) !== userId
+        );
+
+        const combined = userReview ? [userReview, ...otherReviews] : otherReviews;
+
+        setReviews(combined);
+      } catch (err) {
+        console.error(err);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReviews();
+  }, [slug]);
+
+  const renderStars = (rating: number) =>
+    '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+  if (loading) return <div className="text-center mt-20">กำลังโหลดรีวิว...</div>;
+  if (error) return <div className="text-center mt-20 text-red-500">โหลดรีวิวล้มเหลว</div>;
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-semibold mb-4">รีวิวทั้งหมดสำหรับนิทรรศการ {exhibitionId}</h1>
-      {reviews.map((review, index) => (
-        <div key={index} className="border-t py-4">
-          <div className="text-yellow-400">
-            {'★'.repeat(review.rating)}{' '}
-            {'☆'.repeat(5 - review.rating)}
+    <main className="px-4 py-8 max-w-3xl mx-auto">
+      <h1 className="text-2xl font-bold text-[#5b78a4] mb-6">รีวิวทั้งหมดของนิทรรศการ</h1>
+      <hr className="mb-6" />
+
+      {reviews.map((r) => {
+        const token = localStorage.getItem("token");
+        const userId = token ? JSON.parse(atob(token.split('.')[1])).id : null;
+        const reviewOwnerId = typeof r.user_id === 'object' ? r.user_id._id : r.user_id;
+        const username = typeof r.user_id === 'object' ? r.user_id.username : 'ผู้ใช้งาน';
+
+        const isOwnReview = userId === reviewOwnerId;
+
+        return (
+          <div key={r._id} className="mb-6 border-b pb-4">
+            <div className="flex items-center justify-between">
+              <div className="text-yellow-500 text-lg">{renderStars(r.rating)}</div>
+              {isOwnReview && (
+                <button
+                  className="text-sm text-blue-600 hover:underline"
+                  onClick={() => router.push(`/review/${slug}`)}
+                >
+                  แก้ไข
+                </button>
+              )}
+            </div>
+            <p className="text-sm text-gray-600">โดย {username}</p>
+            <p className="mt-2">{r.review}</p>
+            {r.image_url && (
+              <img
+                src={`http://localhost:5000${r.image_url}`}
+                alt="รูปรีวิว"
+                className="mt-2 max-h-48 rounded"
+              />
+            )}
           </div>
-          <p className="text-gray-700 leading-relaxed mt-2">{review.review}</p>
-          {review.photoUrl && (
-            <img
-              src={review.photoUrl}
-              alt={`Review ${index + 1}`}
-              className="mt-2 w-32 h-32 object-cover rounded"
-            />
-          )}
-        </div>
-      ))}
-    </div>
+        );
+      })}
+    </main>
   );
 }
