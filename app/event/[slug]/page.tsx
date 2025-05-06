@@ -126,9 +126,11 @@ export default function EventDetailPage() {
       </Link>
 
       {/* ปุ่ม Favorite */}
-      <button onClick={toggleFavorite} className="absolute top-4 right-4">
-        <span className={isFavorite ? 'text-red-500' : 'text-gray-300'}>❤️</span>
-      </button>
+      {typeof window !== "undefined" && (
+        <button onClick={toggleFavorite} className="absolute top-4 right-4 text-2xl focus:outline-none">
+          {isFavorite ? '❤️' : '🤍'}
+        </button>
+      )}
 
       {/* แสดงภาพและข้อมูลเบื้องต้น */}
       <div className="mb-6 text-center">
