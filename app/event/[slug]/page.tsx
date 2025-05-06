@@ -50,6 +50,9 @@ export default function EventDetailPage() {
 
   return (
     <main className="px-4 py-8 max-w-3xl mx-auto relative">
+      <Link href="/" className="text-blue-600 underline absolute top-4 left-4">
+          ⬅ 
+        </Link>
       {/* Heart Favorite Button */}
       <button onClick={toggleFavorite} className="absolute top-4 right-4">
         <span className={isFavorite ? 'text-red-500' : 'text-gray-300'}>❤️</span>
@@ -85,17 +88,19 @@ export default function EventDetailPage() {
       {/* Review Section */}
       <ReviewSection reviews={event.reviews || []} />
 
-      {/* Write a Review Button */}
-      <div className="mt-4 text-center">
-        <Link href={`/review/${slug}`} className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700">
-          เขียนรีวิว
+      {/* Write a Review & How to get there Buttons */}
+      <div className="mt-4 flex justify-center gap-4">
+        <Link
+          href={`/direction/${slug}`}
+          className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg shadow-2xl hover:bg-gray-300"
+        >
+          How to get there?
         </Link>
-      </div>
-
-      {/* Back Button */}
-      <div className="mt-8 text-center">
-        <Link href="/" className="text-blue-600 underline">
-          ⬅ กลับหน้าหลัก
+        <Link
+          href={`/review/${slug}`}
+          className="bg-[#5b78a4] text-white py-2 px-6 rounded-lg shadow-2xl hover:bg-blue-700"
+        >
+          Write a Review
         </Link>
       </div>
     </main>
