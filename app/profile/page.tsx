@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import InspiraNavbar from '../components/button';
 import ReviewTicket from "../components/reviewtickets";
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Exhibition {
   _id: string;
@@ -26,7 +27,7 @@ interface Review {
   rating: number;
 }
 
-const API = process.env.NEXT_PUBLIC_API_URL!;  // http://localhost:5000
+const API = process.env.NEXT_PUBLIC_API_URL!; // http://localhost:5000
 
 const ProfilePage: React.FC = () => {
   const router = useRouter();
@@ -82,7 +83,6 @@ const ProfilePage: React.FC = () => {
         <InspiraNavbar />
 
         <div className="max-w-6xl mx-auto py-10 px-6">
-
           {/* Favorites Carousel */}
           <h1 className="text-3xl font-bold mb-6 text-blue-800">MY FAVORITE EXHIBITIONS</h1>
           <div className="carousel-container px-10 logo-dark overflow-x-auto">
@@ -92,19 +92,20 @@ const ProfilePage: React.FC = () => {
               ) : (
                 favorites.map((fav) => {
                   const imgPath = fav.exhibition_id.cover_picture || '';
-                  const src = imgPath.startsWith('http')
-                    ? imgPath
-                    : `${API}${imgPath}`;
+                  const src = imgPath.startsWith('http') ? imgPath : `${API}${imgPath}`;
+                  const id = fav.exhibition_id._id;
 
                   return (
                     <li className="carousel-item" key={fav._id}>
-                      <div className="client-image">
-                        <img
-                          src={src}
-                          alt={fav.exhibition_id.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+                      <Link href={`/event/${id}`}>
+                        <div className="client-image cursor-pointer">
+                          <img
+                            src={src}
+                            alt={fav.exhibition_id.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </Link>
                     </li>
                   );
                 })
@@ -112,31 +113,33 @@ const ProfilePage: React.FC = () => {
             </ul>
           </div>
 
-          {/* Review */}
+          {/* Review Section */}
           <h1 className="text-2xl font-bold my-6">MY REVIEW</h1>
-            {reviews.length === 0 ? (
-              <p className="text-gray-500">ยังไม่มีรีวิว</p>
-            ) : (
-              reviews.map((rev) => {
-                const imgPath = rev.exhibition_id.cover_picture || "";
-                const src = imgPath.startsWith("http")
-                  ? imgPath
-                  : `${API}${imgPath}`;
+          {reviews.length === 0 ? (
+            <p className="text-gray-500">ยังไม่มีรีวิว</p>
+          ) : (
+            reviews.map((rev) => {
+              const imgPath = rev.exhibition_id.cover_picture || "";
+              const src = imgPath.startsWith("http") ? imgPath : `${API}${imgPath}`;
+              const id = rev.exhibition_id._id;
 
-                return (
-                  // เพิ่ม mb-8 ให้ขยับลงล่างทีละการ์ด
-                  <div key={rev._id} className="mb-8">
-                    <ReviewTicket
-                      imageUrl={src}
-                      title={rev.exhibition_id.title}
-                      location={rev.exhibition_id.location}
-                      datetime={rev.exhibition_id.start_date || "-"}
-                      rating={`${rev.rating}/5`}
-                    />
-                  </div>
-                );
-              })
-            )}
+              return (
+                <div key={rev._id} className="mb-8">
+                  <Link href={`/event/${id}`}>
+                    <div className="cursor-pointer">
+                      <ReviewTicket
+                        imageUrl={src}
+                        title={rev.exhibition_id.title}
+                        location={rev.exhibition_id.location}
+                        datetime={rev.exhibition_id.start_date || "-"}
+                        rating={`${rev.rating}/5`}
+                      />
+                    </div>
+                  </Link>
+                </div>
+              );
+            })
+          )}
         </div>
 
         {/* CSS สำหรับ carousel */}

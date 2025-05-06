@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 interface Event {
   _id: string;
@@ -83,19 +84,29 @@ const UpcomingEventsContainer: React.FC<UpcomingEventsProps> = ({ onViewAll }) =
         >
           {events.map((event) => (
             <div key={event._id} className="min-w-full relative">
-              <img
-                src={event.cover_picture}
-                alt={event.title}
-                className="w-full h-120 object-cover"
-              />
-              <div className="absolute bottom-0 w-full bg-[#5372A4] bg-opacity-80 text-center p-3">
-                <h3 className="text-sm font-semibold truncate text-white" style={{ color: 'white' }}>
-                  {event.title}
-                </h3>
-                <p className="text-xs text-white" style={{ color: 'white' }}>
-                  {event.location || '-'}
-                </p>
-              </div>
+              <Link href={`/event/${event._id}`}>
+                <div className="cursor-pointer">
+                  <img
+                    src={event.cover_picture}
+                    alt={event.title}
+                    className="w-full h-120 object-cover"
+                  />
+                  <div className="absolute bottom-0 w-full bg-[#5372A4] bg-opacity-80 text-center p-3">
+                    <h3
+                      className="text-sm font-semibold truncate text-white"
+                      style={{ color: 'white' }} 
+                    >
+                      {event.title}
+                    </h3>
+                    <p
+                      className="text-xs text-white"
+                      style={{ color: 'white' }} 
+                    >
+                      {event.location || '-'}
+                    </p>
+                  </div>
+                </div>
+              </Link>
             </div>
           ))}
         </div>

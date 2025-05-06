@@ -52,7 +52,7 @@ const RecommendationsSection: React.FC<Props> = ({ isLoggedIn }) => {
   if (!isLoggedIn || loading || recommendations.length === 0) return null;
 
   return (
-    <section className="relative z-30 -mt-9 bg-gradient-to-b from-[#e3ebf6] to-white py-12">
+    <section id="recommend" className="relative z-30 -mt-9 bg-gradient-to-b from-[#e3ebf6] to-white py-12">
       <div className="relative w-fit mx-auto">
         {/* Recommended text */}
         <h2 className="absolute -top-5 -left-8 text-[64px] drop-shadow-xl z-20 text-[#5372A4]" 

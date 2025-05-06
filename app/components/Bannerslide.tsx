@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const BannerSlide: React.FC = () => {
   const [banners, setBanners] = useState<any[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false); // 👈 ตรวจจับ hover
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const fetchBanners = async () => {
@@ -38,7 +39,7 @@ const BannerSlide: React.FC = () => {
       if (!isHovered) {
         setCurrentIndex((prev) => (prev + 1) % banners.length);
       }
-    }, 5000); // เปลี่ยนภาพทุก 5 วินาที
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [banners, isHovered]);
@@ -47,22 +48,29 @@ const BannerSlide: React.FC = () => {
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
-      {/* แสดงรูปทั้งหมด ซ้อนกัน ใช้ opacity ควบคุม */}
+      {/* รูปทั้งหมด (เฟดด้วย opacity) */}
       {banners.map((banner, index) => (
         <img
           key={index}
           src={banner.imageUrl}
           alt={banner.title}
-          onMouseEnter={() => setIsHovered(true)}   // 👈 เริ่มจับ hover
-          onMouseLeave={() => setIsHovered(false)}  // 👈 หยุดจับ hover
           className="absolute inset-0 object-cover w-full h-full transition-opacity duration-1000 ease-in-out"
           style={{ opacity: index === currentIndex ? 1 : 0 }}
         />
       ))}
 
+      <Link
+        href={`/event/${banners[currentIndex].id}`}
+        className="absolute inset-0 z-10"
+        onMouseEnter={() => setIsHovered(true)}   
+        onMouseLeave={() => setIsHovered(false)}  
+      >
+        <span className="block w-full h-full" />
+      </Link>
+
       {/* กล่อง overlay โลโก้ ปุ่ม คำโปรย */}
       <div
-        className="absolute left-80 top-10 h-full w-full md:w-1/3 lg:w-1/4 bg-[rgba(83,114,164,0.5)] flex flex-col justify-start items-center px-6 py-10 text-white transform -translate-x-1/2 z-10"
+        className="absolute left-80 top-10 h-full w-full md:w-1/3 lg:w-1/4 bg-[rgba(83,114,164,0.5)] flex flex-col justify-start items-center px-6 py-10 text-white transform -translate-x-1/2 z-20"
       >
         <img
           src="/logo.svg"
@@ -75,7 +83,15 @@ const BannerSlide: React.FC = () => {
             objectFit: 'contain',
           }}
         />
-        <button className="bg-[#FFBAA3] text-white px-6 py-3 rounded-full shadow hover:bg-red-300 transition mt-4 w-full sm:w-auto">
+        <button
+          className="bg-[#FFBAA3] text-white px-6 py-3 rounded-full shadow hover:bg-red-300 transition mt-4 w-full sm:w-auto"
+          onClick={() => {
+            const section = document.getElementById('recommend');
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
           Find your inspiration !
         </button>
         <p
@@ -88,7 +104,7 @@ const BannerSlide: React.FC = () => {
 
       {/* Navigation Arrows */}
       <button
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl z-20"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl z-30"
         onClick={() =>
           setCurrentIndex((prev) => (prev === 0 ? banners.length - 1 : prev - 1))
         }
@@ -96,7 +112,7 @@ const BannerSlide: React.FC = () => {
         ‹
       </button>
       <button
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl z-20"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl z-30"
         onClick={() =>
           setCurrentIndex((prev) => (prev === banners.length - 1 ? 0 : prev + 1))
         }
