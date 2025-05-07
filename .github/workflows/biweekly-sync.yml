@@ -33,6 +33,7 @@ jobs:
 
       - name: 🕷️ Run all upcoming spiders
         run: python run_all_upcoming.py
+        continue-on-error: false  # หยุด workflow ทันทีถ้ามี error
 
       - name: 📝 Rename JSON files to hash
         run: python rename_json_to_hash.py

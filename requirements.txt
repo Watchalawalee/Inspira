@@ -5,3 +5,4 @@ python-dateutil
 dateparser
 requests
 pymongo
+scrapy

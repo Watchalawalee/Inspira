@@ -25,7 +25,10 @@ def run_spiders(suffix='_upcoming.py'):
             if file.endswith(suffix):
                 spider_name = file.replace('.py', '')
                 print(f'🕷️ Running spider: {spider_name}')
-                subprocess.run([sys.executable, '-m', 'scrapy', 'crawl', spider_name], cwd=os.getcwd())
+                subprocess.run(
+                    [sys.executable, '-m', 'scrapy', 'crawl', spider_name],
+                    cwd=BASE_DIR  # ✅ สำคัญ: ต้องมี scrapy.cfg ที่ BASE_DIR
+                )
 
 if __name__ == '__main__':
     clear_old_data()
