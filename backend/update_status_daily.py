@@ -1,10 +1,9 @@
-import os
 from datetime import datetime
 from pymongo import MongoClient
 
-# ✅ ใช้ URI จาก environment variable ที่ตั้งไว้ใน GitHub Actions
-mongo_uri = os.getenv("MONGO_URI")
-client = MongoClient(mongo_uri)
+# ✅ ฮาร์ดโค้ด URI ชั่วคราว (ไม่แนะนำให้ใช้ระยะยาว)
+MONGO_URI = "mongodb+srv://inspiraproject2025:ypLEu0xL3plfo2AW@exhibition-cluster.ty3ugcy.mongodb.net/exhibition_db"
+client = MongoClient(MONGO_URI)
 db = client["exhibition_db"]
 collection = db["exhibitions"]
 
