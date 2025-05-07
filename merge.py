@@ -259,10 +259,16 @@ def merge_similar_events(all_events, eps=eps, min_samples=1):
 # ------------------------
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("❌ โปรดระบุ mode: full หรือ upcoming")
+        print("❌ โปรดระบุ mode ด้วย --mode=full หรือ --mode=upcoming")
         sys.exit(1)
 
-    mode = sys.argv[1].lower()
+    mode_arg = sys.argv[1]
+    if mode_arg.startswith("--mode="):
+        mode = mode_arg.split("=")[1].lower()
+    else:
+        print("❌ รูปแบบพารามิเตอร์ไม่ถูกต้อง ควรใช้ --mode=full หรือ --mode=upcoming")
+        sys.exit(1)
+
     print(f"🚀 เริ่ม Merge Mode: {mode}")
 
     all_json_data = load_all_json(base_path, mode=mode)
