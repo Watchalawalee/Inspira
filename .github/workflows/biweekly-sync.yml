@@ -2,7 +2,7 @@ name: Biweekly Sync Exhibitions + Recommend
 
 on:
   schedule:
-    - cron: '0 0 */14 * *'  # ทุก 14 วัน เวลา 00:00 UTC (07:00 น.ไทย)
+    - cron: '0 0 */14 * *'  # ทุก 14 วัน เวลา 00:00 UTC (07:00 น ไทย)
   workflow_dispatch:
 
 jobs:
