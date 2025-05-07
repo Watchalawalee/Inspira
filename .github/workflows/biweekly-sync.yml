@@ -10,46 +10,51 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout branch data-files
+      # 1️⃣ Checkout data-files
       - name: Checkout data-files branch
         uses: actions/checkout@v3
         with:
           ref: data-files
 
-      # Setup Python
+      # 2️⃣ Setup Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      # Install Python dependencies
-      - name: Install dependencies
+      # 3️⃣ Install Python dependencies
+      - name: Install Python dependencies
         run: pip install pymongo dateparser requests
 
-      # Run Python scripts
-      - name: Run update scripts
-        run: |
-          python run_all_upcoming.py
-          python merge.py --mode upcoming
-          python upload_to_mongo.py
+      # 🧼 4️⃣ Rename JSON files to hash (ใหม่)
+      - name: Rename JSON files to hash
+        run: python rename_json_to_hash.py
 
-      # Checkout backend branch (เข้ามาไว้ในโฟลเดอร์ backend)
+      # 🧩 5️⃣ Run merge
+      - name: Merge exhibition data
+        run: python merge.py --mode upcoming
+
+      # ⬆️ 6️⃣ Upload to MongoDB
+      - name: Upload merged data to MongoDB
+        run: python upload_to_mongo.py
+
+      # 7️⃣ Checkout backend branch (เข้าโฟลเดอร์ backend/)
       - name: Checkout backend branch
         uses: actions/checkout@v3
         with:
           ref: backend
           path: backend
 
-      # Setup Node.js
+      # 8️⃣ Setup Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      # Install backend dependencies
+      # 9️⃣ Install backend dependencies
       - name: Install backend dependencies
         run: cd backend && npm install
 
-      # Run recommend_cron.js
+      # 🎯 🔁 10️⃣ Run recommend_cron.js
       - name: Run recommend_cron.js
         run: cd backend && node cron/recommend_cron.js
