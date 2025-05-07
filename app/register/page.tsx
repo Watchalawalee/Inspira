@@ -46,9 +46,20 @@ export default function Signup() {
   useEffect(() => {
     fetch('http://localhost:5000/categories')
       .then((res) => res.json())
-      .then((data) => setCategories(data.map((c: any) => c.name)))
-      .catch(() => setCategories([]));
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setCategories(data.map((c: any) => c.name));
+        } else {
+          console.error('Unexpected response format:', data);
+          setCategories([]);
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to fetch categories:', err);
+        setCategories([]);
+      });
   }, []);
+  
 
   const isStepValid = () => {
     if (step === 0) {
@@ -123,6 +134,7 @@ export default function Signup() {
   
     setShowErrors(false);
     if (step === 2) {
+      console.log('interests:', formData.interests);
       handleSubmit();
     } else {
       setStep(step + 1);
@@ -135,12 +147,16 @@ export default function Signup() {
       const res = await fetch('http://localhost:5000/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, 
+        body: JSON.stringify({
           username: formData.username.trim(),
           password: formData.password.trim(),
           email: formData.email.trim(),
-          birthdate: formData.dob}),
+          birthdate: formData.dob,
+          gender: formData.gender,
+          interests: formData.interests.filter(i => typeof i === 'string'), 
+        }),
       });
+  
       const data = await res.json();
       if (res.ok) {
         setStep(3); // show success
@@ -151,6 +167,7 @@ export default function Signup() {
       alert('สมัครไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
     }
   };
+  
 
   const handleResend = async () => {
     setResendMessage('');

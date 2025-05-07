@@ -49,7 +49,7 @@ export default function SearchPage() {
           >
             {results.map((item, idx) => (
               <SplideSlide key={idx}>
-                <Link href={`/exhibition.html?id=${item._id}`}>
+                <Link href={`/event/${item._id}`}>
                   <div className="rounded overflow-hidden shadow cursor-pointer">
                     {item.cover_picture && (
                       <img src={item.cover_picture.startsWith('http') ? item.cover_picture : `http://localhost:5000${item.cover_picture}`} alt={item.title} className="w-full" />
@@ -68,7 +68,7 @@ export default function SearchPage() {
         {/* Desktop View */}
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4">
           {results.map((item, idx) => (
-            <Link href={`/exhibition.html?id=${item._id}`} key={idx}>
+            <Link href={`/event/${item._id}`} key={idx}>
               <div className="break-inside-avoid rounded overflow-hidden shadow bg-white cursor-pointer hover:shadow-lg transition">
                 {item.cover_picture && (
                   <img src={item.cover_picture.startsWith('http') ? item.cover_picture : `http://localhost:5000${item.cover_picture}`} alt={item.title} className="w-full" />
