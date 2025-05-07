@@ -1,0 +1,7 @@
+pandas
+numpy
+scikit-learn
+python-dateutil
+dateparser
+requests
+pymongo
