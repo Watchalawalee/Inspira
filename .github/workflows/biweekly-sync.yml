@@ -13,50 +13,53 @@ jobs:
       MONGODB_URI: ${{ secrets.MONGO_URI }}
 
     steps:
-      - name: Set up job
-        run: echo "📦 เริ่มงาน Sync + Recommend"
+      - name: 📦 เริ่มงาน Sync + Recommend
+        run: echo "🚀 Starting biweekly sync and recommendation"
 
-      - name: Checkout data-files branch
+      - name: 🧱 Checkout data-files branch
         uses: actions/checkout@v3
         with:
           ref: data-files
 
-      - name: Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
-      - name: Install Python dependencies
+      - name: 📦 Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Rename JSON files to hash
+      - name: 🕷️ Run all upcoming spiders
+        run: python run_all_upcoming.py
+
+      - name: 📝 Rename JSON files to hash
         run: python rename_json_to_hash.py
 
-      - name: Merge exhibition data
+      - name: 🧠 Merge exhibition data
         run: python merge.py --mode=upcoming
 
-      - name: Upload merged data to MongoDB
+      - name: ☁️ Upload merged data to MongoDB
         run: python upload_to_mongo.py
 
-      - name: Checkout backend branch
+      - name: 💻 Checkout backend branch
         uses: actions/checkout@v3
         with:
           ref: backend
-          path: backend
+          path: backend-code
 
-      - name: Set up Node.js
+      - name: 🛠 Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
 
-      - name: Install backend dependencies
+      - name: 📦 Install backend dependencies
         run: |
-          cd backend
+          cd backend-code
           npm install
 
-      - name: Run recommend_cron.js
+      - name: 🤖 Run recommend_cron.js
         run: |
-          cd backend
+          cd backend-code/cron
           node recommend_cron.js
