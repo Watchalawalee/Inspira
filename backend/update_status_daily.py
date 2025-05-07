@@ -1,7 +1,10 @@
+import os
 from datetime import datetime
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://host.docker.internal:27017")
+# ✅ ใช้ URI จาก environment variable ที่ตั้งไว้ใน GitHub Actions
+mongo_uri = os.getenv("MONGO_URI")
+client = MongoClient(mongo_uri)
 db = client["exhibition_db"]
 collection = db["exhibitions"]
 
