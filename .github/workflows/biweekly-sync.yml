@@ -35,7 +35,7 @@ jobs:
         run: python rename_json_to_hash.py
 
       - name: Merge exhibition data
-        run: python merge.py --mode upcoming
+        run: python merge.py --mode=upcoming
 
       - name: Upload merged data to MongoDB
         run: python upload_to_mongo.py
