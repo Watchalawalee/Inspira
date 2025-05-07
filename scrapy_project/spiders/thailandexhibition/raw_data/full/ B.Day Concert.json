@@ -2,8 +2,7 @@
     "title": " B.Day Concert",
     "description": "B.Day Concert  All artists - All hits - All together B.Day Concert5 - 7 ธันวาคม 2568 Impact Arena",
     "categories": [
-        "Concert",
-        "Others"
+        "Concert"
     ],
     "start_date": "5 ธันวาคม 2025",
     "end_date": "7 ธันวาคม 2025",
@@ -14,6 +13,6 @@
     "ticket": "ไม่มีค่าเข้าชม",
     "ticket_price": null,
     "reliability_score": 2,
-    "timestamp": "2025-04-19 19:35:19",
+    "timestamp": "2025-05-07 16:25:15",
     "status": "upcoming"
 }

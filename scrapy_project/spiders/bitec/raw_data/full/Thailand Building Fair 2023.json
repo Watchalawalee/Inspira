@@ -2,8 +2,8 @@
     "title": "Thailand Building Fair 2023",
     "description": "งานแสดงสินค้านานาชาติครบวงจรด้านอาคาร นวัตกรรมอาคารเพื่ออนาคตที่ยั่งยืนของการทำงานและอยู่อาศัย",
     "categories": [
-        "Business",
-        "Home & Furniture"
+        "Technology",
+        "Business"
     ],
     "start_date": "1 พฤศจิกายน 2566",
     "end_date": "3 พฤศจิกายน 2566",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2023/06/Banner-on-BITEC-Website-THBF23-1024x525.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:30:26",
+    "timestamp": "2025-05-07 16:21:36",
     "status": "past"
 }

@@ -2,8 +2,8 @@
     "title": "TIF 2021",
     "description": "TIF 2021 (Thailand Industrial Fair) , industrial machinery, machine tool, equipment, products and services for Thai and ASEAN manufacturing industry. More than 600,000 items of premium quality machines, equipment, machine tools with special promotion are waiting for industrialists for their sourcing to enhance and strengthen their industrial and production ability. TIF 2021 is going to take place on April 7-10, 2021 at Bangkok International Trade and Exhibition Center (BITEC, Bangkok)",
     "categories": [
-        "Others",
-        "Technology"
+        "Technology",
+        "Others"
     ],
     "start_date": "6 เมษายน 2564",
     "end_date": "9 เมษายน 2564",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2021/01/TIF2021-logo-700x700-1.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:27:42",
+    "timestamp": "2025-05-07 16:20:35",
     "status": "past"
 }

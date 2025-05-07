@@ -2,7 +2,8 @@
     "title": "K Village Songkran Splash 2025",
     "description": "K Village Songkran Splash 2025วันที่ 12 - 15 เมษายน 2568เวลา 10.00 - 18.00 น.ณ ลาน K Square, K Village Sukhumvit 26เตรียมตัวมาคลายร้อนกันในงาน K Village Songkran Splash! 2025 สงกรานต์ทั้งที ต้องมาสนุกกันให้เต็มที่! เล่นน้ำฟรีให้ชื่นใจ เติมน้ำฟรีได้ทั้งวัน! สนุกไปกับ บ้านลมยักษ์ พร้อมช้อปดับร้อนไปกับ Mini Market ที่รวบรวมของอร่อยไว้เพียบ!",
     "categories": [
-        "Others"
+        "Others",
+        "Concert"
     ],
     "start_date": "12 เมษายน 2025",
     "end_date": "15 เมษายน 2025",
@@ -13,6 +14,6 @@
     "ticket": "ไม่มีค่าเข้าชม",
     "ticket_price": null,
     "reliability_score": 2,
-    "timestamp": "2025-04-19 19:35:17",
+    "timestamp": "2025-05-07 16:25:11",
     "status": "past"
 }

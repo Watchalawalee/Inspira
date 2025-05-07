@@ -2,8 +2,7 @@
     "title": "Mega Show Bangkok 2023",
     "description": "null",
     "categories": [
-        "Home & Furniture",
-        "Concert"
+        "Home & Furniture"
     ],
     "start_date": "19 กรกฎาคม 2566",
     "end_date": "21 กรกฎาคม 2566",
@@ -14,6 +13,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2023/05/Banner-on-BITEC-Website-1170x600-px-1024x525.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:29:44",
+    "timestamp": "2025-05-07 16:21:24",
     "status": "past"
 }

@@ -2,8 +2,7 @@
     "title": "Thailand Mobile Expo #3",
     "description": "งานมหกรรมโทรศัพท์มือถือที่ใหญ่ที่สุดในประเทศ ครั้งปลายปี พบโปรโมชั่นจากแบรนด์ดังมากกว่า 50 แบรนด์ดัง พร้อมแก็ตเจ็ตสุดล้ำ และนวัตกรรมใหม่ๆส่งท้ายปี",
     "categories": [
-        "Art & Design",
-        "Business"
+        "Technology"
     ],
     "start_date": "1 ตุลาคม 2563",
     "end_date": "4 ตุลาคม 2563",
@@ -14,6 +13,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2020/06/Moblie_Expo_2020_400x300_9a52b1.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:27:32",
+    "timestamp": "2025-05-07 16:20:27",
     "status": "past"
 }

@@ -2,8 +2,8 @@
     "title": "Lotus’s 30th Anniversary with Gong Yoo in Bangkok",
     "description": "เป็นกิจกรรมสำหรับลูกค้าที่มียอดซื้อสินค้าสูง และคัดเลือกเลือกโดย Tesco Lotus ไม่มีการจำหน่ายบัตร",
     "categories": [
-        "Concert",
-        "Others"
+        "Others",
+        "Concert"
     ],
     "start_date": "26 ตุลาคม 2024",
     "end_date": "26 ตุลาคม 2024",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2024/10-11-Lotus-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:41",
+    "timestamp": "2025-05-07 16:23:48",
     "status": "past"
 }

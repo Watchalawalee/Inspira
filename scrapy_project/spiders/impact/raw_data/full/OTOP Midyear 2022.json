@@ -2,7 +2,8 @@
     "title": "OTOP Midyear 2022",
     "description": "สุขช้อป สุขใจ สุขทั่วไทยรวมไว้ในที่เดียว",
     "categories": [
-        "Others"
+        "Concert",
+        "Food & Drink"
     ],
     "start_date": "04 มิถุนายน 2022",
     "end_date": "12 มิถุนายน 2022",
@@ -13,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2022/05-19-otopmidyear2022-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:15",
+    "timestamp": "2025-05-07 16:23:22",
     "status": "past"
 }

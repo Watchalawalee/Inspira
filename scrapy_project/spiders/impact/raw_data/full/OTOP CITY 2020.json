@@ -2,8 +2,8 @@
     "title": "OTOP CITY 2020",
     "description": "- ของขวัญปีใหม่ ล้ำค่าถูกใจ รวมไว้ใน OTOP City 2020 \r\n- หลากหลายศิลปิน OTOP ของมีค่า ผ้างดงาม อาหารชวนชิม และชุมชนท่องเที่ยว OTOP นวัตวิถี",
     "categories": [
-        "Others",
-        "Art & Design"
+        "Art & Design",
+        "Concert"
     ],
     "start_date": "19 ธันวาคม 2020",
     "end_date": "27 ธันวาคม 2020",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2020/12-09-otopcity2020-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:07",
+    "timestamp": "2025-05-07 16:23:15",
     "status": "past"
 }

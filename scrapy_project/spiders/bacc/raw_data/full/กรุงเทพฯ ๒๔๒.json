@@ -2,8 +2,8 @@
     "title": "กรุงเทพฯ ๒๔๒",
     "description": "null",
     "categories": [
-        "Others",
-        "Concert"
+        "Concert",
+        "Others"
     ],
     "start_date": "23 มกราคม 2024",
     "end_date": "19 พฤษภาคม 2024",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bacc.or.th/wp-content/uploads/2024/01/BACC_Bangkok-242-pr-graphic-08-scaled.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:22:34",
+    "timestamp": "2025-05-07 16:15:49",
     "status": "past"
 }

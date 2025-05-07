@@ -3,7 +3,7 @@
     "description": "ค่าบัตรเข้าชมงาน 100 บาท วันผู้สื่อข่าวและวีไอพี วันที่ 01 ธันวาคม 2563 \r\nพิธีเปิดงาน และวันการกุศล วันที่ 02 ธันวาคม 2563 \r\nวันจัดแสดงสำหรับบุคคลทั่วไป วันที่ 03-13 ธันวาคม 2563 \r\nจ. - ศ. เปิดเวลา 12:00-22:00 น. \r\nส. - อา. และวันหยุดนักขัตฤกษ์ เปิดเวลา 11:00-22:00 น.",
     "categories": [
         "Concert",
-        "Art & Design"
+        "Others"
     ],
     "start_date": "02 ธันวาคม 2020",
     "end_date": "13 ธันวาคม 2020",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2020/07-30-the37thmotorexpo2020-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:06",
+    "timestamp": "2025-05-07 16:23:14",
     "status": "past"
 }

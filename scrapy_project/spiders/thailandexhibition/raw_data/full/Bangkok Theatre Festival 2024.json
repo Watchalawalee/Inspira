@@ -2,8 +2,8 @@
     "title": "Bangkok Theatre Festival 2024",
     "description": "Bangkok Theatre Festival 2024วันที่ 9 - 24 พฤศจิกายน 2567ณ หอศิลปวัฒนธรรมแห่งกรุงเทพมหานคร, TK Park และพื้นที่รอบกรุงเทพฯมาร่วมจอย ร่วมม่วน ทั้งศิลปินและผู้รับชมกับเทศกาลที่รวบรวมการแสดงในกรุงเทพฯ ไว้มากที่สุดงานหนึ่ง ”Bangkok Theatre Festival 2024“ กับเทศกาลที่รวบรวมการแสดงในกรุงเทพฯ ไว้มากที่สุดงานหนึ่ง ใน 2 พื้นที่หลัก (BACC และ TK Park) และพื้นที่ต่าง ๆ รอบกรุงเทพฯดูโปรแกรมได้ที่เว็บไซต์ www.bangkoktheatrefest.com",
     "categories": [
-        "Concert",
-        "Art & Design"
+        "Art & Design",
+        "Concert"
     ],
     "start_date": "9 พฤศจิกายน 2024",
     "end_date": "24 พฤศจิกายน 2024",
@@ -14,6 +14,6 @@
     "ticket": "ไม่มีค่าเข้าชม",
     "ticket_price": null,
     "reliability_score": 2,
-    "timestamp": "2025-04-19 19:35:02",
+    "timestamp": "2025-05-07 16:24:52",
     "status": "past"
 }

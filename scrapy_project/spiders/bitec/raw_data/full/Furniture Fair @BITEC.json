@@ -1,18 +1,19 @@
 {
     "title": "Furniture Fair @BITEC",
-    "description": "“ใหญ่กว่า ครบกว่า คุ้มสุด” งานเดียวที่ตอบโจทย์แบบครบทั้งบ้าน งานเดียวที่รวบรวมเฟอร์นิเจอร์ไว้มากที่สุด และสินค้าตกแต่งบ้าน แถมยังมีสินค้าอื่นๆ มาให้เลือกชมเลือกซื้ออีกเพียบ! เตรียมตัวให้พร้อมแล้วมาช้อปกันในงาน Furniture Fair ที่ ไบเทค ผู้จัดงาน บริษัท เวิลด์ แฟร์ จำกัด 1,3,5,7 ซอยลาดพร้าว 128/1 ถนนลาดพร้าว แขวงคลองจั่น เขตบางกะปิ กรุงเทพฯ 10240",
+    "description": "รายละเอียดงาน : งานแสดงสินค้าเฟอร์นิเจอร์ สินค้าตกแต่งบ้าน ที่ครบกว่า คุ้มกว่า ถูกคัดสรรมา ทั้งดีไซน์ และคุณภาพ มาให้ได้สัมผัสและทดลองสินค้าจริง พร้อมโปรโมชั่นสุดพิเศษที่จัดให้ แบบเอ็กซ์คลูซีฟ ทั้งลด ทั้งแถม ในงาน Furniture Fair @Bitec",
     "categories": [
-        "Home & Furniture"
+        "Home & Furniture",
+        "Art & Design"
     ],
-    "start_date": "20 กรกฎาคม 2567",
-    "end_date": "29 กรกฎาคม 2567",
+    "start_date": "1 มิถุนายน 2568",
+    "end_date": "1 มิถุนายน 2568",
     "event_slot_time": "10:30 - 20:30",
-    "location": "Bitec ฮอลล์ 102-104",
-    "url": "http://www.worldfair.co.th",
+    "location": "Bitec ฮอลล์ 103 - 104",
+    "url": "https://www.facebook.com/WorldFairExhibition",
     "ticket": "ไม่มีค่าเข้าชม",
     "ticket_price": null,
-    "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2024/06/AW_ส่งไฟล์แบนเนอร์อัพเดต-1170x600-px-1-1024x525.jpg",
+    "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2025/04/B125_website_1170x600_0-1024x525.png",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:31:40",
-    "status": "past"
+    "timestamp": "2025-05-07 16:22:17",
+    "status": "upcoming"
 }

@@ -2,7 +2,8 @@
     "title": "2022 K-POP MASTER IN BANGKOK",
     "description": "Concert By Treasure / Bambam / Jackson Wang บัตรราคา 8,900 / 6,500 / 5,500 / 4,500 / 3,500 / 3,000 บาท",
     "categories": [
-        "Concert"
+        "Concert",
+        "Others"
     ],
     "start_date": "31 กรกฎาคม 2022",
     "end_date": "31 กรกฎาคม 2022",
@@ -20,6 +21,6 @@
     ],
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2022/07-18-kpopmaster-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:16",
+    "timestamp": "2025-05-07 16:23:23",
     "status": "past"
 }

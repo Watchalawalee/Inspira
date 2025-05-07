@@ -1,8 +1,9 @@
 {
     "title": "Tour & Trail : กิจกรรมนำชมและสำรวจนิทรรศการศิลปะ",
-    "description": "สอบถามรายละเอียดเพิ่มเติมได้ที่ ฝ่ายการศึกษา หอศิลปกรุงเทพฯ โทร 02-214-6630 ต่อ 519 Email: [email protected] (/cdn-cgi/l/email-protection#365352435557425f5958765457555518594418425e)",
+    "description": "สอบถามรายละเอียดเพิ่มเติมได้ที่ ฝ่ายการศึกษา หอศิลปกรุงเทพฯ โทร 02-214-6630 ต่อ 519 Email: [email protected] (/cdn-cgi/l/email-protection#e38687968082978a8c8da381828080cd8c91cd978b)",
     "categories": [
-        "Art & Design"
+        "Art & Design",
+        "Education"
     ],
     "start_date": "1 สิงหาคม 2024",
     "end_date": "4 สิงหาคม 2024",
@@ -13,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bacc.or.th/wp-content/uploads/2024/07/TourTrail_Thumbnail.png",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:21:44",
+    "timestamp": "2025-05-07 16:14:57",
     "status": "past"
 }

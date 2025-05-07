@@ -2,8 +2,8 @@
     "title": "The Nova Expo 2025",
     "description": "null",
     "categories": [
-        "Others",
-        "Technology"
+        "Technology",
+        "Concert"
     ],
     "start_date": "12 มีนาคม 2568",
     "end_date": "14 มีนาคม 2568",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2025/01/1_banner-1170x600_KV-BITEC-1024x525.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:31:52",
+    "timestamp": "2025-05-07 16:22:14",
     "status": "past"
 }

@@ -5,7 +5,7 @@
     "end_date": "ไม่ระบุ",
     "categories": [
         "Art & Design",
-        "Concert"
+        "Education"
     ],
     "event_slot_time": "9:00-16:30",
     "location": "พิพิธภัณฑ์จุฬาลงกรณ์มหาวิทยาลัย",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://framerusercontent.com/images/pt1ey3VOuHBBEdERYEUjYgyYYXQ.jpg",
     "reliability_score": 2,
-    "timestamp": "2025-04-19 19:26:57",
+    "timestamp": "2025-05-07 16:20:05",
     "status": "unknown"
 }

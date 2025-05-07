@@ -3,7 +3,7 @@
     "description": "บัตรราคา: 5,500 / 3,900 / 2,900 / 1,900 บาท",
     "categories": [
         "Concert",
-        "Art & Design"
+        "Others"
     ],
     "start_date": "23 ธันวาคม 2023",
     "end_date": "23 ธันวาคม 2023",
@@ -19,6 +19,6 @@
     ],
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2023/11-30-merrypopfesta2023-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:33",
+    "timestamp": "2025-05-07 16:23:39",
     "status": "past"
 }

@@ -2,7 +2,8 @@
     "title": "โร้ด ทู โซนิค แบง",
     "description": "บัตรราคา 2,600 - Early Bird (phase 1) / 2,900 - Early Bird (phase 2) / 3,500 - general ticket / 4,500 - at door",
     "categories": [
-        "Concert"
+        "Concert",
+        "Others"
     ],
     "start_date": "12 สิงหาคม 2023",
     "end_date": "12 สิงหาคม 2023",
@@ -18,6 +19,6 @@
     ],
     "cover_picture": "null",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:28",
+    "timestamp": "2025-05-07 16:23:34",
     "status": "past"
 }

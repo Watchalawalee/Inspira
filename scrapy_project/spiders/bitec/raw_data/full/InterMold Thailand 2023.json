@@ -2,8 +2,8 @@
     "title": "InterMold Thailand 2023",
     "description": "งานแสดงเทคโนโลยีการผลิตแม่พิมพ์และชิ้นส่วนแม่พิมพ์ ที่ครบครันที่สุดในอาเซียน ครั้งที่ 29",
     "categories": [
-        "Technology",
-        "Others"
+        "Book",
+        "Technology"
     ],
     "start_date": "21 มิถุนายน 2566",
     "end_date": "24 มิถุนายน 2566",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2023/05/ITM-1170x600-1-1024x525.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:29:31",
+    "timestamp": "2025-05-07 16:21:21",
     "status": "past"
 }

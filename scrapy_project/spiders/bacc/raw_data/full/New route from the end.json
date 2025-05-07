@@ -2,8 +2,7 @@
     "title": "New route from the end",
     "description": "null",
     "categories": [
-        "Technology",
-        "Concert"
+        "Technology"
     ],
     "start_date": "20 กรกฎาคม 2024",
     "end_date": "18 สิงหาคม 2024",
@@ -14,6 +13,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bacc.or.th/wp-content/uploads/2024/07/Poster-1.png",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:21:43",
+    "timestamp": "2025-05-07 16:14:56",
     "status": "past"
 }

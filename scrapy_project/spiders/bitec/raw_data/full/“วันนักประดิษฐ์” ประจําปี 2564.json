@@ -2,7 +2,8 @@
     "title": "“วันนักประดิษฐ์” ประจําปี 2564",
     "description": "รายละเอียดเพิ่มเติม: https://inventorday.nrct.go.th/ewt_news.php?nid=172 จัดงานโดย: สํานักงานการวิจัยแห่งชาติ (วช.) กระทรวงการอุดมศึกษา วิทยาศาสตร์ วิจัยและนวัตกรรม",
     "categories": [
-        "Education"
+        "Education",
+        "Technology"
     ],
     "start_date": "2 กุมภาพันธ์ 2565",
     "end_date": "6 กุมภาพันธ์ 2565",
@@ -13,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2022/01/วันนักประดิษฐ์-2022-1170x600-1-1024x525.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:28:00",
+    "timestamp": "2025-05-07 16:20:47",
     "status": "past"
 }

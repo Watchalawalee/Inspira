@@ -2,7 +2,8 @@
     "title": "DMD LAND 1st Fan Meeting Concert of Domundi",
     "description": "บัตรราคา 7,500 / 6,500 / 5,500 / 3,500 / 2,500 / 1,200 บาท",
     "categories": [
-        "Concert"
+        "Concert",
+        "Others"
     ],
     "start_date": "19 มิถุนายน 2022",
     "end_date": "19 มิถุนายน 2022",
@@ -18,6 +19,6 @@
     ],
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2022/06-13-dmdland-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:15",
+    "timestamp": "2025-05-07 16:23:22",
     "status": "past"
 }

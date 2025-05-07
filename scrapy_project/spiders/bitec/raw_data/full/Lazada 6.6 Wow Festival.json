@@ -2,8 +2,8 @@
     "title": "Lazada 6.6 Wow Festival",
     "description": "เตรียมรับความมันส์ กับเฟสติวัลสุดปังกลางปี! ในงาน Lazada 6.6 WOW Festival ขนทัพทีมศิลปินกว่า 30 ชีวิตที่จะมาสร้างความว้าวให้กับคุณ!",
     "categories": [
-        "Art & Design",
-        "Concert"
+        "Concert",
+        "Art & Design"
     ],
     "start_date": "6 มิถุนายน 2566",
     "end_date": "6 มิถุนายน 2566",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2023/06/banner-social-media-01-1024x940.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:29:35",
+    "timestamp": "2025-05-07 16:21:21",
     "status": "past"
 }

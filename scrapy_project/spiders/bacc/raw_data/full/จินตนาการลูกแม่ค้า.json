@@ -2,8 +2,8 @@
     "title": "จินตนาการลูกแม่ค้า",
     "description": "null",
     "categories": [
-        "Others",
-        "Art & Design"
+        "Art & Design",
+        "Concert"
     ],
     "start_date": "1 กุมภาพันธ์ 2024",
     "end_date": "25 กุมภาพันธ์ 2024",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bacc.or.th/wp-content/uploads/2024/01/Website-E-Newslatter.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:22:30",
+    "timestamp": "2025-05-07 16:15:45",
     "status": "past"
 }

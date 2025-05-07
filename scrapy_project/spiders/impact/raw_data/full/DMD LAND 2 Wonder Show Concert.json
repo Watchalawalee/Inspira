@@ -2,7 +2,8 @@
     "title": "DMD LAND 2 Wonder Show Concert",
     "description": "บัตรราคา: 7,900 / 7,500 / 7,000 / 6,500 / 5,500 / 4,500 / 3,500 / 2,500 / 1,500 / 900 บาท",
     "categories": [
-        "Concert"
+        "Concert",
+        "Others"
     ],
     "start_date": "13 มกราคม 2024",
     "end_date": "13 มกราคม 2024",
@@ -21,6 +22,6 @@
     ],
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2024/01-04-dmdland2-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:33",
+    "timestamp": "2025-05-07 16:23:40",
     "status": "past"
 }

@@ -2,8 +2,8 @@
     "title": "Sneakers EXPO",
     "description": "งานเซลครั้งยิ่งใหญ่ประจำปี ” Sneakers EXPO ” เตรียมพบกับสินค้าราคาพิเศษ แบรนด์เอสิกส์ อดิดาส แชมเปียส์ โอนิซึกะ ห้อง SILK 1-2 ชั้น 2 ไบเทค",
     "categories": [
-        "Business",
-        "Others"
+        "Education",
+        "Business"
     ],
     "start_date": "25 พฤศจิกายน 2564",
     "end_date": "28 พฤศจิกายน 2564",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2021/11/SNEAKER-EXPO-Logo-1170x600-1-1024x525.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:27:50",
+    "timestamp": "2025-05-07 16:20:42",
     "status": "past"
 }

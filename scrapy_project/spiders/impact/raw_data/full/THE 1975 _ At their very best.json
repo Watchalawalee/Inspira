@@ -2,7 +2,8 @@
     "title": "THE 1975 : At their very best",
     "description": "บัตรราคา 6,500 / 6,000 / 5,500 / 5,000 / 4,500 / 3,500 / 2,500 บาท",
     "categories": [
-        "Concert"
+        "Concert",
+        "Others"
     ],
     "start_date": "04 เมษายน 2023",
     "end_date": "04 เมษายน 2023",
@@ -20,6 +21,6 @@
     ],
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2023/01-20-the1975-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:25",
+    "timestamp": "2025-05-07 16:23:31",
     "status": "past"
 }

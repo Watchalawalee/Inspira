@@ -2,8 +2,7 @@
     "title": "บ้านและสวนแฟร์  : Living Festival 2023",
     "description": "งานแสดงและขายสินค้าครบวงจรที่เกี่ยวกับบ้านและสวน บนพื้นที่ต่อเนื่องและยิ่งใหญ่กว่าทุกปี ทั้งในเชิง Design Living และ Outdoor Living รวมทั้งนิทรรศการและกิจกรรมที่ให้ความรู้ข่าวสาร ข้อมูลที่เกี่ยวกับที่อยู่อาศัย ให้ความเพลิดเพลินแก่คนรักบ้าน ประดุจเดินเข้าไปในนิตยสารบ้านและสวน",
     "categories": [
-        "Home & Furniture",
-        "Art & Design"
+        "Home & Furniture"
     ],
     "start_date": "27 ตุลาคม 2023",
     "end_date": "05 พฤศจิกายน 2023",
@@ -14,6 +13,6 @@
     "ticket_price": null,
     "cover_picture": "null",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:30",
+    "timestamp": "2025-05-07 16:23:37",
     "status": "past"
 }

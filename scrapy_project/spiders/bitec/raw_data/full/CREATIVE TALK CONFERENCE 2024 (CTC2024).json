@@ -2,7 +2,8 @@
     "title": "CREATIVE TALK CONFERENCE 2024 (CTC2024)",
     "description": "null",
     "categories": [
-        "Business"
+        "Others",
+        "Concert"
     ],
     "start_date": "7 มิถุนายน 2567",
     "end_date": "8 มิถุนายน 2567",
@@ -13,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2024/05/Bitec-1170x600-1-1024x525.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:31:06",
+    "timestamp": "2025-05-07 16:21:52",
     "status": "past"
 }

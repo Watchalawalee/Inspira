@@ -2,8 +2,8 @@
     "title": "COCKTAILEVERLIVE",
     "description": "COCKTAILEVERLIVEวันที่ 30 มีนาคม 2568ณ ราชมังคลากีฬาสถานเตรียมพบกับคอนเสิร์ตใหญ่เต็มรูปแบบครั้งสุดท้าย ณ ราชมังคลากีฬาสถาน เปิดขายบัตร 18 มกราคม 2568",
     "categories": [
-        "Art & Design",
-        "Concert"
+        "Concert",
+        "Art & Design"
     ],
     "start_date": "30 มีนาคม 2025",
     "end_date": "30 มีนาคม 2025",
@@ -14,6 +14,6 @@
     "ticket": "มีค่าเข้าชม",
     "ticket_price": null,
     "reliability_score": 2,
-    "timestamp": "2025-04-19 19:35:15",
+    "timestamp": "2025-05-07 16:25:09",
     "status": "past"
 }

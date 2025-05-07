@@ -2,7 +2,6 @@
     "title": "SPACE JOURNEY BANGKOK",
     "description": "สุดยอดนิทรรศการอวกาศอันยิ่งใหญ่ของโลก “SPACE JOURNEY BANGKOK” การเดินทางของ Cosmos Discovery จัดแสดงครั้งแรกในเอเชียโดยเริ่มจากประเทศไทย พบกับ 10 ห้องนิทรรศการแสดงวัตถุจริงหาชมได้ยากที่ผ่านการใช้งานในอวกาศ แบบเสมือน จากสหรัฐอเมริกา โซเวียต",
     "categories": [
-        "Others",
         "Art & Design"
     ],
     "start_date": "24 เมษายน 2568",
@@ -14,6 +13,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2024/12/Banner-bitec-Social-01_0-1024x525.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:31:40",
-    "status": "upcoming"
+    "timestamp": "2025-05-07 16:22:09",
+    "status": "past"
 }

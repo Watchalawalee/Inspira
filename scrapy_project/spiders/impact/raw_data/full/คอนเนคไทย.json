@@ -2,8 +2,8 @@
     "title": "คอนเนคไทย",
     "description": "null",
     "categories": [
-        "Others",
-        "Art & Design"
+        "Art & Design",
+        "Concert"
     ],
     "start_date": "29 เมษายน 2023",
     "end_date": "30 เมษายน 2023",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2023/02-03-konnec-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:25",
+    "timestamp": "2025-05-07 16:23:31",
     "status": "past"
 }

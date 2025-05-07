@@ -2,7 +2,8 @@
     "title": "The Concert Application presents Three Man Down Live in Impact Arena 2023",
     "description": "The Concert Application presents  Three Man Down Live At Impact Arena 2023 \r\nครั้งแรกกับคอนเสิร์ตใหญ่ที่สุดของวง Three Man Down ราคาบัตร :  4,000 / 3,500 / 3,000 / 2,500 / 2,000 / 1,500 บาท",
     "categories": [
-        "Concert"
+        "Concert",
+        "Technology"
     ],
     "start_date": "19 สิงหาคม 2023",
     "end_date": "19 สิงหาคม 2023",
@@ -18,6 +19,6 @@
     ],
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2023/06-27-TMD-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:28",
+    "timestamp": "2025-05-07 16:23:35",
     "status": "past"
 }

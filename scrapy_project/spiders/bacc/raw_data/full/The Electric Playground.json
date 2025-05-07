@@ -2,8 +2,8 @@
     "title": "The Electric Playground",
     "description": "โดย สำนักงานนวัตกรรมแห่งชาติ (องค์การมหาชน) สอบถามรายละเอียดเพิ่มเติมได้ที่ คุณกังสดาล นาควิโรจน์ โทร 086-7516669",
     "categories": [
-        "Art & Design",
-        "Others"
+        "Technology",
+        "Art & Design"
     ],
     "start_date": "16 ธันวาคม 2021",
     "end_date": "17 ธันวาคม 2021",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bacc.or.th/wp-content/uploads/2021/12/Poster-10-Innovation-500x738_1-1.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:25:30",
+    "timestamp": "2025-05-07 16:18:41",
     "status": "past"
 }

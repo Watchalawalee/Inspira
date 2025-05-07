@@ -3,7 +3,7 @@
     "description": "งานแสดงสินค้าไลฟ์สไตล์ เพื่อคนรักสุขภาพ อาหารการกิน เทรนด์สุขภาพ รวมถึงสินค้า หรือ ธุรกิจ บริการที่เกี่ยวข้องในการใช้ชีวิตที่ดีขึ้น",
     "categories": [
         "Business",
-        "Art & Design"
+        "Beauty & Fashion"
     ],
     "start_date": "7 สิงหาคม 2563",
     "end_date": "16 สิงหาคม 2563",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2020/06/kindee2020-1024x487.png",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:27:21",
+    "timestamp": "2025-05-07 16:20:24",
     "status": "past"
 }

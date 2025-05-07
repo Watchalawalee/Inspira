@@ -2,7 +2,8 @@
     "title": "2024 IU HEREH WORLD TOUR CONCERT IN BANGKOK",
     "description": "บัตรราคา: 6,500 / 5,500 / 4,500 / 3,500 / 2,500 บาท",
     "categories": [
-        "Concert"
+        "Concert",
+        "Others"
     ],
     "start_date": "29 มิถุนายน 2024",
     "end_date": "30 มิถุนายน 2024",
@@ -18,6 +19,6 @@
     ],
     "cover_picture": "https://www.impact.co.th/userfiles/images/Event_calendar/2024/06-14-2024-iu-L.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:33:37",
+    "timestamp": "2025-05-07 16:23:44",
     "status": "past"
 }

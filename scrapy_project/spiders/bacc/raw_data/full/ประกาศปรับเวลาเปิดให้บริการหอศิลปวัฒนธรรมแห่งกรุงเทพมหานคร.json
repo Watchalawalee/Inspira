@@ -3,7 +3,7 @@
     "description": "ประกาศ หอศิลปวัฒนธรรมแห่งกรุงเทพมหานคร จะปรับเวลาเปิดให้บริการเป็น 10.00 – 20.00 น. ตั้งแต่วันที่ 1 กรกฎาคม 2565",
     "categories": [
         "Book",
-        "Art & Design"
+        "Concert"
     ],
     "start_date": "22 มิถุนายน 2022",
     "end_date": "30 ตุลาคม 2022",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bacc.or.th/wp-content/uploads/2022/06/bacc-new-open_IG-1.png",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:24:54",
+    "timestamp": "2025-05-07 16:18:03",
     "status": "past"
 }

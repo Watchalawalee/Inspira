@@ -3,7 +3,7 @@
     "description": "The 16th Thailand Coffee Tea & Drinks expo, combined with the 16th Bakery & Ice Cream, is the longest and most established platform for café, bakery and ice cream-related businesses to showcase their latest products and meet with potential buyers.",
     "categories": [
         "Technology",
-        "Business"
+        "Concert"
     ],
     "start_date": "25 สิงหาคม 2565",
     "end_date": "28 สิงหาคม 2565",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2022/06/1170x600-px-CoffeeBakery-1024x525.jpg",
     "reliability_score": 5,
-    "timestamp": "2025-04-19 19:28:28",
+    "timestamp": "2025-05-07 16:20:59",
     "status": "past"
 }

@@ -7,7 +7,7 @@ from datetime import datetime
 # -----------------------
 # CONFIG
 # -----------------------
-MONGO_URI = "mongodb://localhost:27017"
+MONGO_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
 DB_NAME = "exhibition_db"
 COLLECTION_NAME = "exhibitions"
 MERGE_DIR = "./merge_data"

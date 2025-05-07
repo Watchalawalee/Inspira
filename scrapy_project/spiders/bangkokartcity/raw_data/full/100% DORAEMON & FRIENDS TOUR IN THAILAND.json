@@ -4,8 +4,8 @@
     "start_date": "ไม่ระบุ",
     "end_date": "ไม่ระบุ",
     "categories": [
-        "Others",
-        "Art & Design"
+        "Art & Design",
+        "Others"
     ],
     "event_slot_time": "10:00-22:00",
     "location": "ไอคอนสยาม",
@@ -14,6 +14,6 @@
     "ticket_price": null,
     "cover_picture": "https://framerusercontent.com/images/bswqMUofZn8UA0C63ToHhYf8s.jpg",
     "reliability_score": 2,
-    "timestamp": "2025-04-19 19:26:54",
+    "timestamp": "2025-05-07 16:20:05",
     "status": "unknown"
 }
