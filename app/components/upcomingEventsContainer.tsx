@@ -55,6 +55,15 @@ const UpcomingEventsContainer: React.FC<UpcomingEventsProps> = ({ onViewAll }) =
     fetchEvents();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length);
+    }, 2000);
+
+    // เคลียร์ Interval เมื่อ component ถูก unmount
+    return () => clearInterval(interval);
+  }, [events]);
+
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length);
   };

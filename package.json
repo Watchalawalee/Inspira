@@ -17,6 +17,7 @@
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide": "^4.1.4",
     "@svgr/webpack": "^8.1.0",
+    "@swc/helpers": "^0.5.17",
     "axios": "^1.8.4",
     "framer-motion": "^12.8.0",
     "lucide-react": "^0.507.0",
