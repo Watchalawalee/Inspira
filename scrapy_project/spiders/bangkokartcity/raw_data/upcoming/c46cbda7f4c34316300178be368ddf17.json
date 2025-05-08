@@ -5,7 +5,7 @@
   "end_date": "11 พฤษภาคม 2025",
   "categories": [
     "Art & Design",
-    "Concert"
+    "Others"
   ],
   "event_slot_time": "11:00-16:00",
   "location": "เพลย์ อาร์ต เฮาส์",
@@ -14,7 +14,7 @@
   "ticket_price": null,
   "cover_picture": "https://framerusercontent.com/images/JTpjga2g5Xg8PXSgpSgYe06yI0E.jpg",
   "reliability_score": 2,
-  "timestamp": "2025-04-30 23:03:42",
+  "timestamp": "2025-05-08 18:18:32",
   "status": "ongoing",
   "original_filename": "Still Here.json"
 }

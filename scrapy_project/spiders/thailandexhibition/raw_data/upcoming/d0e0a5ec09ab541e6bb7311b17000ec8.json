@@ -2,8 +2,8 @@
   "title": "Carnival Fun Fair",
   "description": "Carnival Fun Fairวันที่ 30 เมษายน - 13 พฤษภาคม 2568ณ ลานกิจกรรม ชั้น G เซ็นทรัล พระราม 3ส่งท้ายซัมเมอร์นี้ไปกับมหกรรมความสนุก ที่งาน Carnival Fun Fair EAT สุดฟินกับร้านอาหารสตรีทฟู้ดกว่า 30 ร้านค้าPLAY สุดมันส์ไปกับชิงช้าสวรรค์ บ้านลม และบ่อบอลFUN สุดเพลินไปในบรรยากาศแสนสนุก บัตรเครื่องเล่นราคา 150 บาท (เล่นได้ทั้ง 3 เครื่อง)บ้านลม บ่อบอล ไม่จำกัดเวลาการเล่นเฉพาะชิงช้าสวรรค์เล่นได้แค่ 1 ครั้งเท่านั้น",
   "categories": [
-    "Others",
-    "Art & Design"
+    "Home & Furniture",
+    "Food & Drink"
   ],
   "start_date": "30 เมษายน 2025",
   "end_date": "13 พฤษภาคม 2025",
@@ -16,7 +16,7 @@
     150
   ],
   "reliability_score": 2,
-  "timestamp": "2025-04-30 23:05:50",
+  "timestamp": "2025-05-08 18:20:49",
   "status": "ongoing",
   "original_filename": "Carnival Fun Fair.json"
 }

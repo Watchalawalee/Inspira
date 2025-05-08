@@ -2,8 +2,7 @@
   "title": "แฟ็กเทค 2025",
   "description": "งานแสดงด้านระบบเทคโนโลยีการก่อสร้าง ดูแลรักษา และบริหารจัดการโรงงาน งานเดียวในอาเซียน ครั้งที่ 4",
   "categories": [
-    "Education",
-    "Others"
+    "Education"
   ],
   "start_date": "18 มิถุนายน 2568",
   "end_date": "21 มิถุนายน 2568",
@@ -14,7 +13,7 @@
   "ticket_price": null,
   "cover_picture": "https://www.bitec.co.th/wp-content/uploads/2025/02/FacTech-2-1024x525.png",
   "reliability_score": 5,
-  "timestamp": "2025-04-30 23:03:57",
+  "timestamp": "2025-05-08 18:18:49",
   "status": "upcoming",
   "original_filename": "แฟ็กเทค 2025.json"
 }

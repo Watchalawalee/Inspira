@@ -4,7 +4,8 @@
   "start_date": "26 เมษายน 2025",
   "end_date": "15 มิถุนายน 2025",
   "categories": [
-    "Art & Design"
+    "Art & Design",
+    "Technology"
   ],
   "event_slot_time": "12:30-18:00",
   "location": "VS Gallery",
@@ -13,7 +14,7 @@
   "ticket_price": null,
   "cover_picture": "https://framerusercontent.com/images/vq4PKZlzQxZ8dk23NH3g0Va85vQ.jpg",
   "reliability_score": 2,
-  "timestamp": "2025-04-30 23:03:41",
+  "timestamp": "2025-05-08 18:18:29",
   "status": "ongoing",
   "original_filename": " Pindrop(red).json"
 }

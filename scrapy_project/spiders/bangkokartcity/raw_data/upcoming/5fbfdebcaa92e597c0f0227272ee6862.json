@@ -4,8 +4,7 @@
   "start_date": "24 เมษายน 2025",
   "end_date": "15 พฤษภาคม 2025",
   "categories": [
-    "Art & Design",
-    "Concert"
+    "Art & Design"
   ],
   "event_slot_time": "10:00-18:00",
   "location": "อาร์เดลเธิร์ดเพลส แกลเลอรี่",
@@ -14,7 +13,7 @@
   "ticket_price": null,
   "cover_picture": "https://framerusercontent.com/images/o3dwlYVGPxGbmHIACqmJOWBXrI.jpg",
   "reliability_score": 2,
-  "timestamp": "2025-04-30 23:03:38",
+  "timestamp": "2025-05-08 18:18:31",
   "status": "ongoing",
   "original_filename": "The Space of Exchange.json"
 }

@@ -4,7 +4,8 @@
   "start_date": "13 ธันวาคม 2024",
   "end_date": "30 กรกฎาคม 2025",
   "categories": [
-    "Art & Design"
+    "Art & Design",
+    "Concert"
   ],
   "event_slot_time": "11:00-19:00",
   "location": "แมด - มัน มัน อาร์ต เดสทิเนชั่น",
@@ -13,7 +14,7 @@
   "ticket_price": null,
   "cover_picture": "https://framerusercontent.com/images/2vWyzz42MaodCfjPZml7ErNsimU.jpg",
   "reliability_score": 2,
-  "timestamp": "2025-04-30 23:03:39",
+  "timestamp": "2025-05-08 18:18:30",
   "status": "ongoing",
   "original_filename": "พาใจกลับบ้าน Homecoming.json"
 }

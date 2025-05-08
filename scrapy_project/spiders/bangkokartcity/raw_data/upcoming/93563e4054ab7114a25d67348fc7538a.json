@@ -4,8 +4,8 @@
   "start_date": "12 มิถุนายน 2024",
   "end_date": "30 มิถุนายน 2025",
   "categories": [
-    "Art & Design",
-    "Home & Furniture"
+    "Home & Furniture",
+    "Art & Design"
   ],
   "event_slot_time": "11:00-19:00",
   "location": "แมด - มัน มัน อาร์ต เดสทิเนชั่น",
@@ -14,7 +14,7 @@
   "ticket_price": null,
   "cover_picture": "https://framerusercontent.com/images/DBCPyV6SA4Rju4EZ6aj17hEwq6U.jpg",
   "reliability_score": 2,
-  "timestamp": "2025-04-30 23:03:39",
+  "timestamp": "2025-05-08 18:18:30",
   "status": "ongoing",
   "original_filename": "พาใจกลับบ้าน.json"
 }

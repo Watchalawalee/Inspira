@@ -46,7 +46,7 @@ def process_json_file(file_path):
 
 # 🔍 กำหนด path พื้นฐาน
 base_folders = ["./scrapy_project/spiders"]
-modes = ["full", "upcoming"]
+modes = ["upcoming"]
 
 for base in base_folders:
     for mode in modes:

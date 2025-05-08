@@ -574,8 +574,8 @@ if __name__ == "__main__":
         print(f"📁 บันทึกข้อมูลทั้งหมดหลัง merge ที่: {output_all_path}")
 
 # ครั้งแรก (รวม full)
-#python merge.py full
+# python merge.py --mode=full
 
 # ครั้งถัดไป (รวม upcoming)
-#python merge.py upcoming
+# python merge.py --mode=upcoming
 

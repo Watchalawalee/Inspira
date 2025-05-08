@@ -4,8 +4,8 @@
   "start_date": "30 มกราคม 2025",
   "end_date": "27 ธันวาคม 2025",
   "categories": [
-    "Others",
-    "Art & Design"
+    "Art & Design",
+    "Others"
   ],
   "event_slot_time": "10:00-22:00",
   "location": "เอ็มบีเค เซ็นเตอร์",
@@ -14,7 +14,7 @@
   "ticket_price": null,
   "cover_picture": "https://framerusercontent.com/images/eS3A3zupn7fgCs0uYAfD1IbI8bE.jpg",
   "reliability_score": 2,
-  "timestamp": "2025-04-30 23:03:39",
+  "timestamp": "2025-05-08 18:18:30",
   "status": "ongoing",
   "original_filename": "โขน - นาฏยศาสตร์แห่งแผ่นดิน 2025.json"
 }

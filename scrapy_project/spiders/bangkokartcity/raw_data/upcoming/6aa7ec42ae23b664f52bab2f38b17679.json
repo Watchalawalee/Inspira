@@ -4,7 +4,8 @@
   "start_date": "24 มกราคม 2025",
   "end_date": "11 พฤษภาคม 2025",
   "categories": [
-    "Art & Design"
+    "Others",
+    "Concert"
   ],
   "event_slot_time": "10:00-22:00",
   "location": "ไอคอนสยาม",
@@ -13,7 +14,7 @@
   "ticket_price": null,
   "cover_picture": "https://framerusercontent.com/images/OHn5dySKaZZgLsNRql0vHRKYHs.jpg",
   "reliability_score": 2,
-  "timestamp": "2025-04-30 23:03:39",
+  "timestamp": "2025-05-08 18:18:30",
   "status": "ongoing",
   "original_filename": "The Little Prince Universe - An Immersive Journey.json"
 }

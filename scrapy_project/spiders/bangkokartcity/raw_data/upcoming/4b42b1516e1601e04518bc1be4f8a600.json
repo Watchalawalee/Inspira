@@ -4,8 +4,8 @@
   "start_date": "2 พฤศจิกายน 2024",
   "end_date": "25 พฤษภาคม 2025",
   "categories": [
-    "Art & Design",
-    "Others"
+    "Concert",
+    "Art & Design"
   ],
   "event_slot_time": "ไม่ระบุ",
   "location": "สวนสาธารณะเฉลิมพระเกียรติฯ บางบอน",
@@ -14,7 +14,7 @@
   "ticket_price": null,
   "cover_picture": "https://framerusercontent.com/images/F4eW1pN7e3NC52tdaMHpmfSnsY.jpg",
   "reliability_score": 2,
-  "timestamp": "2025-04-30 23:03:39",
+  "timestamp": "2025-05-08 18:18:30",
   "status": "ongoing",
   "original_filename": "กิจกรรมดนตรีในสวนกรุงเทพมหานคร.json"
 }
