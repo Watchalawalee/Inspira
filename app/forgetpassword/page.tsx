@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from 'next/image';
-
+import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 
 const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +12,21 @@ const ForgotPassword: React.FC = () => {
   const [verified, setVerified] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+
+  const pinRef = useRef<HTMLFormElement>(null);
+  const passwordRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (pinSent && pinRef.current) {
+      pinRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [pinSent]);
+
+  useEffect(() => {
+    if (verified && passwordRef.current) {
+      passwordRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [verified]);
 
   const sendPIN = async () => {
     if (!email) return setError("กรุณากรอกอีเมล");
@@ -87,80 +101,100 @@ const ForgotPassword: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-6 relative">
-    <Image
+    <div className="relative">
+      {/* 🌈 Background */}
+      <Image
         src="/bglogin.svg"
         alt="Background"
         width={1440}
         height={200}
-        className="absolute bottom-0 z-0 min-w-screen object-fill object-bottom"
-    />
-      <h2 className="text-2xl font-semibold text-[#5b78a4] mb-4">Forget password</h2>
-      <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md">
-        {/* Email Input */}
-        <label className="text-sm text-gray-700 mb-1">Enter your email</label>
-        <input
-          type="email"
-          className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#5b78a4]"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button
-          onClick={sendPIN}
-          className="w-full bg-[#5b78a4] text-white py-2 rounded-lg hover:bg-[#4a6795] transition"
-        >
-          Send PIN
-        </button>
+        className="absolute bottom-0 inset-x-0 z-0 w-full object-cover"
+      />
 
-        {/* PIN Form */}
-        {pinSent && (
-          <form onSubmit={confirmPIN} className="mt-6">
-            <label className="text-sm text-gray-700 mb-1">Enter PIN</label>
+      {/* 📄 Main content */}
+      <div
+        className={`flex flex-col items-center p-6 relative z-10 transition-all duration-500 ${
+          !pinSent && !verified
+            ? "min-h-screen justify-center"
+            : "h-screen justify-start overflow-y-auto"
+        }`}
+      >
+        <h2 className="text-2xl font-semibold text-[#5b78a4] mb-4 z-10">
+          Forget password
+        </h2>
+
+        <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md z-10 transition-all duration-500 space-y-6">
+          {/* Email input */}
+          <div>
+            <label className="text-sm text-gray-700 mb-1">Enter your email</label>
             <input
-              type="text"
-              maxLength={6}
-              className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#5b78a4]"
-              value={pin}
-              onChange={(e) => setPin(e.target.value)}
+              type="email"
+              className="w-full p-3 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-[#5b78a4]"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <button
-              type="submit"
-              className="w-full bg-[#5b78a4] text-white py-2 rounded-lg hover:bg-[#4a6795] transition"
+              onClick={sendPIN}
+              className="mt-4 w-full bg-[#5b78a4] text-white py-2 rounded-lg hover:bg-[#4a6795] transition"
             >
-              Confirm PIN
-            </button>
-          </form>
-        )}
-
-        {/* Password Reset */}
-        {verified && (
-          <div className="mt-6">
-            <label className="text-sm text-gray-700 mb-1">New Password</label>
-            <input
-              type="password"
-              className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#5b78a4]"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-            <label className="text-sm text-gray-700 mb-1">Confirm Password</label>
-            <input
-              type="password"
-              className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-[#5b78a4]"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <button
-              onClick={resetPassword}
-              className="w-full bg-[#5b78a4] text-white py-2 rounded-lg hover:bg-[#4a6795] transition"
-            >
-              Change Password
+              Send PIN
             </button>
           </div>
-        )}
 
-        {/* Feedback */}
-        {message && <p className="text-green-600 text-sm mt-4">{message}</p>}
-        {error && <p className="text-red-600 text-sm mt-4">{error}</p>}
+          {/* PIN form */}
+          {pinSent && (
+            <form ref={pinRef} onSubmit={confirmPIN}>
+              <label className="text-sm text-gray-700 mb-1">Enter PIN</label>
+              <input
+                type="text"
+                maxLength={6}
+                className="w-full p-3 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-[#5b78a4]"
+                value={pin}
+                onChange={(e) => setPin(e.target.value)}
+              />
+              <button
+                type="submit"
+                className="mt-4 w-full bg-[#5b78a4] text-white py-2 rounded-lg hover:bg-[#4a6795] transition"
+              >
+                Confirm PIN
+              </button>
+            </form>
+          )}
+
+          {/* New password */}
+          {verified && (
+            <div ref={passwordRef}>
+              <label className="text-sm text-gray-700 mb-1">New Password</label>
+              <input
+                type="password"
+                className="w-full p-3 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-[#5b78a4]"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+              <label className="text-sm text-gray-700 mt-4 mb-1">Confirm Password</label>
+              <input
+                type="password"
+                className="w-full p-3 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-[#5b78a4]"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <button
+                onClick={resetPassword}
+                className="mt-4 w-full bg-[#5b78a4] text-white py-2 rounded-lg hover:bg-[#4a6795] transition"
+              >
+                Change Password
+              </button>
+            </div>
+          )}
+
+          {/* Feedback */}
+          {(message || error) && (
+            <div className="pt-2">
+              {message && <p className="text-green-600 text-sm">{message}</p>}
+              {error && <p className="text-red-600 text-sm">{error}</p>}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

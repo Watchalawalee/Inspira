@@ -19,11 +19,18 @@ const ChangePassword: React.FC = () => {
 
     try {
       // ส่งข้อมูลเพื่อเปลี่ยนรหัสผ่าน (คุณสามารถปรับ endpoint ตามที่คุณใช้)
+      const token = localStorage.getItem('token');
+      if (!token) return setError("กรุณาเข้าสู่ระบบใหม่อีกครั้ง");
+
       const res = await fetch("http://localhost:5000/auth/change-password", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
         body: JSON.stringify({ oldPassword, newPassword }),
       });
+
 
       const data = await res.json();
       if (res.ok) {
