@@ -174,12 +174,20 @@ export default function EventDetailPage() {
           How to get there?
         </Link>
 
-        <Link
-          href={`/review/${slug}`}
+        <button
+          onClick={() => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+              alert("กรุณาเข้าสู่ระบบก่อนเขียนรีวิว");
+              router.push("/login");
+              return;
+            }
+            router.push(`/review/${slug}`);
+          }}
           className="bg-[#5b78a4] text-white py-2 px-6 rounded-lg shadow-2xl hover:bg-blue-700"
         >
           Write a Review
-        </Link>
+        </button>
       </div>
     </main>
   );
