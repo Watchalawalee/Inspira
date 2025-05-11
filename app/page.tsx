@@ -11,7 +11,7 @@ const Page = () => {
   useEffect(() => {
     const loadOngoingImages = async () => {
       try {
-        const response = await fetch("http://localhost:5000/exhibitions/ongoing");
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/exhibitions/ongoing`);
         const data = await response.json();
         const coverUrls = data
           .map((item: any) => item.cover_picture)

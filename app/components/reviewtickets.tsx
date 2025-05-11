@@ -10,7 +10,7 @@ type Props = {
   rating: string;
 };
 
-const API = process.env.NEXT_PUBLIC_API_URL!;  // จะกลายเป็น 'http://localhost:5000'
+const API = process.env.NEXT_PUBLIC_API_BASE!;  
 
 const ReviewTicket: React.FC<Props> = ({
   imageUrl,

@@ -59,7 +59,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ allReviews, exhibitionId 
           <p className="text-sm mt-2">{userReview.review}</p>
           {userReview.image_url && (
             <img
-              src={`http://localhost:5000${userReview.image_url}`}
+              src={`${process.env.NEXT_PUBLIC_API_BASE}${userReview.image_url}`}
               alt="รูปรีวิว"
               className="mt-2 rounded max-h-48"
             />
@@ -79,7 +79,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ allReviews, exhibitionId 
           <p className="text-sm mt-2">{latestOtherReview.review}</p>
           {latestOtherReview.image_url && (
             <img
-              src={`http://localhost:5000${latestOtherReview.image_url}`}
+              src={`${process.env.NEXT_PUBLIC_API_BASE}${latestOtherReview.image_url}`}
               alt="รูปรีวิว"
               className="mt-2 rounded max-h-48"
             />

@@ -22,7 +22,7 @@ export default function ReviewFormPage() {
 
     try {
       // กรณี slug เป็น exhibition_id
-      const eventRes = await fetch(`http://localhost:5000/exhibitions/${slug}`);
+      const eventRes = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/exhibitions/${slug}`);
       if (eventRes.ok) {
         setExhibitionId(slug as string);
         return;
@@ -31,7 +31,7 @@ export default function ReviewFormPage() {
 
     try {
       // กรณี slug เป็น reviewId
-      const reviewRes = await fetch(`http://localhost:5000/reviews/id/${slug}`);
+      const reviewRes = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/reviews/id/${slug}`);
       if (reviewRes.ok) {
         const review = await reviewRes.json();
         setExhibitionId(review.exhibition_id._id || review.exhibition_id);
@@ -39,7 +39,7 @@ export default function ReviewFormPage() {
         setReviewText(review.review);
         setExistingReviewId(review._id);
         if (review.image_url) {
-          setPreviewImage(`http://localhost:5000${review.image_url}`);
+          setPreviewImage(`${process.env.NEXT_PUBLIC_API_BASE}${review.image_url}`);
         }
       } else {
         alert('ไม่พบข้อมูลนิทรรศการหรือรีวิว');
@@ -76,8 +76,8 @@ export default function ReviewFormPage() {
     if (photo) formData.append('image', photo);
 
     const url = existingReviewId
-      ? `http://localhost:5000/reviews/${existingReviewId}`
-      : 'http://localhost:5000/reviews';
+      ? `${process.env.NEXT_PUBLIC_API_BASE}/reviews/${existingReviewId}`
+      : `${process.env.NEXT_PUBLIC_API_BASE}/reviews`;
     const method = existingReviewId ? 'PUT' : 'POST';
     
 

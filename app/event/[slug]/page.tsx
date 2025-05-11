@@ -20,7 +20,7 @@ export default function EventDetailPage() {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/exhibitions/${slug}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/exhibitions/${slug}`);
         if (!res.ok) throw new Error("ไม่สามารถดึงข้อมูลนิทรรศการได้");
         const data = await res.json();
         setEvent(data);
@@ -39,7 +39,7 @@ export default function EventDetailPage() {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/reviews/${slug}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/reviews/${slug}`);
         const data = await res.json();
         if (!Array.isArray(data)) throw new Error("ข้อมูลรีวิวผิดพลาด");
 
@@ -67,7 +67,7 @@ export default function EventDetailPage() {
       if (!token) return;
 
       try {
-        const res = await fetch(`http://localhost:5000/favorites/check/${slug}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/favorites/check/${slug}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -91,7 +91,7 @@ export default function EventDetailPage() {
 
     try {
       if (isFavorite) {
-        await fetch(`http://localhost:5000/favorites/${slug}`, {
+        await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/favorites/${slug}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -99,7 +99,7 @@ export default function EventDetailPage() {
         });
         setIsFavorite(false);
       } else {
-        await fetch("http://localhost:5000/favorites", {
+        await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/favorites`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -136,7 +136,7 @@ export default function EventDetailPage() {
       <div className="mb-6 text-center">
         {event.cover_picture && (
           <img
-            src={event.cover_picture.startsWith('http') ? event.cover_picture : `http://localhost:5000${event.cover_picture}`}
+            src={event.cover_picture.startsWith('http') ? event.cover_picture : `${process.env.NEXT_PUBLIC_API_BASE}${event.cover_picture}`}
             alt={event.title}
             className="mx-auto mb-4 rounded shadow max-h-[400px] object-contain"
           />

@@ -28,7 +28,7 @@ const ReferForm = () => {
   useEffect(() => {
     const loadCategories = async () => {
       try {
-        const res = await fetch("http://localhost:5000/categories");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/categories`);
         const data = await res.json();
         setCategories(data.map((c: any) => c.name));
       } catch (err) {
@@ -132,7 +132,7 @@ const ReferForm = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/suggestions", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/suggestions`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

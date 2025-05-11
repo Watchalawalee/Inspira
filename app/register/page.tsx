@@ -44,7 +44,7 @@ export default function Signup() {
   const steps = ['User Info', 'Gender & Birthdate', 'Interests', 'Register'];
 
   useEffect(() => {
-    fetch('http://localhost:5000/categories')
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE}/categories`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -108,7 +108,7 @@ export default function Signup() {
   
     if (step === 0) {
       try {
-        const res = await fetch('http://localhost:5000/auth/check-duplicate', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/check-duplicate`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -144,7 +144,7 @@ export default function Signup() {
 
   const handleSubmit = async () => {
     try {
-      const res = await fetch('http://localhost:5000/auth/register', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -174,7 +174,7 @@ export default function Signup() {
     setResendError(false);
   
     try {
-      const res = await fetch('http://localhost:5000/auth/resend-verification', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/resend-verification`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: resendEmail }),

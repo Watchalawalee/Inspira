@@ -29,7 +29,7 @@ const RecommendationsSection: React.FC<Props> = ({ isLoggedIn }) => {
           const user = JSON.parse(userStr);
           const userId = user.id;
 
-          const res = await fetch(`http://localhost:5000/recommendations/${userId}`, {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/recommendations/${userId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
 
@@ -72,7 +72,7 @@ const RecommendationsSection: React.FC<Props> = ({ isLoggedIn }) => {
                 src={
                   first.cover_picture.startsWith('http')
                     ? first.cover_picture
-                    : `http://localhost:5000${first.cover_picture}`
+                    : `${process.env.NEXT_PUBLIC_API_BASE}${first.cover_picture}`
                 }
                 alt={first.title}
                 className="w-full h-auto object-cover"

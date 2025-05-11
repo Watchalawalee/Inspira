@@ -15,7 +15,7 @@ export default function VerifyEmailPage() {
       return;
     }
 
-    fetch(`http://localhost:5000/auth/verify-email?token=${token}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/verify-email?token=${token}`)
       .then((res) => res.json())
       .then((data) => {
         setMessage(data.message || 'ยืนยันอีเมลเรียบร้อยแล้ว!');

@@ -21,7 +21,7 @@ const HomePage = () => {
 
       if (!token) return;
       try {
-        const res = await fetch('http://localhost:5000/auth/session', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/session`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },

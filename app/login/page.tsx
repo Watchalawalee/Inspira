@@ -23,7 +23,7 @@ export default function Login() {
     }
 
     try {
-      const res = await axios.post('http://localhost:5000/auth/login', {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE}/auth/login`, {
         username: username.trim(),
         password: password.trim(),
       });

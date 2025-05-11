@@ -11,7 +11,7 @@ const BannerSlide: React.FC = () => {
   useEffect(() => {
     const fetchBanners = async () => {
       try {
-        const res = await fetch('http://localhost:5000/exhibitions/ongoing');
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/exhibitions/ongoing`);
         const data = await res.json();
 
         const valid = data.filter((item: any) => item.cover_picture?.startsWith('http'));

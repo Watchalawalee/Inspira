@@ -16,7 +16,7 @@ export default function SearchPage() {
     const fetchResults = async () => {
       if (!query) return;
       try {
-        const res = await fetch(`http://localhost:5000/exhibitions/search?q=${encodeURIComponent(query)}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/exhibitions/search?q=${encodeURIComponent(query)}`);
         const data = await res.json();
         setResults(data);
       } catch (err) {
@@ -52,7 +52,7 @@ export default function SearchPage() {
                 <Link href={`/event/${item._id}`}>
                   <div className="rounded overflow-hidden shadow cursor-pointer">
                     {item.cover_picture && (
-                      <img src={item.cover_picture.startsWith('http') ? item.cover_picture : `http://localhost:5000${item.cover_picture}`} alt={item.title} className="w-full" />
+                      <img src={item.cover_picture.startsWith('http') ? item.cover_picture : `${process.env.NEXT_PUBLIC_API_BASE}${item.cover_picture}`} alt={item.title} className="w-full" />
                     )}
                     <div className="p-4">
                       <h2 className="font-semibold">{item.title}</h2>
@@ -71,7 +71,7 @@ export default function SearchPage() {
             <Link href={`/event/${item._id}`} key={idx}>
               <div className="break-inside-avoid rounded overflow-hidden shadow bg-white cursor-pointer hover:shadow-lg transition">
                 {item.cover_picture && (
-                  <img src={item.cover_picture.startsWith('http') ? item.cover_picture : `http://localhost:5000${item.cover_picture}`} alt={item.title} className="w-full" />
+                  <img src={item.cover_picture.startsWith('http') ? item.cover_picture : `${process.env.NEXT_PUBLIC_API_BASE}${item.cover_picture}`} alt={item.title} className="w-full" />
                 )}
                 <div className="p-4">
                   <h2 className="font-semibold">{item.title}</h2>

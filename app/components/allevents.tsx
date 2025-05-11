@@ -66,7 +66,7 @@ const AllEventsSection = forwardRef<HTMLDivElement, AllEventsProps>(function All
       });
       if (selectedCategory) params.append('category', selectedCategory);
 
-      const res = await fetch(`http://localhost:5000/exhibitions?${params}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/exhibitions?${params}`);
       const data = await res.json();
 
       const filtered = await Promise.all(

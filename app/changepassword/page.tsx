@@ -22,7 +22,7 @@ const ChangePassword: React.FC = () => {
       const token = localStorage.getItem('token');
       if (!token) return setError("กรุณาเข้าสู่ระบบใหม่อีกครั้ง");
 
-      const res = await fetch("http://localhost:5000/auth/change-password", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/change-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const ChangePassword: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-6 relative">
+    <div className="flex flex-col items-center justify-center min-h-screen p-6 relative pb-24">
         <Image
             src="/bglogin.svg"
             alt="Background"

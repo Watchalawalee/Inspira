@@ -32,7 +32,7 @@ const ForgotPassword: React.FC = () => {
     if (!email) return setError("กรุณากรอกอีเมล");
 
     try {
-      const res = await fetch("http://localhost:5000/auth/request-reset", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/request-reset`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -56,7 +56,7 @@ const ForgotPassword: React.FC = () => {
     if (!pin || !email) return setError("กรุณากรอกอีเมลและ PIN");
 
     try {
-      const res = await fetch("http://localhost:5000/auth/confirm-reset", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/confirm-reset`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, pin, newPassword: "__dummy__" }),
@@ -82,7 +82,7 @@ const ForgotPassword: React.FC = () => {
       return setError("รหัสผ่านไม่ตรงกัน");
 
     try {
-      const res = await fetch("http://localhost:5000/auth/confirm-reset", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/confirm-reset`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, pin, newPassword }),

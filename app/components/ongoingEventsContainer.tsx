@@ -30,14 +30,14 @@ const OngoingEvents: React.FC<OngoingEventsProps> = ({ onViewAll }) => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch('http://localhost:5000/exhibitions/ongoing');
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/exhibitions/ongoing`);
         const data = await res.json();
 
         const filtered = await Promise.all(
           data.map(async (event: Event) => {
             const imgUrl = event.cover_picture?.startsWith('http')
               ? event.cover_picture
-              : `http://localhost:5000${event.cover_picture}`;
+              : `${process.env.NEXT_PUBLIC_API_BASE}${event.cover_picture}`;
             const canLoad = await isImageLoadable(imgUrl);
             return canLoad ? { ...event, cover_picture: imgUrl } : null;
           })

@@ -24,7 +24,7 @@ export default function AllReviewsPage() {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/reviews/${slug}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/reviews/${slug}`);
         if (!res.ok) throw new Error('ไม่พบรีวิว');
         const data = await res.json();
 
@@ -88,7 +88,7 @@ export default function AllReviewsPage() {
             <p className="mt-2">{r.review}</p>
             {r.image_url && (
               <img
-                src={`http://localhost:5000${r.image_url}`}
+                src={`${process.env.NEXT_PUBLIC_API_BASE}${r.image_url}`}
                 alt="รูปรีวิว"
                 className="mt-2 max-h-48 rounded"
               />

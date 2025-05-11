@@ -27,7 +27,7 @@ interface Review {
   rating: number;
 }
 
-const API = process.env.NEXT_PUBLIC_API_URL!; // http://localhost:5000
+const API = process.env.NEXT_PUBLIC_API_BASE!; 
 
 const ProfilePage: React.FC = () => {
   const router = useRouter();

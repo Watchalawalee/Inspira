@@ -22,9 +22,9 @@ export default function DirectionPage() {
     const fetchData = async () => {
       try {
         const [eventRes, stopsRes, allStopsRes] = await Promise.all([
-          fetch(`http://localhost:5000/exhibitions/${slug}`),
-          fetch(`http://localhost:5000/exhibitions/${slug}/nearby-bus`),
-          fetch(`http://localhost:5000/bus-routes/all-stops`)
+          fetch(`${process.env.NEXT_PUBLIC_API_BASE}/exhibitions/${slug}`),
+          fetch(`${process.env.NEXT_PUBLIC_API_BASE}/exhibitions/${slug}/nearby-bus`),
+          fetch(`${process.env.NEXT_PUBLIC_API_BASE}/bus-routes/all-stops`)
         ]);
         const eventData = await eventRes.json();
         const busData = await stopsRes.json();
@@ -166,7 +166,7 @@ export default function DirectionPage() {
     if (val.startsWith('@')) {
       const parts = val.slice(1).split(',');
       const [lat, lng] = parts.map(parseFloat);
-      fetch(`http://localhost:5000/bus-routes/suggest-route?lat=${lat}&lng=${lng}&exLat=${exhibitionLatLng.lat}&exLng=${exhibitionLatLng.lng}`)
+      fetch(`${process.env.NEXT_PUBLIC_API_BASE}/bus-routes/suggest-route?lat=${lat}&lng=${lng}&exLat=${exhibitionLatLng.lat}&exLng=${exhibitionLatLng.lng}`)
         .then(res => res.json())
         .then(displayRoutes)
         .catch(() => resultContainer.innerHTML = `<p style="color:red;">เกิดข้อผิดพลาด</p>`);
@@ -176,7 +176,7 @@ export default function DirectionPage() {
         resultContainer.innerHTML = `<p style="color:red;">ไม่พบป้ายที่คุณกรอกในระบบ</p>`;
         return;
       }
-      fetch(`http://localhost:5000/bus-routes/suggest-route?exLat=${exhibitionLatLng.lat}&exLng=${exhibitionLatLng.lng}`, {
+      fetch(`${process.env.NEXT_PUBLIC_API_BASE}/bus-routes/suggest-route?exLat=${exhibitionLatLng.lat}&exLng=${exhibitionLatLng.lng}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userStops: [matched.stop_id] })
