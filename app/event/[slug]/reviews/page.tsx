@@ -31,12 +31,20 @@ export default function AllReviewsPage() {
         const token = localStorage.getItem("token");
         const userId = token ? JSON.parse(atob(token.split('.')[1])).id : null;
 
-        const userReview = data.find(
-          (r: Review) => (typeof r.user_id === 'object' ? r.user_id._id : r.user_id) === userId
-        );
-        const otherReviews = data.filter(
-          (r: Review) => (typeof r.user_id === 'object' ? r.user_id._id : r.user_id) !== userId
-        );
+        const userReview = Array.isArray(data)
+          ? data.find((r: Review) => {
+              if (!r || !r.user_id) return false;
+              return (typeof r.user_id === 'object' ? r.user_id._id : r.user_id) === userId;
+            })
+          : null;
+
+        const otherReviews = Array.isArray(data)
+          ? data.filter((r: Review) => {
+              if (!r || !r.user_id) return false;
+              return (typeof r.user_id === 'object' ? r.user_id._id : r.user_id) !== userId;
+            })
+          : [];
+
 
         const combined = userReview ? [userReview, ...otherReviews] : otherReviews;
 
@@ -64,10 +72,13 @@ export default function AllReviewsPage() {
       <hr className="mb-6" />
 
       {reviews.map((r) => {
+        if (!r || !r.user_id) return null;
+
         const token = localStorage.getItem("token");
         const userId = token ? JSON.parse(atob(token.split('.')[1])).id : null;
         const reviewOwnerId = typeof r.user_id === 'object' ? r.user_id._id : r.user_id;
         const username = typeof r.user_id === 'object' ? r.user_id.username : 'ผู้ใช้งาน';
+
 
         const isOwnReview = userId === reviewOwnerId;
 

@@ -22,16 +22,22 @@ export default function EventDetailPage() {
       try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/exhibitions/${slug}`);
         if (!res.ok) throw new Error("ไม่สามารถดึงข้อมูลนิทรรศการได้");
+
         const data = await res.json();
+
+        // เช็คว่า data มี title หรือไม่ (เป็นสัญญาณว่าเจอจริง)
+        if (!data.title) {
+          throw new Error(data.message || "ไม่พบนิทรรศการ");
+        }
+
         setEvent(data);
-      } catch (err) {
-        setError("ไม่สามารถดึงข้อมูลนิทรรศการได้");
-        console.error(err);
+      } catch (err: any) {
+        console.error("❌ โหลดนิทรรศการล้มเหลว:", err);
+        setError(err.message || "ไม่สามารถดึงข้อมูลนิทรรศการได้");
       } finally {
         setLoading(false);
       }
     };
-
     fetchEvent();
   }, [slug]);
 

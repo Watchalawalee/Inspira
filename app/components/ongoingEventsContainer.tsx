@@ -35,13 +35,19 @@ const OngoingEvents: React.FC<OngoingEventsProps> = ({ onViewAll }) => {
 
         const filtered = await Promise.all(
           data.map(async (event: Event) => {
-            const imgUrl = event.cover_picture?.startsWith('http')
+            if (!event.title || !event.cover_picture || !event.location) {
+              return null;
+            }
+
+            const imgUrl = event.cover_picture.startsWith('http')
               ? event.cover_picture
               : `${process.env.NEXT_PUBLIC_API_BASE}${event.cover_picture}`;
+
             const canLoad = await isImageLoadable(imgUrl);
             return canLoad ? { ...event, cover_picture: imgUrl } : null;
           })
         );
+
 
         setEvents(filtered.filter(Boolean).slice(0, 5) as Event[]);
       } catch (err) {

@@ -14,16 +14,35 @@ const BannerSlide: React.FC = () => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/exhibitions/ongoing`);
         const data = await res.json();
 
-        const valid = data.filter((item: any) => item.cover_picture?.startsWith('http'));
+        const filtered = await Promise.all(
+          data.map(async (item: any) => {
+            if (!item.title || !item.cover_picture) return null;
 
-        const formatted = valid.map((item: any) => ({
-          id: item._id,
-          title: item.title,
-          description: item.description,
-          imageUrl: item.cover_picture,
-        }));
+            const imgUrl = item.cover_picture.startsWith('http')
+              ? item.cover_picture
+              : `${process.env.NEXT_PUBLIC_API_BASE}${item.cover_picture}`;
 
-        setBanners(formatted);
+            // ตรวจสอบว่ารูปโหลดได้จริง
+            const canLoad = await new Promise<boolean>((resolve) => {
+              const img = new Image();
+              img.src = imgUrl;
+              img.onload = () => resolve(true);
+              img.onerror = () => resolve(false);
+            });
+
+            return canLoad
+              ? {
+                  id: item._id,
+                  title: item.title,
+                  description: item.description || "",
+                  imageUrl: imgUrl,
+                }
+              : null;
+          })
+        );
+
+        setBanners(filtered.filter(Boolean));
+
       } catch (err) {
         console.error('❌ Failed to fetch banners:', err);
       }

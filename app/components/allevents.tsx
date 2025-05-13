@@ -71,14 +71,18 @@ const AllEventsSection = forwardRef<HTMLDivElement, AllEventsProps>(function All
 
       const filtered = await Promise.all(
         data.map(async (event: Event) => {
+          if (!event.title || !event.location || !event.cover_picture) return null;
+
           const isValid =
-            event.cover_picture?.startsWith('http') &&
+            event.cover_picture.startsWith('http') &&
             (await isImageLoadable(event.cover_picture));
+
           return isValid ? event : null;
         })
       );
 
       const validEvents = filtered.filter((e): e is Event => e !== null);
+
 
       if (Array.isArray(validEvents)) {
         setEvents((prev) => (reset ? validEvents : [...prev, ...validEvents]));
