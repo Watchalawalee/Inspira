@@ -2,6 +2,8 @@
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { Camera, Trash } from 'lucide-react';
 
 export default function ReviewFormPage() {
   const { slug } = useParams(); // อาจเป็น exhibitionId หรือ reviewId ก็ได้
@@ -62,6 +64,10 @@ export default function ReviewFormPage() {
     }
   };
 
+  const handleRemoveImage = () => {
+    setPreviewImage(null);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -105,9 +111,16 @@ export default function ReviewFormPage() {
   };
 
   return (
+    <div className="flex flex-col items-center justify-center min-h-screen px-6 relative bg-gray-50">
+          <Image
+            src="/regis1.svg"
+            alt="Background"
+            width={1440}
+            height={200}
+            className="absolute bottom-0 z-0 min-w-screen object-fill object-bottom"
+          />
+      <h1 className="text-3xl font-bold mb-6 z-10 text-[#2D3E50]">Review</h1>
     <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-white rounded-xl shadow space-y-4">
-      <h2 className="text-xl font-semibold">เขียนรีวิวของคุณ</h2>
-
       <div className="flex gap-1 text-2xl cursor-pointer">
         {[1, 2, 3, 4, 5].map((star) => (
           <span
@@ -121,35 +134,51 @@ export default function ReviewFormPage() {
           </span>
         ))}
       </div>
-      <div>
-        <label htmlFor="reviewText" className="block font-medium mb-1">ข้อความรีวิว:</label>
-        <textarea
-          id="reviewText"
-          value={reviewText}
-          onChange={(e) => setReviewText(e.target.value)}
-          rows={4}
-          className="w-full p-2 border rounded"
-          placeholder="พิมพ์รีวิวของคุณที่นี่..."
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="photo" className="block font-medium mb-1">แนบรูปภาพ (ถ้ามี):</label>
+         <textarea
+        id="reviewText"
+        value={reviewText}
+        onChange={(e) => setReviewText(e.target.value)}
+        rows={4}
+        className="w-full p-4 bg-gray-100 rounded-lg placeholder-gray-500 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        placeholder="พิมพ์รีวิวของคุณที่นี่..."
+        style={{ border: 'none', resize: 'none' }}
+      />
+
+      {/* Icon กล้องสำหรับแนบรูป */}
+      <label htmlFor="photo" className="absolute bottom-4 right-4 cursor-pointer">
+        <Camera size={32} className="text-gray-500 hover:text-gray-700 transition" />
         <input
           type="file"
           id="photo"
           accept="image/*"
           onChange={handlePhotoChange}
-          className="w-full p-2 border rounded"
+          className="hidden"
         />
-        {previewImage && (
-          <img src={previewImage} alt="รูปที่แนบ" className="mt-2 max-h-48 rounded" />
-        )}
-      </div>
+      </label>
 
-      <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-        ส่งรีวิว
-      </button>
+      {/* Preview รูป */}
+      {previewImage && (
+        <div className="relative mt-4 group">
+          <img
+            src={previewImage}
+            alt="รูปที่แนบ"
+            className="max-h-48 w-full rounded-lg shadow-md object-cover"
+          />
+          <button
+            onClick={handleRemoveImage}
+            className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full hover:bg-red-600 transition opacity-0 group-hover:opacity-100"
+          >
+            <Trash size={18} />
+          </button>
+        </div>
+        )}
+      <button
+            type="submit"
+            className="w-full mt-2 bg-[#5372A4] hover:bg-[#3d5987] text-white py-2 rounded-full text-base font-semibold transition-colors"
+          >
+            Login
+          </button>
     </form>
+    </div>
   );
 }
