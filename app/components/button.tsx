@@ -125,7 +125,7 @@ const InspiraNavbar = () => {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <HomeIcon
             sx={{ color: '#ffffff', fontSize: 32, cursor: 'pointer' }}
-            onClick={() => router.push('/')}
+            onClick={() => router.push('/home')}
           />
           <IconButton onClick={isLoggedIn ? handleMenuOpen : handleLoginRedirect}>
             <AccountCircleIcon sx={{ color: '#ffffff', fontSize: 32 }} />
