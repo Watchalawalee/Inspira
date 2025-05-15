@@ -1,7 +1,11 @@
+""\
 'use client';
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 interface Recommendation {
   _id: string;
@@ -49,7 +53,15 @@ const RecommendationsSection: React.FC<Props> = ({ isLoggedIn }) => {
 
   if (!isLoggedIn || loading || recommendations.length === 0) return null;
 
-  const first = recommendations[0];
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+  };
 
   return (
     <section
@@ -58,31 +70,35 @@ const RecommendationsSection: React.FC<Props> = ({ isLoggedIn }) => {
     >
       <div className="relative w-fit mx-auto">
         <h2
-          className="absolute -top-5 -left-8 text-[64px] drop-shadow-xl z-20 text-[#5372A4]"
-          style={{ fontFamily: 'var(--font-playball)', transform: 'rotate(-5deg)' }}
+          className="absolute -top-5 -left-8 text-[64px] drop-shadow-xl z-20"
+          style={{ fontFamily: 'var(--font-playball)', transform: 'rotate(-5deg)', color: '#5372A4' }}
         >
           Recommended
         </h2>
 
-        {/* ลิงก์ห่อกล่องรูปโดยตรง ไม่ต้องมี <a> ซ้อน */}
-        <Link href={`/event/${first._id}`}>
-          <div className="relative z-10 block shadow-xl border-4 border-white rounded-md overflow-hidden w-[640px] py-6 cursor-pointer">
-            {first.cover_picture && (
-              <img
-                src={
-                  first.cover_picture.startsWith('http')
-                    ? first.cover_picture
-                    : `${process.env.NEXT_PUBLIC_API_BASE}${first.cover_picture}`
-                }
-                alt={first.title}
-                className="w-full h-auto object-cover"
-              />
-            )}
-          </div>
-        </Link>
+        <Slider {...settings} className="w-[640px]">
+          {recommendations.map((rec) => (
+            <Link href={`/event/${rec._id}`} key={rec._id}>
+              <div className="relative z-10 block shadow-xl border-4 border-white rounded-md overflow-hidden cursor-pointer">
+                {rec.cover_picture && (
+                  <img
+                    src={
+                      rec.cover_picture.startsWith('http')
+                        ? rec.cover_picture
+                        : `${process.env.NEXT_PUBLIC_API_BASE}${rec.cover_picture}`
+                    }
+                    alt={rec.title}
+                    className="w-full h-auto object-cover"
+                  />
+                )}
+              </div>
+            </Link>
+          ))}
+        </Slider>
       </div>
     </section>
   );
 };
 
 export default RecommendationsSection;
+""
