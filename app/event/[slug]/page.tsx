@@ -4,6 +4,8 @@ import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import ReviewSection from '@/app/components/reviewsection';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+
 
 export default function EventDetailPage() {
   const { slug } = useParams();
@@ -114,7 +116,9 @@ export default function EventDetailPage() {
       <Link href="/" className="text-blue-600 underline absolute top-4 left-4">⬅</Link>
 
       <button onClick={toggleFavorite} className="absolute top-4 right-4 text-2xl focus:outline-none">
-        {isFavorite ? '❤️' : '🤍'}
+        <motion.span animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 0.3 }}>
+          {isFavorite ? '❤️' : '🤍'}
+        </motion.span>
       </button>
 
       <div className="mb-6 text-center">

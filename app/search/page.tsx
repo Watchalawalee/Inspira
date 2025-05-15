@@ -66,12 +66,16 @@ export default function SearchPage() {
         </div>
 
         {/* Desktop View */}
-        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="hidden md:block columns-2 lg:columns-3 gap-4 space-y-4">
           {results.map((item, idx) => (
             <Link href={`/event/${item._id}`} key={idx}>
               <div className="break-inside-avoid rounded overflow-hidden shadow bg-white cursor-pointer hover:shadow-lg transition">
                 {item.cover_picture && (
-                  <img src={item.cover_picture.startsWith('http') ? item.cover_picture : `${process.env.NEXT_PUBLIC_API_BASE}${item.cover_picture}`} alt={item.title} className="w-full" />
+                  <img
+                    src={item.cover_picture.startsWith('http') ? item.cover_picture : `${process.env.NEXT_PUBLIC_API_BASE}${item.cover_picture}`}
+                    alt={item.title}
+                    className="w-full mb-2"
+                  />
                 )}
                 <div className="p-4">
                   <h2 className="font-semibold">{item.title}</h2>
