@@ -2,11 +2,16 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import InspiraNavbar from '../components/button';
-import BannerSlider from '../components/Bannerslide';
+import dynamic from 'next/dynamic';
 import OngoingEventsContainer from '../components/ongoingEventsContainer';
 import UpcomingEventsContainer from '../components/upcomingEventsContainer';
 import AllEvents from '../components/allevents';
 import RecommendationsSection from '../components/recommended';
+
+
+  const BannerSlider = dynamic(() => import('../components/Bannerslide'), {
+    ssr: false, 
+  });
 
 const HomePage = () => {
   const [selectedTab, setSelectedTab] = useState('Ongoing');

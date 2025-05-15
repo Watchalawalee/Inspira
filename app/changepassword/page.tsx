@@ -18,7 +18,6 @@ const ChangePassword: React.FC = () => {
       return setError("รหัสผ่านใหม่และการยืนยันรหัสผ่านไม่ตรงกัน");
 
     try {
-      // ส่งข้อมูลเพื่อเปลี่ยนรหัสผ่าน (คุณสามารถปรับ endpoint ตามที่คุณใช้)
       const token = localStorage.getItem('token');
       if (!token) return setError("กรุณาเข้าสู่ระบบใหม่อีกครั้ง");
 
@@ -31,12 +30,16 @@ const ChangePassword: React.FC = () => {
         body: JSON.stringify({ oldPassword, newPassword }),
       });
 
-
       const data = await res.json();
       if (res.ok) {
         setMessage("🎉 รหัสผ่านของคุณได้รับการเปลี่ยนเรียบร้อยแล้ว!");
+        setError("");
+        setOldPassword("");
+        setNewPassword("");
+        setConfirmPassword("");
       } else {
         setError(data.message || "เกิดข้อผิดพลาดในการเปลี่ยนรหัสผ่าน");
+        setMessage("");
       }
     } catch {
       setError("❌ ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์");
@@ -45,16 +48,18 @@ const ChangePassword: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 relative pb-24">
-        <Image
-            src="/bglogin.svg"
-            alt="Background"
-            width={1440}
-            height={200}
-            className="absolute bottom-0 z-0 min-w-screen object-fill object-bottom"
-        />
-      <h1 className="text-2xl font-semibold  mb-4">Change password</h1>
-      <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md">
-        {/* Old Password Input */}
+      {/* ✅ Background image ที่ไม่บังปุ่ม */}
+      <Image
+        src="/bglogin.svg"
+        alt="Background"
+        width={1440}
+        height={200}
+        className="absolute bottom-0 z-0 w-full object-fill object-bottom pointer-events-none"
+      />
+
+      <h1 className="text-2xl font-semibold mb-4 text-[#5b78a4] z-10">Change password</h1>
+
+      <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md z-10">
         <label className="text-sm text-gray-700 mb-1">Old Password</label>
         <input
           type="password"
@@ -63,7 +68,6 @@ const ChangePassword: React.FC = () => {
           onChange={(e) => setOldPassword(e.target.value)}
         />
 
-        {/* New Password Input */}
         <label className="text-sm text-gray-700 mb-1">New Password</label>
         <input
           type="password"
@@ -72,7 +76,6 @@ const ChangePassword: React.FC = () => {
           onChange={(e) => setNewPassword(e.target.value)}
         />
 
-        {/* Confirm New Password Input */}
         <label className="text-sm text-gray-700 mb-1">Confirm New Password</label>
         <input
           type="password"
@@ -81,7 +84,6 @@ const ChangePassword: React.FC = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
 
-        {/* Change Password Button */}
         <button
           onClick={handleChangePassword}
           className="w-full bg-[#5b78a4] text-white py-2 rounded-full hover:bg-[#4a6795] transition"
@@ -89,7 +91,6 @@ const ChangePassword: React.FC = () => {
           Change Password
         </button>
 
-        {/* Feedback */}
         {message && <p className="text-green-600 text-sm mt-4">{message}</p>}
         {error && <p className="text-red-600 text-sm mt-4">{error}</p>}
       </div>

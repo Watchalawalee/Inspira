@@ -78,10 +78,17 @@ export default function DirectionPage() {
         });
       };
 
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyARUJc-U7xfVvWsV4LnguUoIZQcvoRM2ik&callback=initMap&libraries=places`;
-      script.async = true;
-      document.head.appendChild(script);
+      // ✅ ป้องกันโหลด script ซ้ำ
+      const scriptId = 'google-maps-script';
+      if (!document.getElementById(scriptId)) {
+        const script = document.createElement('script');
+        script.id = scriptId;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyARUJc-U7xfVvWsV4LnguUoIZQcvoRM2ik&callback=initMap&libraries=places`;
+        script.async = true;
+        document.head.appendChild(script);
+      } else {
+        window.initMap(); // หากโหลดแล้ว เรียก initMap เลย
+      }
     }
   }, [exhibitionLatLng, busStops]);
 
@@ -130,12 +137,12 @@ export default function DirectionPage() {
       return acc;
     }, {});
 
-    const html = Object.values(grouped).map((group: any) => {
+    const html = Object.values(grouped).map((group: any, idx) => {
       const uniqueRoutes = Array.from(
         new Map(group.routes.map((r: any) => [`${r?.short_name}-${r?.long_name}`, r])).values()
       );
       return `
-        <div style="margin-bottom: 12px; padding: 10px; background: #f1f5f9; border-radius: 8px;">
+        <div key="route-${idx}" style="margin-bottom: 12px; padding: 10px; background: #f1f5f9; border-radius: 8px;">
           <div><strong>📍 ขึ้นที่:</strong> ${group.get_on}</div>
           <div><strong>🎯 ลงที่:</strong> ${group.get_off} <small>(ห่างจากจุดหมาย: ${group.get_off_distance} เมตร)</small></div>
           <div><strong>🚌 สายที่สามารถนั่งได้:</strong></div>
@@ -208,13 +215,13 @@ export default function DirectionPage() {
                     .map((route: any) => `<li class="ml-4 list-disc"><strong>สาย ${route.short_name}</strong> - ${route.long_name?.split(';')[0]}</li>`)
                     .join('')
                 : '<li>ไม่มีข้อมูลเส้นทาง</li>';
-                const price = (stop.min_price == null || stop.max_price == null)
+              const price = (stop.min_price == null || stop.max_price == null)
                 ? 'ยังไม่มีข้อมูล'
                 : (stop.min_price === stop.max_price
                     ? `${stop.min_price} Baht`
-                    : `${stop.min_price} - ${stop.max_price} Baht`);              
+                    : `${stop.min_price} - ${stop.max_price} Baht`);
               return (
-                <div key={stop.stop_id} className="bus-stop border-b py-3">
+                <div key={stop.stop_id || index} className="bus-stop border-b py-3">
                   <h3><strong>🅿️ {index + 1}.</strong> {icon} {stop.stop_name}</h3>
                   <div className="text-sm text-gray-700">📏 Distance: <strong>{stop.distance}</strong> meters</div>
                   <div className="text-sm text-gray-700">{icon} Routes:</div>

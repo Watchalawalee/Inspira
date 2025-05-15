@@ -22,7 +22,6 @@ const BannerSlide: React.FC = () => {
               ? item.cover_picture
               : `${process.env.NEXT_PUBLIC_API_BASE}${item.cover_picture}`;
 
-            // ตรวจสอบว่ารูปโหลดได้จริง
             const canLoad = await new Promise<boolean>((resolve) => {
               const img = new Image();
               img.src = imgUrl;
@@ -30,19 +29,16 @@ const BannerSlide: React.FC = () => {
               img.onerror = () => resolve(false);
             });
 
-            return canLoad
-              ? {
-                  id: item._id,
-                  title: item.title,
-                  description: item.description || "",
-                  imageUrl: imgUrl,
-                }
-              : null;
+            return canLoad ? {
+              id: item._id,
+              title: item.title,
+              description: item.description || '',
+              imageUrl: imgUrl,
+            } : null;
           })
         );
 
         setBanners(filtered.filter(Boolean));
-
       } catch (err) {
         console.error('❌ Failed to fetch banners:', err);
       }
@@ -67,7 +63,6 @@ const BannerSlide: React.FC = () => {
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
-      {/* รูปทั้งหมด (เฟดด้วย opacity) */}
       {banners.map((banner, index) => (
         <img
           key={index}
@@ -81,16 +76,13 @@ const BannerSlide: React.FC = () => {
       <Link
         href={`/event/${banners[currentIndex].id}`}
         className="absolute inset-0 z-10"
-        onMouseEnter={() => setIsHovered(true)}   
-        onMouseLeave={() => setIsHovered(false)}  
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <span className="block w-full h-full" />
       </Link>
 
-      {/* กล่อง overlay โลโก้ ปุ่ม คำโปรย */}
-      <div
-        className="absolute left-80 top-10 h-full w-full md:w-1/3 lg:w-1/4 bg-[rgba(83,114,164,0.5)] flex flex-col justify-start items-center px-6 py-10 text-white transform -translate-x-1/2 z-20"
-      >
+      <div className="absolute left-80 top-10 h-full w-full md:w-1/3 lg:w-1/4 bg-[rgba(83,114,164,0.5)] flex flex-col justify-start items-center px-6 py-10 text-white transform -translate-x-1/2 z-20">
         <img
           src="/logo.svg"
           alt="Logo"
@@ -121,20 +113,15 @@ const BannerSlide: React.FC = () => {
         </p>
       </div>
 
-      {/* Navigation Arrows */}
       <button
         className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl z-30"
-        onClick={() =>
-          setCurrentIndex((prev) => (prev === 0 ? banners.length - 1 : prev - 1))
-        }
+        onClick={() => setCurrentIndex((prev) => (prev === 0 ? banners.length - 1 : prev - 1))}
       >
         ‹
       </button>
       <button
         className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl z-30"
-        onClick={() =>
-          setCurrentIndex((prev) => (prev === banners.length - 1 ? 0 : prev + 1))
-        }
+        onClick={() => setCurrentIndex((prev) => (prev === banners.length - 1 ? 0 : prev + 1))}
       >
         ›
       </button>

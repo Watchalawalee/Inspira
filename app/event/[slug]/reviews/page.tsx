@@ -74,13 +74,22 @@ export default function AllReviewsPage() {
       {reviews.map((r) => {
         if (!r || !r.user_id) return null;
 
-        const token = localStorage.getItem("token");
-        const userId = token ? JSON.parse(atob(token.split('.')[1])).id : null;
-        const reviewOwnerId = typeof r.user_id === 'object' ? r.user_id._id : r.user_id;
-        const username = typeof r.user_id === 'object' ? r.user_id.username : 'ผู้ใช้งาน';
+        const token = typeof window !== 'undefined' ? localStorage.getItem("token") : null;
+        const userId = token ? JSON.parse(atob(token.split('.')[1]))?.id : null;
 
+        const reviewOwnerId =
+          typeof r.user_id === 'object'
+            ? r.user_id?._id ?? ''
+            : r.user_id ?? '';
+
+        const username =
+          typeof r.user_id === 'object'
+            ? r.user_id?.username ?? 'ผู้ใช้งาน'
+            : 'ผู้ใช้งาน';
 
         const isOwnReview = userId === reviewOwnerId;
+
+        if (!reviewOwnerId) return null;
 
         return (
           <div key={r._id} className="mb-6 border-b pb-4">
