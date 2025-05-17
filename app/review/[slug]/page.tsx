@@ -111,13 +111,12 @@ export default function ReviewFormPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-6 relative bg-gray-50">
+    <div className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
           <Image
             src="/regis1.svg"
             alt="Background"
-            width={1440}
-            height={200}
-            className="absolute bottom-0 z-0 min-w-screen object-fill object-bottom"
+            fill
+            className="absolute inset-0 -z-10 object-cover"
           />
       <h1 className="text-3xl font-bold mb-6 z-10 text-[#2D3E50]">Review</h1>
     <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-white rounded-xl shadow space-y-4">

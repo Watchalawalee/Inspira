@@ -11,7 +11,7 @@ interface Review {
   user_id: {
     _id?: string;
     username?: string;
-  } | string | null;
+  } | string | null; // เพิ่ม null ได้
 }
 
 interface ReviewSectionProps {
@@ -20,7 +20,7 @@ interface ReviewSectionProps {
 }
 
 const ReviewSection: React.FC<ReviewSectionProps> = ({ allReviews, exhibitionId }) => {
-  const [userId, setUserId] = useState<string | null | undefined>(undefined);
+  const [userId, setUserId] = useState<string | null | undefined>(undefined); // undefined = ยังไม่โหลด
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -30,14 +30,10 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ allReviews, exhibitionId 
     }
   }, []);
 
-  if (userId === undefined) return null;
+  if (userId === undefined) return null; // 🛡️ ป้องกัน hydration mismatch
 
   const renderStars = (rating: number) =>
     '★'.repeat(rating) + '☆'.repeat(5 - rating);
-
-  const averageRating = (
-    allReviews.reduce((sum, review) => sum + review.rating, 0) / allReviews.length
-  ).toFixed(1);
 
   const userReview = userId
     ? allReviews.find((r) => {
@@ -57,12 +53,13 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ allReviews, exhibitionId 
   const latestOtherReview = others[0];
 
   return (
-    <div className='mt-8'>
-      <h2 className='text-xl font-semibold mb-2 text-[#2D3E50]'>Review : {averageRating} / 5</h2>
+    <div className="mt-8">
+      <h2 className="text-xl font-semibold mb-2">รีวิวจากผู้เข้าชม</h2>
+
       {/* ✅ รีวิวของตนเอง */}
       {userReview && (
-        <div className='w-full relative mb-4 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg'>
-          <div className='w-full relative h-80 flex items-center justify-center p-2'>
+        <div className="mb-4 bg-gray-100 p-4 rounded shadow">
+          <div className="flex items-center justify-between">
             <strong>รีวิวของคุณ</strong>
             <div>
               <span className="text-yellow-500">{renderStars(userReview.rating)}</span>
@@ -79,17 +76,16 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ allReviews, exhibitionId 
             <img
               src={`${process.env.NEXT_PUBLIC_API_BASE}${userReview.image_url}`}
               alt="รูปรีวิว"
-              className="rounded-md max-w-sm mx-auto h-auto"
+              className="mt-2 rounded max-h-48"
             />
           )}
         </div>
       )}
 
       {/* ✅ รีวิวล่าสุดของคนอื่น */}
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
       {latestOtherReview && (
-        <div className="w-full relative mb-4 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg">
-          <div className="w-full relative h-80 flex items-center justify-center p-2">
+        <div className="mb-4 bg-gray-100 p-4 rounded shadow">
+          <div className="flex items-center justify-between">
             <strong>
               {typeof latestOtherReview.user_id === 'object' && latestOtherReview.user_id
                 ? latestOtherReview.user_id.username || 'ผู้ใช้งาน'
@@ -105,19 +101,20 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ allReviews, exhibitionId 
               className="mt-2 rounded max-h-48"
             />
           )}
-
-          {/* ✅ ปุ่ม View More ในการ์ด */}
-          {showMore && (
-            <Link
-              href={`/event/${exhibitionId}/reviews`}
-              className="absolute bottom-3 right-3 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 rounded-md transition"
-            >
-              View More →
-            </Link>
-          )}
         </div>
       )}
-    </div>
+
+      {/* ✅ ปุ่มดูเพิ่มเติม */}
+      {showMore && (
+        <div className="text-center">
+          <Link
+            href={`/event/${exhibitionId}/reviews`}
+            className="text-blue-600 hover:underline"
+          >
+            ดูรีวิวเพิ่มเติม →
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

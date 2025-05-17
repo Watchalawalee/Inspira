@@ -35,7 +35,11 @@ export default function Login() {
       setError('');
       setUsername('');
       setPassword('');
-      router.push('/home');
+      if (user.role === 'admin') {
+        router.push('/admin');
+      } else {
+        router.push('/home');
+      }
     } catch (err: any) {
       const msg = err?.response?.data?.message || 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';
       setError(`❌ ${msg}`);
